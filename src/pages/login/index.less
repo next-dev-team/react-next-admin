@@ -1,0 +1,81 @@
+.login {
+  height: 100vh;
+  background: url("~@/assets/images/background.jpg") no-repeat;
+  background-position: 50% fixed;
+  background-size: cover;
+
+  .bg {
+    position: relative;
+    width: 408px;
+    background: rgb(98 120 192 / 20%);
+    border-radius: 10px;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    background: rgb(98 120 192 / 40%);
+    border-radius: 10px;
+    border-top-right-radius: 180px 180px;
+
+    .box {
+      width: 328px;
+    }
+  }
+
+  :global {
+    .ant-form-item-label > label {
+      color: #fff;
+    }
+
+    .ant-form-item-label > label .ant-form-item-tooltip {
+      color: #fff;
+    }
+
+    .ant-form-large .ant-form-item-label > label {
+      height: 30px;
+    }
+
+    .ant-form-item {
+      margin-bottom: 4px;
+    }
+
+    .ant-tabs {
+      color: #fff;
+    }
+  }
+
+  .other {
+    margin-top: 24px;
+    color: #fff;
+    line-height: 22px;
+    text-align: left;
+  }
+
+  .icon {
+    margin-left: 16px;
+    color: rgb(233 214 214 / 80%);
+    font-size: 24px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+
+  .code {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

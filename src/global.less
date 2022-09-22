@@ -1,0 +1,116 @@
+/* 我是全局样式配置 */
+
+@import '~antd/es/style/themes/default.less';
+
+// braft-editor编辑器的样式
+@import '~braft-editor/dist/output.css';
+@import '~braft-editor/dist/index.css';
+
+html {
+  // min-height: 100%;
+}
+
+body {
+  // min-height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100%;
+  background: #f0f2f5;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.__dumi-default-layout {
+  background: #fff;
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-pro-page-container-children-content {
+  min-height: 400px;
+  // margin: 10px 10px 0;
+  // background: #fff;
+}
+
+//pro-layout7.0+ 需要开启
+.ant-pro-grid-content-children {
+  // padding: 16px;
+}
+
+.ant-pro-basicLayout-top {
+  .ant-pro-page-container-children-content {
+    max-width: 1200px;
+    margin: 10px auto 0;
+  }
+}
+
+.ant-layout-footer {
+  background: #f0f2f5;
+}
+
+.ant-btn-primary[disabled],
+.ant-btn-primary[disabled]:hover,
+.ant-btn-primary[disabled]:focus,
+.ant-btn-primary[disabled]:active {
+  color: rgb(0 0 0 / 25%);
+  background: #f5f5f5 !important;
+  border-color: #d9d9d9 !important;
+}
+
+canvas {
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.global-shadow-1-down {
+  box-shadow: 0 1px 2px -2px rgb(0 0 0 / 16%), 0 3px 6px 0 rgb(0 0 0 / 12%),
+    0 5px 12px 4px rgb(0 0 0 / 9%);
+}
+
+.global-shadow-2-down {
+  box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
+    0 9px 28px 8px rgb(0 0 0 / 5%);
+}
+
+.global-shadow-3-down {
+  box-shadow: 0 6px 16px -8px rgb(0 0 0 / 8%), 0 9px 28px 0 rgb(0 0 0 / 5%),
+    0 12px 48px 16px rgb(0 0 0 / 3%);
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// 兼容IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body .ant-design-pro > .ant-layout {
+    min-height: 100vh;
+  }
+}
