@@ -9,9 +9,3 @@ declare const $global: {
     $has: (eventName: string) => any;
   };
 } & any;
-// declare module '~icons/*' {
-//   import type { IconFontProps } from '@ant-design/icons/lib/components/IconFont';
-
-//   const component: React.FC<Partial<IconFontProps<string>>>;
-//   export default component;
-// }
