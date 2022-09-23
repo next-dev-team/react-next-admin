@@ -1,6 +1,5 @@
 import FormCustom from '@/components/FormCustom';
 import type { FormCustomColumnsType } from '@/components/FormCustom/types';
-import { useState, useRef } from 'react';
 import { message, Button } from 'antd';
 import type { ProFormInstance } from '@ant-design/pro-components';
 
@@ -21,7 +20,9 @@ const valueEnum = {
   },
 };
 
-const columnsFn: (hideInForm?: boolean) => FormCustomColumnsType<any>[] = (hideInForm = true) => {
+const columnsFn: (hideInForm?: boolean) => FormCustomColumnsType<any>[] = (
+  hideInForm = true,
+) => {
   return [
     {
       title: '标题',
@@ -98,7 +99,10 @@ function Demo8() {
   };
 
   const getFormatValues = () => {
-    console.log('格式化后的所有数据：', formRef.current?.getFieldsFormatValue?.());
+    console.log(
+      '格式化后的所有数据：',
+      formRef.current?.getFieldsFormatValue?.(),
+    );
   };
 
   const validateAndGetFormatValue = () => {
@@ -120,10 +124,18 @@ function Demo8() {
             return [
               ...doms,
               <Button.Group key="refs" style={{ display: 'block' }}>
-                <Button htmlType="button" onClick={getFormatValues} key="format">
+                <Button
+                  htmlType="button"
+                  onClick={getFormatValues}
+                  key="format"
+                >
                   获取格式化后的所有数据
                 </Button>
-                <Button htmlType="button" onClick={validateAndGetFormatValue} key="format">
+                <Button
+                  htmlType="button"
+                  onClick={validateAndGetFormatValue}
+                  key="format"
+                >
                   校验表单并返回格式化后的所有数据
                 </Button>
               </Button.Group>,

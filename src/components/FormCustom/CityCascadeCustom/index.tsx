@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from 'react';
 import type { CustomType } from '../types';
 import { Select, Space } from 'antd';
 import { getPublicAreaPlate } from '@/services';
@@ -52,7 +51,11 @@ function CityCascadeCustom(Props: CityCascadeCustomType) {
       });
     setCity(cityArr);
   };
-  const setAreaData = async (cvalue: any, areaPlateData: any = false, load: boolean = false) => {
+  const setAreaData = async (
+    cvalue: any,
+    areaPlateData: any = false,
+    load: boolean = false,
+  ) => {
     let areaPlateArr: any = areaPlateData ? areaPlateData : areaPlate;
     if (load || !areaPlateArr) {
       try {
@@ -240,7 +243,9 @@ function CityCascadeCustom(Props: CityCascadeCustomType) {
 
   return (
     <div
-      className={`${className || ''} ${customMode}-city-cascade-custom city-cascade-custom`}
+      className={`${
+        className || ''
+      } ${customMode}-city-cascade-custom city-cascade-custom`}
       style={{ display: 'inline-block' }}
     >
       {readonly ? value ? value.join('-') : '' : <Space wrap>{cascade}</Space>}

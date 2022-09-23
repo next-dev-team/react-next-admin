@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Input, Tooltip } from 'antd';
 import { message } from 'antd';
 import type { CustomType } from '../types';

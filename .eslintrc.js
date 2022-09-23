@@ -1,4 +1,6 @@
-const lint = require('@vh-cli/lint');
 module.exports = {
-  ...lint.eslint,
+  extends: require.resolve('umi/eslint'),
+  rules: {
+    // '@typescript-eslint/no-unused-vars': 0,
+  },
 };

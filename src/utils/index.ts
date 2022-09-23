@@ -1,11 +1,6 @@
 /* eslint-disable guard-for-in */
-import { createFromIconfontCN } from "@ant-design/icons";
-import routesConfig from "../../config/routes";
-
-const reg =
-  /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/;
-
-export const isUrl = (path: string): boolean => reg.test(path);
+import { createFromIconfontCN } from '@ant-design/icons';
+import routesConfig from '../../config/routes';
 
 /**
  * 延迟函数
@@ -117,13 +112,13 @@ export const convertObjToUrl = (url: string, data: any) => {
     const value = data[key];
     if (value.constructor === Array) {
       value.forEach(function (_value) {
-        _result.push(key + "=" + _value);
+        _result.push(key + '=' + _value);
       });
     } else {
-      _result.push(key + "=" + value);
+      _result.push(key + '=' + value);
     }
   }
-  return url + "?" + _result.join("&");
+  return url + '?' + _result.join('&');
 };
 
 /**
@@ -134,28 +129,28 @@ export const downloadFile = (type: string, options: any) => {
 
   let dataFileName = fileName;
 
-  if (type === "a") {
+  if (type === 'a') {
     if (!dataFileName) {
-      const names = url.split("/");
+      const names = url.split('/');
       dataFileName = names[names.length - 1];
     }
-    const link = document.createElement("a");
-    link.style.display = "none";
+    const link = document.createElement('a');
+    link.style.display = 'none';
     link.href = convertObjToUrl(url, params);
-    link.target = "_blank";
-    link.setAttribute("download", dataFileName);
+    link.target = '_blank';
+    link.setAttribute('download', dataFileName);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   } else {
     if (!dataFileName) {
-      dataFileName = decodeURI(headers["content-disposition"]).split(
-        "utf-8''"
+      dataFileName = decodeURI(headers['content-disposition']).split(
+        "utf-8''",
       )[1];
     }
     if (!dataFileName) {
-      dataFileName = decodeURI(headers["content-disposition"]).split(
-        "filename="
+      dataFileName = decodeURI(headers['content-disposition']).split(
+        'filename=',
       )[1];
     }
     const fileUrl = window.URL.createObjectURL(new Blob([data]));
@@ -166,10 +161,10 @@ export const downloadFile = (type: string, options: any) => {
       // @ts-ignore
       window.navigator.msSaveBlob(new Blob([data]), dataFileName);
     } else {
-      const link = document.createElement("a");
-      link.style.display = "none";
+      const link = document.createElement('a');
+      link.style.display = 'none';
       link.href = fileUrl;
-      link.setAttribute("download", dataFileName);
+      link.setAttribute('download', dataFileName);
 
       document.body.appendChild(link);
       link.click();
@@ -180,7 +175,7 @@ export const downloadFile = (type: string, options: any) => {
 };
 
 export const IconFont = createFromIconfontCN({
-  scriptUrl: "//at.alicdn.com/t/font_2866869_yxmav3321wq.js",
+  scriptUrl: '//at.alicdn.com/t/font_2866869_yxmav3321wq.js',
 });
 
 /**
@@ -211,7 +206,7 @@ export const findMenuRoute = (pathname: string, routes: any = routesConfig) => {
  * @returns
  */
 export const deepCopy = (source: any) => {
-  if (typeof source !== "object") {
+  if (typeof source !== 'object') {
     return source;
   }
   if (source === null) {
@@ -241,9 +236,9 @@ export const deepMerge = (obj1: any, obj2: any) => {
     // 如果obj2[key]没有值或者值不是对象，此时直接替换obj1[key]
     obj1[key] =
       obj1[key] &&
-      obj1[key].toString() === "[object Object]" &&
+      obj1[key].toString() === '[object Object]' &&
       obj2[key] &&
-      obj2[key].toString() === "[object Object]"
+      obj2[key].toString() === '[object Object]'
         ? deepMerge(obj1[key], obj2[key])
         : (obj1[key] = obj2[key]);
   }
@@ -256,13 +251,13 @@ export const deepMerge = (obj1: any, obj2: any) => {
  */
 export const uuid = () => {
   const s: any = [];
-  const hexDigits: string = "0123456789abcdef";
+  const hexDigits: string = '0123456789abcdef';
   for (let i = 0; i < 36; i++) {
     s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
   }
-  s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+  s[14] = '4'; // bits 12-15 of the time_hi_and_version field to 0010
   s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
-  s[8] = s[13] = s[18] = s[23] = "-";
+  s[8] = s[13] = s[18] = s[23] = '-';
 
-  return s.join("");
+  return s.join('');
 };

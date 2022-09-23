@@ -1,5 +1,4 @@
 import ImportModalCustom from '@/components/ModalCustom/ImportModalCustom';
-import { useState } from 'react';
 import type { ModalRenderPropsType } from '@/components/TableCustom/types';
 import { Modal } from 'antd';
 
@@ -7,13 +6,15 @@ import { Modal } from 'antd';
  * 内置功能表单
  */
 function Import(props: ModalRenderPropsType) {
-  const { modelchildName, closeModal, btnConfig, clickConfig, tableRef } = props;
+  const { modelchildName, closeModal, btnConfig, clickConfig, tableRef } =
+    props;
   // 内部显示状态
   const [visible, setVisible] = useState<boolean>(true);
   // 解构按钮配置的弹窗配置
   const { config, edit = false } = btnConfig.modalConfig || {};
   // 表单配置参数
-  const { submitValuesBefor, submitRequest, submitOnDone, ...configRest } = config;
+  const { submitValuesBefor, submitRequest, submitOnDone, ...configRest } =
+    config;
 
   let initialValues: any = {};
 
@@ -52,7 +53,11 @@ function Import(props: ModalRenderPropsType) {
             });
             Modal.error({
               title: '数据导入出现以下问题:',
-              content: <div style={{ maxHeight: 400, overflow: 'auto' }}>{errorDom}</div>,
+              content: (
+                <div style={{ maxHeight: 400, overflow: 'auto' }}>
+                  {errorDom}
+                </div>
+              ),
             });
           }
           // 如果设置请求回调
@@ -98,7 +103,13 @@ function Import(props: ModalRenderPropsType) {
 
   const newConfig = { ...defaultConfig, ...configRest };
 
-  return <ImportModalCustom id={modelchildName} key={modelchildName} {...newConfig} />;
+  return (
+    <ImportModalCustom
+      id={modelchildName}
+      key={modelchildName}
+      {...newConfig}
+    />
+  );
 }
 
 export default Import;

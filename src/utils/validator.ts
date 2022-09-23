@@ -13,7 +13,7 @@ const isExisty = function (value: any) {
  * 是否为空
  */
 const isEmpty = function (value: any) {
-  return value === "";
+  return value === '';
 };
 
 /**
@@ -23,7 +23,7 @@ export const isRequired = async (rule: any, value: any) => {
   if (isExisty(value)) {
     return true;
   }
-  throw new Error(rule.message || "不存在");
+  throw new Error(rule.message || '不存在');
 };
 
 /**
@@ -33,7 +33,7 @@ export const isNoEmpty = async (rule: any, value: any) => {
   if (!isEmpty(value)) {
     return true;
   }
-  throw new Error(rule.message || "不能为空");
+  throw new Error(rule.message || '不能为空');
 };
 
 /**
@@ -44,7 +44,7 @@ export const matchRegexp = async (rule: any, value: any) => {
   if (!isExisty(value) || isEmpty(value) || rule.regexp.test(value)) {
     return true;
   }
-  throw new Error(rule.message || "(regexp)验证失败");
+  throw new Error(rule.message || '(regexp)验证失败');
 };
 
 /**
@@ -59,10 +59,10 @@ export const isEmail = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "邮箱格式验证失败");
+    throw new Error(rule.message || '邮箱格式验证失败');
   }
 };
 
@@ -78,10 +78,10 @@ export const isUrl = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "url格式验证失败");
+    throw new Error(rule.message || 'url格式验证失败');
   }
 };
 
@@ -89,7 +89,7 @@ export const isUrl = async (rule: any, value: any) => {
  * 验证数字
  */
 export const isNumeric = async (rule: any, value: any) => {
-  if (typeof value === "number") {
+  if (typeof value === 'number') {
     return true;
   }
   const regexp = /^[-+]?(?:\d*[.])?\d+$/;
@@ -98,11 +98,11 @@ export const isNumeric = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
     return true;
   } catch (error) {
-    throw new Error(rule.message || "数值格式验证失败");
+    throw new Error(rule.message || '数值格式验证失败');
   }
 };
 
@@ -116,10 +116,10 @@ export const isAlpha = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "字母格式验证失败");
+    throw new Error(rule.message || '字母格式验证失败');
   }
 };
 
@@ -133,10 +133,10 @@ export const isAlphanumeric = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "字母或数值格式验证失败");
+    throw new Error(rule.message || '字母或数值格式验证失败');
   }
 };
 
@@ -150,10 +150,10 @@ export const isInt = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "整数格式验证失败");
+    throw new Error(rule.message || '整数格式验证失败');
   }
 };
 /**
@@ -166,10 +166,10 @@ export const isFloat = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "浮点数格式验证失败");
+    throw new Error(rule.message || '浮点数格式验证失败');
   }
 };
 /**
@@ -182,10 +182,10 @@ export const isChinese = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "中文格式验证失败");
+    throw new Error(rule.message || '中文格式验证失败');
   }
 };
 
@@ -199,10 +199,10 @@ export const isTel = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "电话格式验证失败");
+    throw new Error(rule.message || '电话格式验证失败');
   }
 };
 
@@ -217,10 +217,10 @@ export const isIdCard = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "身份证号码格式验证失败");
+    throw new Error(rule.message || '身份证号码格式验证失败');
   }
 };
 
@@ -239,7 +239,7 @@ export const isCarNo = async (rule: any, value: any) => {
       {
         xreg,
       },
-      value
+      value,
     );
   } catch (e) {
     try {
@@ -247,10 +247,10 @@ export const isCarNo = async (rule: any, value: any) => {
         {
           creg,
         },
-        value
+        value,
       );
     } catch (error) {
-      throw new Error(rule.message || "车牌号格式验证失败");
+      throw new Error(rule.message || '车牌号格式验证失败');
     }
   }
 };
@@ -265,9 +265,9 @@ export const isAmount = async (rule: any, value: any) => {
       {
         regexp,
       },
-      value
+      value,
     );
   } catch (error) {
-    throw new Error(rule.message || "金额格式验证失败");
+    throw new Error(rule.message || '金额格式验证失败');
   }
 };

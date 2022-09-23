@@ -4,8 +4,8 @@ import proxy from './proxy';
 import routes from './routes';
 // import dumi from './dumi';
 import theme from './theme';
+import { autoImportPlugin } from './webpack/auto-import';
 // import { join } from 'path';
-
 export default defineConfig({
   npmClient: 'pnpm',
   define: {
@@ -40,7 +40,6 @@ export default defineConfig({
    * 对于一些大尺寸依赖，比如图表库、antd 等，可尝试通过 externals 的配置引入相关 umd 文件，减少编译消耗
    */
   externals: {
-    // 'react': 'React',
     // 'react-dom': 'ReactDOM',
     // 'react-amap': 'reactAmap',
   },
@@ -53,7 +52,7 @@ export default defineConfig({
     // 'https://unpkg.com/react-amap@1.2.6/dist/react-amap.min.js',
     // 'https://lib.baomitu.com/antd/4.9.1/antd.min.js',
     // '//unpkg.com/react@16.14.0/umd/react.production.min.js',
-    // '//unpkg.com/react-dom@16.14.0/umd/react-dom.production.min.js'
+    // '//unpkg.com/react-dom@16.14.0/umd/react-dom.production.min.js',
   ],
   //配置额外的 link 标签。
   // links:[],
@@ -80,10 +79,12 @@ export default defineConfig({
   //配置图片文件是否走 base64 编译的阈值。默认是 10000 字节，少于他会被编译为 base64 编码，否则会生成单独的文件
   inlineLimit: 10000,
   //配置额外的 umi 插件。
-  // plugins:[],
+  plugins: [],
 
+  //auto import not working with mfsu
+  mfsu: false,
   // @ts-ignore
-  chainWebpack(config: any, { env, webpack, createCSSRule }: any) {
+  chainWebpack(config: any, { webpack }: any) {
     //引入全局公用方法
     config.plugin('$global').use(
       //@ts-ignore
@@ -92,6 +93,15 @@ export default defineConfig({
       }),
     );
 
+    config.plugin('unplugin-icons').use(
+      require('unplugin-icons/webpack')({
+        compiler: 'jsx',
+        jsx: 'react',
+      }),
+    );
+    config.plugin('unplugin-auto-import').use(autoImportPlugin());
+
+    return config;
     // //如果是build下js/css分组
     // if (env === "production") {
     //   config.output

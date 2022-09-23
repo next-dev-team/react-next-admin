@@ -1,5 +1,4 @@
 import BraftEditor from 'braft-editor';
-import { useState, useEffect, useRef } from 'react';
 import styles from './index.less';
 import { message } from 'antd';
 import { uploadFile } from '@/services';
@@ -197,7 +196,10 @@ function BraftEditorCustom(Props: BraftEditorCustomType) {
     <div className={className}>
       {readonly ? (
         // 给用于展示HTML内容的容器加上特定的className
-        <div className="braft-output-content" dangerouslySetInnerHTML={{ __html: value }} />
+        <div
+          className="braft-output-content"
+          dangerouslySetInnerHTML={{ __html: value }}
+        />
       ) : (
         <BraftEditor
           className={styles.braftEditorCustom}
@@ -209,7 +211,8 @@ function BraftEditorCustom(Props: BraftEditorCustomType) {
           media={{
             validateFn: myValidateFn,
             accepts: {
-              image: 'image/png,image/jpeg,image/gif,image/webp,image/apng,image/svg',
+              image:
+                'image/png,image/jpeg,image/gif,image/webp,image/apng,image/svg',
             },
             uploadFn: uploadFn,
           }}

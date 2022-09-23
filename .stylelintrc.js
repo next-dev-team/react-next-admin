@@ -1,4 +1,3 @@
-const lint = require('@vh-cli/lint');
 module.exports = {
-  ...lint.stylelint,
+  extends: require.resolve('umi/stylelint'),
 };

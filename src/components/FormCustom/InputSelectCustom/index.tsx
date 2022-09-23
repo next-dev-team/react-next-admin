@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Form, Input, Select } from 'antd';
 import { message } from 'antd';
 import type { OptionType } from '@/components/FormCustom/types';

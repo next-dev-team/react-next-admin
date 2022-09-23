@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { AutoComplete } from 'antd';
 import { message } from 'antd';
 import type { OptionType } from '@/components/FormCustom/types';
@@ -29,7 +28,16 @@ function InputAutoCompleteCustom(Props: InputAutoCompleteCustomType) {
   const [inputValue, setInputValue] = useState<any>(null);
   const [nowOptions, setNowOptions] = useState<any>(null);
 
-  const { className, readonly, request, params, onChange, value, options, fieldProps } = Props;
+  const {
+    className,
+    readonly,
+    request,
+    params,
+    onChange,
+    value,
+    options,
+    fieldProps,
+  } = Props;
 
   useEffect(() => {
     if (request) {
