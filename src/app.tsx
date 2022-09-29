@@ -1,4 +1,3 @@
-import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 import type { Settings as LayoutSettings } from '@ant-design/pro-components';
 import { SettingDrawer } from '@ant-design/pro-components';
 import type { RunTimeLayoutConfig } from '@umijs/max';
@@ -67,11 +66,12 @@ export const layout: RunTimeLayoutConfig = ({
     links: isDev
       ? [
           <Link to="/umi/plugin/openapi" target="_blank">
-            <LinkOutlined />
+            <IconAntDesignLinkOutlined />
             <span>OpenAPI 文档</span>
           </Link>,
           <Link to="/~docs">
-            <BookOutlined />
+            <IconAntDesignBookOutlined />
+            <IconAntDesignAccountBookFilled/>
             <span>业务组件文档</span>
           </Link>,
         ]

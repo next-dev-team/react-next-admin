@@ -21,6 +21,10 @@ const Index = () => {
   // other folder
   console.log('utils', _uuid());
 
+  // lodash
+  console.log('utils', __isArray([]));
+
+
   return (
     // antd component
     <ASpace>

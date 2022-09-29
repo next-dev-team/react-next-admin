@@ -1,9 +1,3 @@
-/* eslint-disable guard-for-in */
-import { createFromIconfontCN } from '@ant-design/icons';
-
-export const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2866869_yxmav3321wq.js',
-});
 
 
 /**
