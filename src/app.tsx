@@ -23,7 +23,7 @@ export async function getInitialState(): Promise<{
 }> {
   const fetchUserInfo = async () => {
     try {
-      return {}
+      return {};
     } catch (error) {
       history.push(loginPath);
     }
@@ -65,12 +65,8 @@ export const layout: RunTimeLayoutConfig = ({
     },
     links: isDev
       ? [
-          <Link to="/umi/plugin/openapi" target="_blank">
-            <IconAntDesignLinkOutlined />
-            <span>OpenAPI 文档</span>
-          </Link>,
           <Link to="/~docs">
-            <IconAntDesignBookOutlined />
+            <IconBookOutlined />
             <span>业务组件文档</span>
           </Link>,
         ]

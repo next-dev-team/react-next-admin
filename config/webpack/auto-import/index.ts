@@ -1,9 +1,10 @@
-import { AhooksPresent } from "./ahooks-present";
-import { antdPresent } from "./antd-present";
-import { lodashPresent } from "./lodash-present";
+import { AhooksPresent } from './ahooks-present';
+import { antdIconPresent } from './antd-icons-present';
+import { antdPresent } from './antd-present';
+import { antdProPresent } from './antdpro-present';
+import { lodashPresent } from './lodash-present';
 
 const IconsResolver = require('unplugin-icons/resolver');
-
 
 export const autoImportPlugin = () =>
   require('unplugin-auto-import/webpack')({
@@ -16,7 +17,9 @@ export const autoImportPlugin = () =>
       {
         antd: antdPresent,
         'lodash-es': lodashPresent,
-        ahooks: AhooksPresent
+        ahooks: AhooksPresent,
+        '@ant-design/pro-components': antdProPresent,
+        '@ant-design/icons': antdIconPresent,
       },
     ],
     vueTemplate: false,

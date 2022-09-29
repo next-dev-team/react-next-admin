@@ -1,4 +1,18 @@
+/* stylelint-disable color-function-notation */
+/* stylelint-disable rule-empty-line-before */
 /* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  img,
+  video {
+    max-width: inherit;
+  }
+  svg {
+    vertical-align: baseline;
+    color: rgb(132, 142, 156);
+    @apply cursor-pointer hover:opacity-90;
+  }
+}

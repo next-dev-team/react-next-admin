@@ -12,8 +12,8 @@ export default defineConfig({
   define: {
     'process.env.version': '1.1.0',
   },
-
-  fastRefresh: true,
+  clientLoader:{},
+  fastRefresh: false,
   srcTranspiler: 'esbuild' as any,
   // targets: {
   //   ie: 11,
@@ -22,7 +22,7 @@ export default defineConfig({
   // title: '',
   layout: {
     // https://umijs.org/zh-CN/plugins/plugin-layout
-    locale: true,
+    locale: false,
     siderWidth: 208,
     ...defaultSettings,
   },
@@ -34,7 +34,6 @@ export default defineConfig({
   //hash配置是否让生成的文件包含 hash 后缀，通常用于增量发布和避免浏览器加载缓存
   hash: true,
   //生成map文件
-  // devtool: 'source-map',
   devtool: 'source-map',
   // 代理配置(跨域处理)
   proxy: proxy,
@@ -237,4 +236,6 @@ export default defineConfig({
   model: {},
   initialState: {},
   tailwindcss: {},
+  deadCode:{}
+  
 });

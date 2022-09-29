@@ -1,5 +1,3 @@
-
-
 /**
  * 生成唯一随机值
  * @returns
@@ -15,4 +13,8 @@ export const _uuid = () => {
   s[8] = s[13] = s[18] = s[23] = '-';
 
   return s.join('');
+};
+
+export const _isCamelCase = (str: string) => {
+  return /^[a-z][A-Za-z]*$/.test(str)
 };
