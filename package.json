@@ -10,7 +10,7 @@
     "build": "cross-env UMI_ENV=build_pro max build",
     "postinstall": "max setup",
     "umig": "max g",
-    "serve": "serve ./dist/dev",
+    "serve:dev": "serve ./dist/pro",
     "preview": "cross-env UMI_ENV=dev max preview",
     "test": "jest",
     "e2e": "cypress run",

@@ -1,4 +1,4 @@
-import { getUserLocalStorage } from '@/models/useUserModel';
+// import { getUserLocalStorage } from '@/models/useUserModel';
 
 // const loopMenus = (menus: any, menusAll: any) => {
 //   menus.forEach((item: any) => {
@@ -13,18 +13,14 @@ import { getUserLocalStorage } from '@/models/useUserModel';
 // 导出的方法会在项目初始化时被执行。该方法需要返回一个对象，对象的每一个值就对应定义了一条权限
 
 const checkAuth = (access: any) => {
-  const userInfo = getUserLocalStorage();
+  // const userInfo = getUserLocalStorage();
 
   const mockDev = true;
   if (mockDev) {
     return true;
   }
 
-  if (access.accessId === 29) {
-    return false;
-  }
-  const { permission_Ids = [] } = userInfo || {};
-  return permission_Ids.includes(access.accessId);
+
 };
 
 export default () => {

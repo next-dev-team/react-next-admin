@@ -1,4 +1,7 @@
+import { antdPresent } from "./antd-present";
+
 const IconsResolver = require('unplugin-icons/resolver');
+
 
 export const autoImportPlugin = () =>
   require('unplugin-auto-import/webpack')({
@@ -6,7 +9,13 @@ export const autoImportPlugin = () =>
     include: [
       /\.[t]sx?$/, // .ts, .tsx,
     ],
-    imports: ['react', 'ahooks'],
+    imports: [
+      'react',
+      'ahooks',
+      {
+        antd: antdPresent,
+      },
+    ],
     vueTemplate: false,
 
     // Auto import for all module exports under directories

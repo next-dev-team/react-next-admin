@@ -1,4 +1,3 @@
-import routesMenu from "./routesMenu";
 
 export declare type MenuDataItem = {
   /** @name 子菜单 */
@@ -53,66 +52,18 @@ export declare type MenuDataItem = {
 };
 
 const routes: MenuDataItem[] = [
-  {
-    path: "/404",
-    component: "@/components/Exception/404",
-    headerRender: false,
-    footerRender: false,
-    menuRender: false,
-  },
-  {
-    path: "/403",
-    component: "@/components/Exception/403",
-    headerRender: false,
-    footerRender: false,
-    menuRender: false,
-  },
-  {
-    path: "/500",
-    component: "@/components/Exception/500",
-    headerRender: false,
-    footerRender: false,
-    menuRender: false,
-  },
-  {
-    path: "/503",
-    component: "@/components/Exception/503",
-    headerRender: false,
-    footerRender: false,
-    menuRender: false,
-  },
-  {
-    path: "/login",
-    component: "@/pages/login/index",
-    headerRender: false,
-    footerRender: false,
-    menuRender: false,
-  },
+ 
   {
     path: "/",
-    redirect: "/index",
+    redirect: "/welcome",
   },
   {
-    path: "/",
-    component: "@/layouts/layouts",
-    flatMenu: true, //隐藏父级 子集上提
-    routes: routesMenu,
+    path: '/welcome',
+    name: 'welcome',
+    icon: 'smile',
+    component: './welcome',
   },
+
 ];
 
 export default routes;
-
-const loopRoutes = (menus: any, menusAll: any) => {
-  menus.forEach((item: any) => {
-    menusAll.push(item);
-    if (item.routes) {
-      loopRoutes(item.routes, menusAll);
-    }
-  });
-};
-
-export const getAllRoutes = () => {
-  const menusAll: [] = [];
-  loopRoutes(routes, menusAll);
-  return menusAll;
-};

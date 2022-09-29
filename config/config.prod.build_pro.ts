@@ -7,4 +7,5 @@ export default {
     'process.env.api_url': 'http://www.adminapi.com',
   },
   outputPath: 'dist/pro',
+
 };

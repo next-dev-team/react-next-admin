@@ -5,6 +5,8 @@ import routes from './routes';
 // import dumi from './dumi';
 import theme from './theme';
 import { autoImportPlugin } from './webpack/auto-import';
+import defaultSettings from './defaultSettings';
+const isDev = process.env.NODE_ENV === 'development';
 // import { join } from 'path';
 export default defineConfig({
   npmClient: 'pnpm',
@@ -13,12 +15,18 @@ export default defineConfig({
   },
 
   fastRefresh: true,
-
+  srcTranspiler: 'esbuild' as any,
   // targets: {
   //   ie: 11,
   // },
 
   // title: '',
+  layout: {
+    // https://umijs.org/zh-CN/plugins/plugin-layout
+    locale: true,
+    siderWidth: 208,
+    ...defaultSettings,
+  },
   base: '/',
   // 为所有非三方脚本加上 crossorigin="anonymous" 属性，通常用于统计脚本错误。
   crossorigin: false,
@@ -39,21 +47,26 @@ export default defineConfig({
    * 配置 external
    * 对于一些大尺寸依赖，比如图表库、antd 等，可尝试通过 externals 的配置引入相关 umd 文件，减少编译消耗
    */
-  externals: {
-    // 'react-dom': 'ReactDOM',
-    // 'react-amap': 'reactAmap',
-  },
+  externals: isDev
+    ? {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        // 'react-amap': 'reactAmap',
+      }
+    : {},
   //配置额外的 meta 标签。数组中可以配置key:value形式的对象。
   // metas:[],
   //配置 <head> 里的额外脚本，数组项为字符串或对象。
   // headScripts:[],
   // 配置 <body> 里的额外脚本。。
-  scripts: [
-    // 'https://unpkg.com/react-amap@1.2.6/dist/react-amap.min.js',
-    // 'https://lib.baomitu.com/antd/4.9.1/antd.min.js',
-    // '//unpkg.com/react@16.14.0/umd/react.production.min.js',
-    // '//unpkg.com/react-dom@16.14.0/umd/react-dom.production.min.js',
-  ],
+  scripts: isDev
+    ? [
+        // 'https://unpkg.com/react-amap@1.2.6/dist/react-amap.min.js',
+        // 'https://lib.baomitu.com/antd/4.9.1/antd.min.js',
+        '//unpkg.com/react@18.2.0/umd/react.production.min.js',
+        '//unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
+      ]
+    : [],
   //配置额外的 link 标签。
   // links:[],
   /**
@@ -82,16 +95,16 @@ export default defineConfig({
   plugins: [],
 
   //auto import not working with mfsu
-  mfsu: false,
+  mfsu: isDev,
   // @ts-ignore
   chainWebpack(config: any, { webpack }: any) {
     //引入全局公用方法
-    config.plugin('$global').use(
-      //@ts-ignore
-      new webpack.ProvidePlugin({
-        $global: [resolve(`src/utils/globalUtils.ts`), 'default'],
-      }),
-    );
+    // config.plugin('$global').use(
+    //   //@ts-ignore
+    //   new webpack.ProvidePlugin({
+    //     $global: [resolve(`src/utils/globalUtils.ts`), 'default'],
+    //   }),
+    // );
 
     config.plugin('unplugin-icons').use(
       require('unplugin-icons/webpack')({
@@ -211,12 +224,12 @@ export default defineConfig({
   // request请求配置
   request: {},
   // 国际化配置 https://umijs.org/zh-CN/plugins/plugin-locale
-  locale: {
-    default: 'zh-CN',
-    antd: true,
-    baseNavigator: true,
-  },
-  // mfsu: false,
+  // locale: {
+  //   default: 'zh-CN',
+  //   antd: true,
+  //   baseNavigator: true,
+  // },
+  locale: false,
   //加载dumi文档配置
   // ...dumi,
 
