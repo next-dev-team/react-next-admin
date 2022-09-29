@@ -83,7 +83,6 @@
     "unplugin-auto-import": "^0.11.2",
     "unplugin-icons": "^0.14.10"
   },
-  "resolutions": {},
   "engines": {
     "node": ">=16.0.0"
   }
