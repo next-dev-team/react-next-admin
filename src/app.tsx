@@ -71,7 +71,6 @@ export const layout: RunTimeLayoutConfig = ({
           </Link>,
           <Link to="/~docs">
             <IconAntDesignBookOutlined />
-            <IconAntDesignAccountBookFilled/>
             <span>业务组件文档</span>
           </Link>,
         ]
