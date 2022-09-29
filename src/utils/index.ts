@@ -10,7 +10,7 @@ export const IconFont = createFromIconfontCN({
  * 生成唯一随机值
  * @returns
  */
-export const uuid = () => {
+export const _uuid = () => {
   const s: any = [];
   const hexDigits: string = '0123456789abcdef';
   for (let i = 0; i < 36; i++) {

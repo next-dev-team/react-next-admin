@@ -1,13 +1,12 @@
-import { resolve } from 'path';
+
 import { defineConfig } from '@umijs/max';
 import proxy from './proxy';
 import routes from './routes';
-// import dumi from './dumi';
 import theme from './theme';
 import { autoImportPlugin } from './webpack/auto-import';
 import defaultSettings from './defaultSettings';
 const isDev = process.env.NODE_ENV === 'development';
-// import { join } from 'path';
+
 export default defineConfig({
   npmClient: 'pnpm',
   define: {

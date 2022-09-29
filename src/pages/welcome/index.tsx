@@ -1,27 +1,32 @@
 const Index = () => {
   // demo auto import config/webpack/auto-import
 
-  
+  // antd
   const modal = () => {
-    Modal.info({ title: 'hello1' });
+    AModal.info({ title: 'hello1' });
+    _notification.info({ message: 'ant notification' });
   };
 
+  // react
   useEffect(() => {
     console.log('sila');
   }, []);
 
-  useCreation(() => {
+  // ahook
+  _useCreation(() => {
     console.log('ahook');
     return {};
   }, []);
 
-  console.log('utils', uuid());
+  // other folder
+  console.log('utils', _uuid());
 
   return (
-    <Space>
+    // antd component
+    <ASpace>
       <h1 className="text-xl text-green-600">Welcome to Umijs Admin </h1>
-      <IconTeenyicons360Solid onClick={modal}/>
-    </Space>
+      <IconTeenyicons360Solid onClick={modal} />
+    </ASpace>
   );
 };
 

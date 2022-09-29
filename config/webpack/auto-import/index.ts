@@ -1,4 +1,6 @@
+import { AhooksPresent } from "./ahooks-present";
 import { antdPresent } from "./antd-present";
+import { lodashPresent } from "./lodash-present";
 
 const IconsResolver = require('unplugin-icons/resolver');
 
@@ -11,9 +13,10 @@ export const autoImportPlugin = () =>
     ],
     imports: [
       'react',
-      'ahooks',
       {
         antd: antdPresent,
+        'lodash-es': lodashPresent,
+        ahooks: AhooksPresent
       },
     ],
     vueTemplate: false,
