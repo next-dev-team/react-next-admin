@@ -2,7 +2,7 @@ import { request } from '@umijs/max';
 import { downloadFile } from '@/utils';
 
 const requestQuery = (url: string, options: any) => {
-  return request(url);
+  return request(url, options);
 };
 /**
  * post请求 body形式

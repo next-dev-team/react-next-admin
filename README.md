@@ -1,50 +1,50 @@
-# 框架说明
-> 1. Umijs及其生态 进行二次封装的脚手架。
-> 2. 项目中的业务资源和业务相关配置需要根据业务调整和自行补齐。
+# frame description
+> 1. Umijs and its ecology Scaffolding for secondary packaging.
+> 2. The business resources and business-related configuration in the project need to be adjusted and supplemented according to the business.
 
-# 框架特点
+# Framework Features
 
-> 1. 框架思想：让开发变得简单，从编写式开发提升为开发配置综合式开发，大大提升开发效率和开发统一性，一个页面一个json配置完事。
-> 1. 组件思想：业务组件是以项目业务的UI呈现形式为主的组件、具有特定业务性、贴近业务本身。
-> 2. 通用性：具备相同业务通用性（例如：一家公司有多个管理后台、UI呈现都基本一致、可以使用相同的组件）。
-> 3. 完整文档说明：使用了dumi文档扩展，让项目说明、业务说明、组件说明、资源说明都具备快速学习、快读理解。
-> 4. 脚手架封装二次封装表单和表格等组件、让编写业务可以配置化。
+> 1. Framework idea: Make development easier, upgrade from writing-based development to development-configured comprehensive development, greatly improve development efficiency and development unity, and configure one page and one json to complete.
+> 1. Component idea: The business component is a component based on the UI presentation form of the project business, with specific business nature and close to the business itself.
+> 2. Commonality: have the same business commonality (for example: a company has multiple management backgrounds, the UI presentation is basically the same, and the same components can be used).
+> 3. Complete document description: The dumi document extension is used, so that the project description, business description, component description, and resource description can be quickly learned and understood.
+> 4. Scaffolding encapsulates components such as forms and tables, so that the writing business can be configured.
 
-## 项目架构
+## Project Architecture
 
-Umi(React + AntD + Less + TypeScript + dumi )
+Umi (React + AntD + Less + TypeScript + dumi)
 
-Umi中文网： [https://umijs.org/zh-CN/docs/](https://umijs.org/zh-CN/docs)
+Umi Chinese website: [https://umijs.org/zh-CN/docs/](https://umijs.org/zh-CN/docs)
 
-React官网： [https://react.docschina.org/](https://react.docschina.org/)
+React official website: [https://react.docschina.org/](https://react.docschina.org/)
 
-AntDesign中文网： [https://ant.design/index-cn](https://ant.design/index-cn)
+AntDesign Chinese website: [https://ant.design/index-cn](https://ant.design/index-cn)
 
-AntDesign-Pro： [https://beta-pro.ant.design/index-cn/](https://beta-pro.ant.design/index-cn/)
+AntDesign-Pro: [https://beta-pro.ant.design/index-cn/](https://beta-pro.ant.design/index-cn/)
 
-AntDesign-Procomponents： [https://procomponents.ant.design/](https://procomponents.ant.design/)
+AntDesign-Procomponents: [https://procomponents.ant.design/](https://procomponents.ant.design/)
 
-Less官网： [http://lesscss.cn/](http://lesscss.cn/)
+Less official website: [http://lesscss.cn/](http://lesscss.cn/)
 
-TypeScript官网： [https://www.tslang.cn/](https://www.tslang.cn/)
+TypeScript official website: [https://www.tslang.cn/](https://www.tslang.cn/)
 
-Dumi中文网： [https://d.umijs.org/zh-CN/](https://d.umijs.org/zh-CN/)
+Dumi Chinese website: [https://d.umijs.org/zh-CN/](https://d.umijs.org/zh-CN/)
 
-## 组件说明（必须查看整个说明）
-组件文档、使用说明: [xxxxx/~doc](xxxxx/~doc)
-路径查看文档说明
+## Component description (must see the entire description)
+Component documentation, instructions for use: [xxxxx/~doc](xxxxx/~doc)
+See the documentation for the path
 
-## vscode 插件安装
-[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 代码格式风格验证
+## vscode plugin installation
+[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) Code Formatting Style Verification
 
-[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 代码格式风格验证自动补全
+[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) Code formatting style validation auto-completion
 
-[stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) 样式风格验证
+[stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) style style validation
 
-[git-commit-plugin](https://marketplace.visualstudio.com/items?itemName=redjue.git-commit-plugin) 提交git文案工具
+[git-commit-plugin](https://marketplace.visualstudio.com/items?itemName=redjue.git-commit-plugin) Submit git copywriting tool
 
-### vscode本地settings.json
-```
+### vscode local settings.json
+````
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -55,7 +55,7 @@ Dumi中文网： [https://d.umijs.org/zh-CN/](https://d.umijs.org/zh-CN/)
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // 检索过滤
+  // search filter
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
@@ -89,109 +89,109 @@ Dumi中文网： [https://d.umijs.org/zh-CN/](https://d.umijs.org/zh-CN/)
   ]
 }
 
-```
+````
 
-## 文件结构
+## file structure
 
-```txt
-├── README.md //说明文件
-├── config //配置目录
-│   ├── config.dev.ts //线上开发环境配置文件
-│   ├── config.local.ts //本地开发环境配置文件
-│   ├── config.pro.ts //线上正式环境配置文件
-│   ├── config.testing.ts //线上测试环境配置文件
-│   ├── config.ts  //总配置入口文件
-│   ├── layout.ts //后台layout配置文件
-│   ├── dumi.ts //dumi文档配置
-│   ├── theme.ts //全局样式变量配置
-│   ├── proxy.ts //代理配置文件
-│   └── routes.ts //路由配置文件
-├── docs //公用文档目录
-│   └── demo.md //文档说明样例
-├── mock //mock模拟数据目录
-│   └── api.ts 
+````txt
+├── README.md //Description file
+├── config //Configuration directory
+│ ├── config.dev.ts //Online development environment configuration file
+│ ├── config.local.ts //local development environment configuration file
+│ ├── config.pro.ts //Online official environment configuration file
+│ ├── config.testing.ts //Online test environment configuration file
+│ ├── config.ts //General configuration entry file
+│ ├── layout.ts //background layout configuration file
+│ ├── dumi.ts //dumi document configuration
+│ ├── theme.ts //Global style variable configuration
+│ ├── proxy.ts //Proxy configuration file
+│ └── routes.ts //routing configuration file
+├── docs //public documentation directory
+│ └── demo.md //document description example
+├── mock //mock mock data directory
+│ └── api.ts
 ├── package.json
 ├── public
-│   └── favicon.ico
+│ └── favicon.ico
 ├── src
-│   ├── typings.d.ts //ts类型声明
-│   ├── access.ts //umijs layout权限验证钩子
-│   ├── app.ts //umijs  约定运行时配置文件
-│   ├── assets //资源存放目录
-│   │   └── images
-│   ├── components //组件目录
-│   │   ├── ErrorBoundary //全局错误捕获组件
-│   │   ├── FormCustom //表单封装组件
-│   │   ├── Exception //全局异常等组件分组
-│   │   ├── RightContent //顶部栏组件
-│   │   └── TableCustom //表格封装组件
-│   ├── global.css //全局样式文件
-│   ├── layouts //全局路由公用layout 可以选使用
-│   │   └── index.tsx
-│   ├── locales //国际化
-│   │   ├── en-US.js
-│   │   └── zh-CN.js
-│   ├── models //全局状态目录  命名已XXXXModel接口
-│   │   ├── globalUserModel.ts //dva 写法
-│   │   ├── useGlobalModel.ts //umijs 写法
-│   │   └── useUserModel.ts
-│   ├── pages
-│   │   └── document.ejs //html文件配置
-│   ├── hooks //自定义hooks存放文件夹
-│   │   └── usexxxx.ts 
-│   ├── services //请求目录
-│   │   ├── config.ts //请求拦截器
-│   │   ├── handler.ts //请求类型封装
-│   │   └── index.ts //存放请求
-│   ├── e2e //浏览器测试
-│   │   ├── baseLayout.e2e.js //公用测试文件 格局routes 自动测试页面
-│   └── utils //公用工具或方法存放目录
-│       ├── globalUtils.ts //全局方法、webpack编译时自动加载 到全局
-│       ├── utils.test.ts //函数测试
-│       └── index.ts //业务公用 单独引入使用
-├── tests //自动化测试扩展编写
-└── tsconfig.json //ts配置文件
+│ ├── typings.d.ts //ts type declaration
+│ ├── access.ts //umijs layout permission verification hook
+│ ├── app.ts //umijs convention runtime configuration file
+│ ├── assets //resource storage directory
+│ │ └── images
+│ ├── components //Component directory
+│ │ ├── ErrorBoundary //Global error capture component
+│ │ ├── FormCustom //Form package component
+│ │ ├── Exception //Grouping of components such as global exceptions
+│ │ ├── RightContent //Top bar component
+│ │ └── TableCustom //Table package component
+│ ├── global.css //Global style file
+│ ├── layouts //The global routing public layout can be used optionally
+│ │ └── index.tsx
+│ ├── locales //Internationalization
+│ │ ├── en-US.js
+│ │ └── zh-CN.js
+│ ├── models //Global state directory named XXXXModel interface
+│ │ ├── globalUserModel.ts //dva writing
+│ │ ├── useGlobalModel.ts //umijs writing
+│ │ └── useUserModel.ts
+│ ├── pages
+│ │ └── document.ejs //html file configuration
+│ ├── hooks //Custom hooks storage folder
+│ │ └── usexxxx.ts
+│ ├── services //request directory
+│ │ ├── config.ts //Request interceptor
+│ │ ├── handler.ts //Request type encapsulation
+│ │ └── index.ts //Storage request
+│ ├── e2e //Browser test
+│ │ ├── baseLayout.e2e.js //public test file format routes automatic test page
+│ └── utils //The directory for storing public tools or methods
+│ ├── globalUtils.ts //Global method, automatically loaded to the global when webpack compiles
+│ ├── utils.test.ts //function test
+│ └── index.ts //Business public use separately
+├── tests //Automatic test extension writing
+└── tsconfig.json //ts configuration file
 
-```
+````
 
-## 打包
-
-
-本地开发环境： `yarn start | npm run start`
-
-线上开发环境： `npm run build:dev`
-
-线上测试环境： `npm run build:testing`
-
-线上正式环境： `npm run build`
+## Bale
 
 
-### 地址和说明
+Local development environment: `yarn start | npm run start`
+
+Online development environment: `npm run build:dev`
+
+Online testing environment: `npm run build:testing`
+
+Online official environment: `npm run build`
 
 
-项目逻辑，交互，功能请阅读RP
-
-项目GIT： ``
-
-项目RP： ``
-
-项目UI： [蓝湖地址]()
-
-接口API： [接口文档]()
-
-测试JIRA： [JIRA地址]()
+### Address and description
 
 
+Project logic, interaction, function please read RP
 
-### 测试/开发登录路径
+Project GIT: ``
+
+Project RP: ``
+
+Project UI: [Blue Lake Address]()
+
+Interface API: [Interface Documentation]()
+
+Test JIRA: [JIRA address]()
+
+
+
+### Test/Development login path
 
 
 /login
 
 
 
-### 账号
+### account
 
 
-# LICENSE
+#LICENSE
 MIT

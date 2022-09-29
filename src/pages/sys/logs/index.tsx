@@ -1,15 +1,14 @@
-import TableCustom from "@/components/TableCustom";
-import useGetModel from "@/hooks/useGetModel";
-import ProCard from "@ant-design/pro-card";
-import ProDescriptions from "@ant-design/pro-descriptions";
+import TableCustom from '@/components/TableCustom';
+import useGetModel from '@/hooks/useGetModel';
+import { ProDescriptions,ProCard } from '@ant-design/pro-components';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 function SysLogs() {
-  const [record, setRecord] = useState<any>({ param: "", data: "" });
-  const [tab, setTab] = useState<string>("param");
+  const [record, setRecord] = useState<any>({ param: '', data: '' });
+  const [tab, setTab] = useState<string>('param');
   const [loading, setLoading] = useState<boolean>(false);
-  const [modelConfig, modelLoading] = useGetModel({ model: "AdminLog" });
+  const [modelConfig, modelLoading] = useGetModel({ model: 'AdminLog' });
 
   if (!modelConfig) {
     return modelLoading;
@@ -51,7 +50,7 @@ function SysLogs() {
             <ProDescriptions
               loading={loading}
               dataSource={record}
-              style={{ height: "calc(100vh - 292px)", overflow: "auto" }}
+              style={{ height: 'calc(100vh - 292px)', overflow: 'auto' }}
             >
               <ProDescriptions.Item valueType="jsonCode" dataIndex="param" />
             </ProDescriptions>
@@ -60,7 +59,7 @@ function SysLogs() {
             <ProDescriptions
               dataSource={record}
               loading={loading}
-              style={{ height: "calc(100vh - 292px)", overflow: "auto" }}
+              style={{ height: 'calc(100vh - 292px)', overflow: 'auto' }}
             >
               <ProDescriptions.Item valueType="jsonCode" dataIndex="data" />
             </ProDescriptions>

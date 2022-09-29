@@ -15,5 +15,5 @@ features:
     desc: 可以配置 `markdown` 文本
 ---
 
-<embed src="../README.md"></embed>
+<embed src="../README.md></embed>
 

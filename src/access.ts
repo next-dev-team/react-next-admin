@@ -1,4 +1,4 @@
-import { getUserLocalStorage } from "@/models/useUserModel";
+import { getUserLocalStorage } from '@/models/useUserModel';
 
 // const loopMenus = (menus: any, menusAll: any) => {
 //   menus.forEach((item: any) => {
@@ -14,6 +14,11 @@ import { getUserLocalStorage } from "@/models/useUserModel";
 
 const checkAuth = (access: any) => {
   const userInfo = getUserLocalStorage();
+
+  const mockDev = true;
+  if (mockDev) {
+    return true;
+  }
 
   if (access.accessId === 29) {
     return false;

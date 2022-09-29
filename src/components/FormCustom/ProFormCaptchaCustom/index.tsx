@@ -1,4 +1,5 @@
-import { ProFormCaptcha } from "@ant-design/pro-form";
+import { ProFormCaptcha } from "@ant-design/pro-components";
+
 import type { CustomType } from "../types";
 
 declare type ProFormCaptchaCustomType = {

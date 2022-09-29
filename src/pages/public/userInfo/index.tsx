@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import { ProCard } from "@ant-design/pro-card";
+import { ProCard } from "@ant-design/pro-components";
+
 import FormCustom from "@/components/FormCustom";
 import { Avatar, Space, Typography, message, Menu, Tag } from "antd";
 import { formConfig, passwordFormConfig } from "./define";
@@ -10,7 +11,7 @@ import {
   setUserNoticeMessageRead,
 } from "@/services";
 import { useModel } from "@umijs/max";
-import type { ProFormInstance } from "@ant-design/pro-form";
+import type { ProFormInstance } from "@ant-design/pro-components";
 import { NOTICE_TYPE } from "@/components/RightContent/NoticeTip";
 import TableCustom from "@/components/TableCustom";
 import { IconFont } from "@/utils";

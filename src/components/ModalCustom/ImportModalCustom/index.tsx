@@ -1,6 +1,6 @@
 import FormCustom from "@/components/FormCustom";
 import type { ModalProps } from "antd/lib/modal";
-import { ModalForm } from "@ant-design/pro-form";
+import { ModalForm } from "@ant-design/pro-components";
 import type { FormCustomColumnsType } from "@/components/FormCustom/types";
 import { Typography, Space } from "antd";
 const { Text, Link } = Typography;

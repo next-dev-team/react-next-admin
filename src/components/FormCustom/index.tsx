@@ -1,4 +1,4 @@
-import { BetaSchemaForm } from "@ant-design/pro-form";
+import { BetaSchemaForm } from "@ant-design/pro-components";
 import type {
   FormCustomColumnsType,
   ValueType,

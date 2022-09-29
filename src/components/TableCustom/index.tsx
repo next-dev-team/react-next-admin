@@ -1,22 +1,22 @@
-import { ProTable, TableDropdown } from "@ant-design/pro-table";
-import ProList from "@ant-design/pro-form";
+import { ProTable, TableDropdown ,ProList} from '@ant-design/pro-components';
+
 import type {
   TableCustomTypes,
   ProColumnsTypes,
   TableRefType,
-} from "@/components/TableCustom/types";
-import * as components from "@/components/FormCustom/components";
-import React, { useState, useEffect, useRef } from "react";
-import { Button, Space, Table } from "antd";
-import styles from "./index.less";
-import modalTypeRenderConfig from "./modalTypeRenderConfig";
+} from '@/components/TableCustom/types';
+import * as components from '@/components/FormCustom/components';
+import React, { useState, useEffect, useRef } from 'react';
+import { Button, Space, Table } from 'antd';
+import styles from './index.less';
+import modalTypeRenderConfig from './modalTypeRenderConfig';
 import {
   headerTitleConfigArr,
   tableAlertOptionRenderConfigArr,
   operationConfigRenderConfigArr,
-} from "./btnConfig";
-import { responseTableConfig } from "@/services/config";
-import getBusinessStyle from "./businessStyleConfig";
+} from './btnConfig';
+import { responseTableConfig } from '@/services/config';
+import getBusinessStyle from './businessStyleConfig';
 
 // import { dynamic } from '@umijs/max';
 
@@ -32,7 +32,7 @@ import getBusinessStyle from "./businessStyleConfig";
  */
 function getTableScroll(Props: any, costomHeight?: any, id?: any) {
   let extraHeight = costomHeight;
-  if (typeof extraHeight === "undefined") {
+  if (typeof extraHeight === 'undefined') {
     //  默认底部分页24+32 + 边距20 + 底部漏出20+ 44额外高度
     extraHeight = 96 + 44;
   }
@@ -45,10 +45,10 @@ function getTableScroll(Props: any, costomHeight?: any, id?: any) {
   if (id) {
     tHeader = document.getElementById(id)
       ? // @ts-ignore
-        document.getElementById(id).getElementsByClassName("ant-table-thead")[0]
+        document.getElementById(id).getElementsByClassName('ant-table-thead')[0]
       : null;
   } else {
-    tHeader = document.getElementsByClassName("ant-table-thead")[0];
+    tHeader = document.getElementsByClassName('ant-table-thead')[0];
   }
   // 表格内容距离顶部的距离
   let number = 39; //算上自己高度
@@ -65,7 +65,7 @@ function getTableScroll(Props: any, costomHeight?: any, id?: any) {
 
 function TableCustom<T>(Props: TableCustomTypes<T>) {
   const {
-    tableType = "ProTable",
+    tableType = 'ProTable',
     columns,
     request,
     search,
@@ -82,7 +82,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
     ...rest
   } = Props;
 
-  const [scrollY, setScrollY] = useState<string>("");
+  const [scrollY, setScrollY] = useState<string>('');
   const forwardRef = useRef<TableRefType>();
   let tableRef: any = forwardRef;
   useEffect(() => {
@@ -142,7 +142,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
     kitem: string,
     configArr: any,
     config: any,
-    type: string = "header"
+    type: string = 'header',
   ) => {
     // 按钮取默认值
     const defaultBtnConfig = configArr.default;
@@ -158,9 +158,9 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
     btnConfig.className = `${type}-item ${type}-item-${kitem}`;
 
     // 如果传入的是方法
-    if (typeof config[kitem] === "function") {
+    if (typeof config[kitem] === 'function') {
       btnConfig.onClick = config[kitem];
-    } else if (typeof config[kitem] === "object") {
+    } else if (typeof config[kitem] === 'object') {
       if (config[kitem].modalConfig?.config?.customProps) {
         const customProps = config[kitem].modalConfig.config.customProps;
         delete config[kitem].modalConfig.config.customProps;
@@ -179,7 +179,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
       btnConfig.text = text;
     }
     if (!btnConfig.type) {
-      btnConfig.type = "link";
+      btnConfig.type = 'link';
     }
     return setModalType(kitem, btnConfig, type);
   };
@@ -188,12 +188,12 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
   const customColumns: ProColumnsTypes<any>[] = [];
   if (columns) {
     columns.forEach((item: any) => {
-      if (item.valueType === "option") {
+      if (item.valueType === 'option') {
         return;
       }
-      if (typeof item.search === "undefined" || item.search === true) {
+      if (typeof item.search === 'undefined' || item.search === true) {
         searchCustom = {
-          filterType: "query",
+          filterType: 'query',
           defaultCollapsed: true,
           span: 6,
         };
@@ -207,7 +207,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
       // 如果是自定义组件
       if (
         item.valueType &&
-        item.valueType.indexOf("Custom") !== -1 &&
+        item.valueType.indexOf('Custom') !== -1 &&
         (!item.renderFormItem || !item.render)
       ) {
         // @ts-ignore
@@ -230,7 +230,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
           if (!item.renderFormItem) {
             // eslint-disable-next-line no-param-reassign
             item.renderFormItem = (i: any, { type }: any) => {
-              if (type === "form") {
+              if (type === 'form') {
                 return null;
               }
               return <CustomComponent customMode="table" />;
@@ -247,7 +247,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
       }
       // 如果是select 默认开始搜索
       if (
-        item.valueType === "select" &&
+        item.valueType === 'select' &&
         item.fieldProps &&
         item.fieldProps.showSearch === undefined
       ) {
@@ -267,25 +267,25 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
       itext: any,
       irecord: any,
       _: any,
-      iaction: any
+      iaction: any,
     ) => {
       const btns = operationKeys.map((kitem, kindex) => {
         const btnConfig = setBtnConfig(
           kitem,
           operationConfigRenderConfigArr,
           operationConfig,
-          "operation"
+          'operation',
         );
 
         // 拆分参数
         const { key, text, icon, onClick, auth, disabled, ...config } =
           btnConfig;
 
-        if (!auth || (typeof auth === "function" && auth(btnConfig, irecord))) {
+        if (!auth || (typeof auth === 'function' && auth(btnConfig, irecord))) {
           let newDisable;
-          if (typeof disabled === "function") {
+          if (typeof disabled === 'function') {
             newDisable = disabled(irecord, btnConfig);
-          } else if (typeof disabled === "boolean" && disabled) {
+          } else if (typeof disabled === 'boolean' && disabled) {
             newDisable = disabled;
           }
           if (kindex + 1 > operationBtnShowMax) {
@@ -339,12 +339,12 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
           <TableDropdown
             key={`${irecord.id}operation-actionGroup`}
             menus={dropdownBtns}
-          />
+          />,
         );
       }
       return returnBtns;
     };
-    const optionMenu = columns?.find((i: any) => i.valueType === "option");
+    const optionMenu = columns?.find((i: any) => i.valueType === 'option');
     if (optionMenu) {
       customColumns.push({
         ...optionMenu,
@@ -352,9 +352,9 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
       });
     } else {
       customColumns.push({
-        title: "操作",
-        key: "option",
-        valueType: "option",
+        title: '操作',
+        key: 'option',
+        valueType: 'option',
         render: operationConfigRenderFun,
       });
     }
@@ -372,16 +372,16 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
         kitem,
         headerTitleConfigArr,
         headerTitleConfig,
-        "header"
+        'header',
       );
 
       // 拆分参数
       const { text, icon, onClick, auth, disabled, ...config } = btnConfig;
-      if (!auth || (typeof auth === "function" && auth(btnConfig))) {
+      if (!auth || (typeof auth === 'function' && auth(btnConfig))) {
         let newDisable;
-        if (typeof disabled === "function") {
+        if (typeof disabled === 'function') {
           newDisable = disabled(btnConfig);
-        } else if (typeof disabled === "boolean" && disabled) {
+        } else if (typeof disabled === 'boolean' && disabled) {
           newDisable = disabled;
         }
         buttons.push(
@@ -392,8 +392,8 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
               onClick: onClick.bind(null, { btnConfig }),
               disabled: newDisable,
             },
-            [React.createElement(icon, { key: `icon-${kitem}` }), text]
-          )
+            [React.createElement(icon, { key: `icon-${kitem}` }), text],
+          ),
         );
       }
     });
@@ -437,7 +437,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
                 kitem,
                 tableAlertOptionRenderConfigArr,
                 selectionConfig,
-                "selection"
+                'selection',
               );
 
               // 拆分参数
@@ -445,17 +445,17 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
 
               if (
                 !auth ||
-                (typeof auth === "function" &&
+                (typeof auth === 'function' &&
                   auth(btnConfig, selectedRowKeys, onCleanSelected))
               ) {
                 let newDisable;
-                if (typeof disabled === "function") {
+                if (typeof disabled === 'function') {
                   newDisable = disabled(
                     selectedRowKeys,
                     onCleanSelected,
-                    btnConfig
+                    btnConfig,
                   );
-                } else if (typeof disabled === "boolean" && disabled) {
+                } else if (typeof disabled === 'boolean' && disabled) {
                   newDisable = disabled;
                 }
 
@@ -484,7 +484,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
 
   let TableComponent: any = ProTable;
 
-  if (tableType === "ProList") {
+  if (tableType === 'ProList') {
     // 如果是使用 ProList数据模式
     TableComponent = ProList;
     // 如果有设置operation按钮 并且没有设置actions
@@ -517,7 +517,7 @@ function TableCustom<T>(Props: TableCustomTypes<T>) {
           // 第一个参数中一定会有 pageSize 和  current ，这两个参数是 antd 的规范
           requestParams: any,
           sort: any,
-          filter: any
+          filter: any,
         ) => {
           const tableData = {
             data: [],

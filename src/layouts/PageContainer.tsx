@@ -1,6 +1,6 @@
 import { findMenuRoute } from '@/utils';
-import type { PageContainerProps } from '@ant-design/pro-layout';
-import { PageContainer } from '@ant-design/pro-layout';
+import type { PageContainerProps } from '@ant-design/pro-components';
+import { PageContainer } from '@ant-design/pro-components';
 import { Outlet, useLocation } from '@umijs/max';
 import { useEffect, useState } from 'react';
 // import { BackTop } from "antd";

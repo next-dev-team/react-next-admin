@@ -216,7 +216,7 @@ declare namespace API {
     /** 建筑面积 */
     buildingArea?: number;
     /** 购房优惠 */
-    buyHouseDiscount?: number;
+    buyHouseDiscount?: string;
     /** 销售渠道 */
     channel?: string;
     /** 清款日期 */
@@ -254,7 +254,7 @@ declare namespace API {
     /** 老客户房号 */
     oldCustomerRoom?: string;
     /** 老带新优惠 */
-    oldWithNewDiscount?: number;
+    oldWithNewDiscount?: string;
     /** 共有人组 */
     owners?: string;
     /** 付款方式 */
@@ -997,6 +997,61 @@ declare namespace API {
     token?: any;
   };
 
+  type Dtongbucuowurizhibiaoshiti = {
+    /** 错误日志 */
+    errorLog?: string;
+    /** 日志ID */
+    id?: number;
+    /** 记录ID */
+    recordId?: number;
+  };
+
+  type Dtongbujilubiaoshiti = {
+    /** 公司ID */
+    companyId?: number;
+    /** 公司名称 */
+    companyName?: string;
+    /** 创建时间 */
+    createdTime?: string;
+    /** D+ID */
+    dPlusId?: number;
+    /** 错误详情 */
+    errorDetails?: Dtongbucuowurizhibiaoshiti[];
+    /** 记录ID */
+    id?: number;
+    /** 项目ID */
+    projectId?: number;
+    /** 公司名称 */
+    projectName?: string;
+    /** 状态（1成功，2失败） */
+    status?: number;
+    /** 标识一 */
+    tagOne?: string;
+    /** 标识二 */
+    tagTwo?: string;
+    /** 归属任务ID */
+    taskId?: number;
+    /** 同步类型（1项目，2人员，3客户，4房源） */
+    type?: number;
+  };
+
+  type Dtongbujiluliebiaofenyechaxunshaixuan = {
+    /** 公司ID */
+    companyId: number;
+    /** 页脚对象 */
+    pageInfo?: yejiaoduixiangshiti;
+    /** 排序对象 */
+    pageSort?: paixushiti;
+    /** 搜索关键字 */
+    searchContent?: string;
+    /** 任务状态ID */
+    status?: number;
+    /** 任务ID */
+    taskId: number;
+    /** 任务类型ID */
+    types?: number[];
+  };
+
   type editApprovalConfigUsingPOSTParams = {
     /** 登录令牌 */
     token?: any;
@@ -1518,6 +1573,23 @@ declare namespace API {
     hasNextPage?: boolean;
     /** 分页数据 */
     list?: daifenpeikehuxinxizhanshi[];
+    /** 下一页 */
+    nextPage?: number;
+    /** 当前页数 */
+    pageNum?: number;
+    /** 当前条数 */
+    pageSize?: number;
+    /** 汇总数据 */
+    summary?: Record<string, any>;
+    /** 总条数 */
+    total?: number;
+  };
+
+  type fenyexinxishitiDtongbujilubiaoshiti = {
+    /** 是否有下一页 */
+    hasNextPage?: boolean;
+    /** 分页数据 */
+    list?: Dtongbujilubiaoshiti[];
     /** 下一页 */
     nextPage?: number;
     /** 当前页数 */
@@ -2714,6 +2786,11 @@ declare namespace API {
     token?: any;
   };
 
+  type queryPlusUsingPOSTParams = {
+    /** 登录令牌 */
+    token?: any;
+  };
+
   type queryStatisticsUsingPOSTParams = {
     /** 登录令牌 */
     token?: any;
@@ -2963,6 +3040,8 @@ declare namespace API {
     statusValue?: string;
     /** 耗时（分） */
     time?: number;
+    /** 任务类型ID */
+    type?: number;
     /** 任务类型 */
     typeValue?: string;
   };
@@ -3865,6 +3944,15 @@ declare namespace API {
     code?: number;
     /** 响应结果 */
     data?: fenyexinxishitidaifenpeikehuxinxizhanshi;
+    /** 响应消息 */
+    message?: string;
+  };
+
+  type xiangyingshitifenyexinxishitiDtongbujilubiaoshiti = {
+    /** 响应码 */
+    code?: number;
+    /** 响应结果 */
+    data?: fenyexinxishitiDtongbujilubiaoshiti;
     /** 响应消息 */
     message?: string;
   };
@@ -4926,7 +5014,7 @@ declare namespace API {
   type zidianshiti = {
     /** 字典选项 */
     list?: zidianxuanxiang[];
-    /** 字典类型：role角色，position岗位，enterprise企业，source来源，userStatus用户人事状态，houseStatus房源状态，propertyType物业类型，syncTaskStatus任务状态，approvalType审批方式，approvalStatus审批状态，approvalResponse响应方式，customerGender客户性别,tradeTimes置业次数，intentionProperty关注物业类型，intentionPriority意向级别，contactType回访方式，customerType客户类型，inspectStatus梳理状态，orderPayType付款方式，orderReturnType回款类型，changeEvent事件类型，attributionRole业绩归属角色 */
+    /** 字典类型：role角色，position岗位，enterprise企业，source来源，userStatus用户人事状态，houseStatus房源状态，propertyType物业类型，syncTaskStatus任务状态，approvalType审批方式，approvalStatus审批状态，approvalResponse响应方式，customerGender客户性别,tradeTimes置业次数，intentionProperty关注物业类型，intentionPriority意向级别，contactType回访方式，customerType客户类型，inspectStatus梳理状态，orderPayType付款方式，orderReturnType回款类型，changeEvent事件类型，attributionRole业绩归属角色，plusSyncType同步类型 */
     type?: string;
   };
 
