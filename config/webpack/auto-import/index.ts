@@ -20,6 +20,8 @@ export const autoImportPlugin = () =>
         ahooks: AhooksPresent,
         '@ant-design/pro-components': antdProPresent,
         '@ant-design/icons': antdIconPresent,
+        '@umijs/max': ['useSnapshot', 'proxy', 'Link', ['history', '_history']],
+        'hox': ['createGlobalStore','HoxRoot'],
       },
     ],
     vueTemplate: false,
@@ -28,6 +30,7 @@ export const autoImportPlugin = () =>
     // when using in file names mostly use prefixes _ and $ to avoid conflicts
     dirs: [
       './src/utils',
+      './src/stores',
 
       // './composables/**', // all nested modules
     ],

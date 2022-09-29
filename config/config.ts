@@ -1,4 +1,3 @@
-
 import { defineConfig } from '@umijs/max';
 import proxy from './proxy';
 import routes from './routes';
@@ -12,7 +11,7 @@ export default defineConfig({
   define: {
     'process.env.version': '1.1.0',
   },
-  clientLoader:{},
+  clientLoader: {},
   fastRefresh: false,
   srcTranspiler: 'esbuild' as any,
   // targets: {
@@ -209,7 +208,7 @@ export default defineConfig({
     dark: false,
     compact: false,
     // babel-plugin-import
-    // import: true,
+    import: true,
     // less or css, default less
     style: 'less',
   },
@@ -230,12 +229,14 @@ export default defineConfig({
   locale: false,
   //加载dumi文档配置
   // ...dumi,
-
+  moment2dayjs: {},
   //登录以后权限不刷新
   access: {},
   model: {},
-  initialState: {},
+  initialState: {
+    loading: '@/loading',
+  },
   tailwindcss: {},
-  deadCode:{}
-  
+  deadCode: {},
+  valtio: {},
 });

@@ -1,7 +1,6 @@
 import type { Settings as LayoutSettings } from '@ant-design/pro-components';
 import { SettingDrawer } from '@ant-design/pro-components';
 import type { RunTimeLayoutConfig } from '@umijs/max';
-import { history, Link } from '@umijs/max';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -25,12 +24,12 @@ export async function getInitialState(): Promise<{
     try {
       return {};
     } catch (error) {
-      history.push(loginPath);
+      _history.push(loginPath);
     }
     return undefined;
   };
   // 如果是登录页面，不执行
-  if (history.location.pathname !== loginPath) {
+  if (_history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -50,35 +49,28 @@ export const layout: RunTimeLayoutConfig = ({
   setInitialState,
 }) => {
   return {
-    // rightContentRender: () => <RightContent />,
-    disableContentMargin: false,
-    waterMarkProps: {
-      // content: initialState?.currentUser?.name,
-    },
-    // footerRender: () => <Footer />,
     onPageChange: () => {
-      const { location } = history;
+      // const { location } = history;
       // 如果没有登录，重定向到 login
       // if (!initialState?.currentUser && location.pathname !== loginPath) {
-      //   history.push(loginPath);
+      //   history.push(loginPath);`
       // }
     },
     links: isDev
       ? [
           <Link to="/~docs">
             <IconBookOutlined />
-            <span>业务组件文档</span>
+            <span>Document</span>
           </Link>,
         ]
       : [],
     menuHeaderRender: undefined,
     // 自定义 403 页面
-    // unAccessible: <div>unAccessible</div>,
-    // 增加一个 loading 的状态
+    unAccessible: <div>unAccessible</div>,
     childrenRender: (children, props) => {
       // if (initialState?.loading) return <PageLoading />;
       return (
-        <>
+        <HoxRoot>
           {children}
           {!props.location?.pathname?.includes('/login') && (
             <SettingDrawer
@@ -92,7 +84,7 @@ export const layout: RunTimeLayoutConfig = ({
               }}
             />
           )}
-        </>
+        </HoxRoot>
       );
     },
     ...initialState?.settings,

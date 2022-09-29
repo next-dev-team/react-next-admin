@@ -15,6 +15,7 @@ specifiers:
   '@umijs/max': latest
   '@vh-cli/git-commit': ^1.0.6
   '@vh-cli/lint': ^0.0.13
+  add: ^2.0.6
   ahooks: ^3.7.1
   antd: ^4.23.3
   antd-img-crop: ^4.2.5
@@ -25,6 +26,7 @@ specifiers:
   cypress: ^10.9.0
   eslint: ^8.24.0
   fork-ts-checker-webpack-plugin: ^7.2.13
+  hox: ^2.1.0
   jest: ^29.1.1
   lint-staged: ^13.0.3
   lodash-es: ^4.17.21
@@ -44,10 +46,12 @@ specifiers:
 dependencies:
   '@ant-design/charts': 1.4.2_fsot4lcpcxpel262n4c7b2ox34
   '@ant-design/pro-components': 2.3.13_fsot4lcpcxpel262n4c7b2ox34
+  add: 2.0.6
   ahooks: 3.7.1_react@18.2.0
   antd: 4.23.3_biqbaboplfbrettd7655fr4n2y
   antd-img-crop: 4.2.5_fsot4lcpcxpel262n4c7b2ox34
   crypto-js: 4.1.1
+  hox: 2.1.0_react@18.2.0
   lodash-es: 4.17.21
   react: 18.2.0
 
@@ -5332,6 +5336,10 @@ packages:
     dependencies:
       object-assign: 4.1.1
 
+  /add/2.0.6:
+    resolution: {integrity: sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==}
+    dev: false
+
   /agent-base/4.3.0:
     resolution: {integrity: sha512-salcGninV0nPrwpGNn4VTXBb1SOuXQBiqbrNXoeizJsHrsL6ERFM2Ne3JUSBWRE6aeNJI2ROP/WEEIDUiDe3cg==}
     engines: {node: '>= 4.0.0'}
@@ -9790,6 +9798,15 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
+
+  /hox/2.1.0_react@18.2.0:
+    resolution: {integrity: sha512-8TihXk6RTh28295Pvwjj1ohvNuNT1oUbuAuoJzYed4JQ23lumVyfLVc1px2dvgkvdrjKpJXhT/qy7W5uJsCuaQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
 
   /hpack.js/2.1.6:
     resolution: {integrity: sha512-zJxVehUdMGIKsRaNt7apO2Gqp0BdqW5yaiGHXXmbpvxgBYVZnAql+BJb4RO5ad2MgpbZKn5G6nMnegrH1FcNYQ==}
@@ -16292,7 +16309,6 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
-    dev: true
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}

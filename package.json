@@ -38,16 +38,16 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/pro-components": "^2.3.13",
+    "add": "^2.0.6",
     "ahooks": "^3.7.1",
     "antd": "^4.23.3",
     "antd-img-crop": "^4.2.5",
     "crypto-js": "^4.1.1",
+    "hox": "^2.1.0",
     "lodash-es": "^4.17.21",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "react-dom": "^18.2.0",
-    "react-router": "^6.4.1",
     "@iconify/json": "latest",
     "@svgr/core": "^6.3.1",
     "@testing-library/react": "^13.4.0",
@@ -69,6 +69,8 @@
     "jest": "^29.1.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.4.1",
     "serve": "^14.0.1",
     "start-server-and-test": "^1.14.0",
     "stylelint": "^14.13.0",
