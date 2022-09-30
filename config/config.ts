@@ -11,8 +11,8 @@ export default defineConfig({
   define: {
     'process.env.version': '1.1.0',
   },
-  clientLoader: {},
   fastRefresh: false,
+  clientLoader: {},
   srcTranspiler: 'esbuild' as any,
   // targets: {
   //   ie: 11,
@@ -40,6 +40,7 @@ export default defineConfig({
   routes: routes,
   // 别名配置
   alias: {},
+  ignoreMomentLocale: true,
   /**
    * 配置 external
    * 对于一些大尺寸依赖，比如图表库、antd 等，可尝试通过 externals 的配置引入相关 umd 文件，减少编译消耗
@@ -48,7 +49,6 @@ export default defineConfig({
     ? {
         react: 'React',
         'react-dom': 'ReactDOM',
-        // 'react-amap': 'reactAmap',
       }
     : {},
   //配置额外的 meta 标签。数组中可以配置key:value形式的对象。
@@ -58,8 +58,6 @@ export default defineConfig({
   // 配置 <body> 里的额外脚本。。
   scripts: isDev
     ? [
-        // 'https://unpkg.com/react-amap@1.2.6/dist/react-amap.min.js',
-        // 'https://lib.baomitu.com/antd/4.9.1/antd.min.js',
         '//unpkg.com/react@18.2.0/umd/react.production.min.js',
         '//unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
       ]
@@ -233,10 +231,15 @@ export default defineConfig({
   //登录以后权限不刷新
   access: {},
   model: {},
-  initialState: {
-    loading: '@/loading',
-  },
+
+  initialState: {},
   tailwindcss: {},
   deadCode: {},
   valtio: {},
+  // jsMinifier: 'esbuild',
+  // jsMinifierOptions: {
+  //   minifyWhitespace: true,
+  //   minifyIdentifiers: true,
+  //   minifySyntax: true,
+  // }
 });

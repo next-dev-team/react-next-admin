@@ -1,4 +1,5 @@
 // https://github.com/antfu/unplugin-vue-components/blob/main/src/core/resolvers/antdv.ts
+// import * as all from '@ant-design/pro-components'
 // console.log('all',all);
 export const antdProPresent = [
   ['BaseProList', 'PBaseProList'],
@@ -49,7 +50,7 @@ export const antdProPresent = [
   ['LoginForm', 'PLoginForm'],
   ['LoginFormPage', 'PLoginFormPage'],
   ['ModalForm', 'PModalForm'],
-  ['PageContainer', 'PPageContainer'],
+  // ['PageContainer', 'PPageContainer'],
   ['PageHeader', 'PPageHeader'],
   ['PageHeaderSkeleton', 'PPageHeaderSkeleton'],
   ['PageLoading', 'PPageLoading'],
@@ -95,7 +96,6 @@ export const antdProPresent = [
   ['QueryFilter', 'PQueryFilter'],
   ['RouteContext', 'PRouteContext'],
   ['Search', 'PSearch'],
-  ['SettingDrawer', 'PSettingDrawer'],
   ['Statistic', 'PStatistic'],
   ['StatisticCard', 'PStatisticCard'],
   ['StepsForm', 'PStepsForm'],
@@ -165,20 +165,6 @@ export const antdProPresent = [
   ['srRSIntl', '_srRSIntl'],
   ['trTRIntl', '_trTRIntl'],
   ['transformKeySubmitValue', '_transformKeySubmitValue'],
-  ['useDebounceFn', '__useDebounceFn'],
-  ['useDebounceValue', '__useDebounceValue'],
-  ['useDeepCompareEffect', '__useDeepCompareEffect'],
-  ['useDeepCompareEffectDebounce', '__useDeepCompareEffectDebounce'],
-  ['useDocumentTitle', '__useDocumentTitle'],
-  ['useEditableArray', '__useEditableArray'],
-  ['useEditableMap', '__useEditableMap'],
-  ['useFetchData', '__useFetchData'],
-  ['useIntl', '__useIntl'],
-  ['useLatest', '__useLatest'],
-  ['useMountMergeState', '__useMountMergeState'],
-  ['usePrevious', '__usePrevious'],
-  ['useRefFunction', '__useRefFunction'],
-  ['useSafeState', '__useSafeState'],
   ['useStyle', '__useStyle'],
   ['useToken', '__useToken'],
   ['viVNIntl', '_viVNIntl'],

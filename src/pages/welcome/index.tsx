@@ -2,10 +2,13 @@ import { SubCom } from './subCom';
 import { useWelcomeLogic } from './useWelcomeLogic';
 
 const Index = () => {
-  const { tasks, setTasks ,appStore} = useWelcomeLogic();
-  // demo auto import config/webpack/auto-import
+  const { tasks, setTasks, appStore } = useWelcomeLogic();
 
-  // valtio store
+  /**
+   * most of the component or function are auto import by unplugin-auto-import
+   * see in folder config/webpack/auto-import
+   *
+   */
 
   // antd
   const modal = () => {
@@ -33,25 +36,46 @@ const Index = () => {
   console.log('a', _isBrowser());
 
   return (
-    // antd component
-    <ASpace>
-      <PProCard bordered title="Global State Valtio">
-        <ASpace>
-          <AButton onClick={appStore.dec}>-</AButton>
-          Counter App: {appStore.count}
-          <AButton onClick={appStore.inc}>+</AButton>
-        </ASpace>
-      </PProCard>
-      
-      <PProCard bordered title="Global Share hook">
-        <ASpace>
-          <AButton onClick={() => setTasks('kk')}>Main: {tasks}</AButton>
-          <SubCom onClick={() => setTasks('test')} />
-        </ASpace>
-      </PProCard>
+    <PageContainer content={'This page can only be viewed by admin'}>
+      <ASpace>
+        <PProCard bordered title="Iconify">
+          {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
+          <div className="flex gap-2">
+            <IconTeenyicons360Solid
+              onClick={modal}
+              className="text-2xl text-green-500"
+            />
+            <IconEmojioneFlagForCambodia className="text-2xl text-green-500" />
+          </div>
+        </PProCard>
 
-      <IconTeenyicons360Solid onClick={modal} />
-    </ASpace>
+        {/*  antd component and valtio store */}
+        <PProCard bordered title="Global State Valtio" layout="center">
+          <ASpace>
+            <AButton
+              onClick={appStore.dec}
+              danger
+              type="primary"
+              shape="circle"
+            >
+              -
+            </AButton>
+            {appStore.count}
+            <AButton onClick={appStore.inc} type="primary" shape="circle">
+              +
+            </AButton>
+          </ASpace>
+        </PProCard>
+
+        {/* ---- share hook logic------ */}
+        <PProCard bordered title="Global Share hook">
+          <ASpace>
+            <AButton onClick={() => setTasks('kk')}>Main: {tasks}</AButton>
+            <SubCom onClick={() => setTasks('test')} />
+          </ASpace>
+        </PProCard>
+      </ASpace>
+    </PageContainer>
   );
 };
 

@@ -36,11 +36,10 @@
     ]
   },
   "dependencies": {
-    "@ant-design/charts": "^1.4.2",
-    "@ant-design/pro-components": "^2.3.13",
-    "add": "^2.0.6",
+    "@ant-design/charts": "latest",
+    "@ant-design/pro-components": "latest",
     "ahooks": "^3.7.1",
-    "antd": "^4.23.3",
+    "antd": "latest",
     "antd-img-crop": "^4.2.5",
     "crypto-js": "^4.1.1",
     "hox": "^2.1.0",
@@ -48,6 +47,8 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "umi-presets-pro": "latest",
+    "umi-serve": "^1.9.10",
     "@iconify/json": "latest",
     "@svgr/core": "^6.3.1",
     "@testing-library/react": "^13.4.0",

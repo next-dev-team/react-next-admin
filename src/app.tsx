@@ -1,15 +1,9 @@
 import type { Settings as LayoutSettings } from '@ant-design/pro-components';
-import { SettingDrawer } from '@ant-design/pro-components';
 import type { RunTimeLayoutConfig } from '@umijs/max';
+import { errorConfig } from './requestErrorConfig';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
-
-// TODO: 不知道这是啥？
-/** 获取用户信息比较慢的时候会展示一个 loading */
-// export const initialStateConfig = {
-//   loading: <PageLoading />,
-// };
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
@@ -24,12 +18,12 @@ export async function getInitialState(): Promise<{
     try {
       return {};
     } catch (error) {
-      _history.push(loginPath);
+      $history.push(loginPath);
     }
     return undefined;
   };
   // 如果是登录页面，不执行
-  if (_history.location.pathname !== loginPath) {
+  if ($history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -73,7 +67,7 @@ export const layout: RunTimeLayoutConfig = ({
         <HoxRoot>
           {children}
           {!props.location?.pathname?.includes('/login') && (
-            <SettingDrawer
+            <PSettingDrawer
               enableDarkTheme
               settings={initialState?.settings}
               onSettingChange={(settings) => {
@@ -89,4 +83,12 @@ export const layout: RunTimeLayoutConfig = ({
     },
     ...initialState?.settings,
   };
+};
+/**
+ * @name request 配置，可以配置错误处理
+ * 它基于 axios 和 ahooks 的 useRequest 提供了一套统一的网络请求和错误处理方案。
+ * @doc https://umijs.org/docs/max/request#配置
+ */
+export const request = {
+  ...errorConfig,
 };
