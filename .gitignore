@@ -13,7 +13,7 @@ pnpm-lock.yaml
 
 # production
 /dist
-/.vscode
+# /.vscode
 /config/config.local.ts
 
 # misc

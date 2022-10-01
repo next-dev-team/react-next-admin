@@ -12,9 +12,17 @@ const HeaderRight: React.FC = () => {
   // const { navTheme, layout } = initialState.settings;
 
   return (
-    <ASpace>
-       <AvatarDropdown />
-    </ASpace>
+    <div>
+      <ASpace>
+        <ATag
+          color={_consIsAppEnvDev ? 'orange' : 'green'}
+          style={{ textTransform: 'uppercase' }}
+        >
+          {UMI_ENV}
+        </ATag>
+        <AvatarDropdown />
+      </ASpace>
+    </div>
   );
 };
 export default HeaderRight;

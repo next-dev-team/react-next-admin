@@ -1,0 +1,7 @@
+{
+  "generate user store": {
+    "prefix": "g:store:user",
+    "body": ["const userStore = useUserStore()"],
+    "description": ""
+  }
+}

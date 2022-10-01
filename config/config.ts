@@ -2,24 +2,22 @@ import { defineConfig } from '@umijs/max';
 import proxy from './proxy';
 import routes from './routes';
 import theme from './theme';
-import dotenv from 'dotenv';
-import { autoImportPlugin } from './webpack/auto-import';
+import { autoImportPlugin } from './auto-import';
 import defaultSettings from './defaultSettings';
 // const isDev = process.env.NODE_ENV === 'development';
 const { dirname } = require('path');
+const dotEnv = require('dotenv');
 
 // support multiple env https://github.com/nuxt-community/dotenv-module/issues/59#issuecomment-814245372
-const getEnv = dotenv.config({
+const getEnv = dotEnv.config({
   path: `${dirname(__dirname)}/.env.${process.env.UMI_ENV ?? 'env'}`, // default is env (prod)
 });
-const isInvalidEnv = !getEnv?.parsed?.UMI_ENV; // no UMI_ENV provide will be
 /**
  * !check is exist env and prevent accidentally deploy to server
  */
-if (isInvalidEnv) {
-  console.error('isInvalidEnv', 'please provide .env or .env.dev etc');
-  throw Error('please provide env');
-}
+console.error(
+  '************** Please make sure you have add all  values to env or .env.dev etc **********',
+);
 
 // all UMI config here
 export default defineConfig({
@@ -28,6 +26,7 @@ export default defineConfig({
     'process.env.version': '1.1.0',
     ...(getEnv.parsed ?? {}),
   },
+  // not working with MSFU
   fastRefresh: false,
   clientLoader: {},
   srcTranspiler: 'esbuild' as any,
@@ -57,7 +56,7 @@ export default defineConfig({
   // 别名配置
   alias: {},
   ignoreMomentLocale: true,
- 
+
   //配置额外的 link 标签。
   // links:[],
   /**
@@ -85,9 +84,10 @@ export default defineConfig({
   //配置额外的 umi 插件。
   plugins: [],
 
-
   // @ts-ignore
   chainWebpack(config: any, { webpack }: any) {
+    // when need to import outside src
+    // config.module.rule('ts-in-node_modules').include.clear();
     //引入全局公用方法
     // config.plugin('$global').use(
     //   //@ts-ignore
@@ -226,9 +226,9 @@ export default defineConfig({
   //登录以后权限不刷新
   access: {},
   model: {},
-
   initialState: {},
   tailwindcss: {},
+  autoprefixer: {},
   deadCode: {},
   valtio: {},
   // jsMinifier: 'esbuild',

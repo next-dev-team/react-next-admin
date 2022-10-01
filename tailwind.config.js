@@ -4,10 +4,10 @@ module.exports = {
   content: [
     './src/pages/**/*.tsx',
     './src/components/**.tsx',
+    './src/pages/**.tsx',
     './src/layouts/**.tsx',
     './src/app.tsx',
     './src/global.tsx',
-    './src/global.less',
   ],
   theme: {
     extend: {
