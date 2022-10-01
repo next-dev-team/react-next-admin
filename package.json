@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env UMI_ENV=local max dev",
+    "start": "cross-env UMI_ENV=dev_local max dev",
     "dev": "pnpm start",
     "build:dev": "cross-env UMI_ENV=build_dev max build",
     "build:test": "cross-env UMI_ENV=build_test max build",

@@ -1,5 +1,5 @@
 import type { RequestConfig } from '@umijs/max';
-import type { RequestOptions } from './.umi/plugin-request/request';
+import type { RequestOptions } from '../.umi/plugin-request/request';
 
 // 错误处理方案： 错误类型
 enum ErrorShowType {

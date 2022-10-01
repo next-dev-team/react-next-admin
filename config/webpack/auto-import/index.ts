@@ -31,7 +31,8 @@ export const autoImportPlugin = () =>
     // when using in file names mostly use prefixes _ and $ to avoid conflicts
     dirs: [
       './src/utils/**',
-      './src/stores',
+      './src/stores/**',
+      './src/constants/**',
 
       // './composables/**', // all nested modules
     ],

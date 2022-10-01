@@ -1,8 +1,8 @@
-import type { Settings as LayoutSettings } from '@ant-design/pro-components';
-import type { RunTimeLayoutConfig } from '@umijs/max';
-import { errorConfig } from './requestErrorConfig';
+/**
+ * any export here must be provide or match with UMI app.tsx configs
+ */
 
-const isDev = process.env.NODE_ENV === 'development';
+
 const loginPath = '/user/login';
 
 /**
@@ -10,9 +10,9 @@ const loginPath = '/user/login';
  * */
 export async function getInitialState(): Promise<{
   settings?: Partial<LayoutSettings>;
-  currentUser?: API.CurrentUser;
+  currentUser?: any;
   loading?: boolean;
-  fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
+  fetchUserInfo?: () => Promise<any | undefined>;
 }> {
   const fetchUserInfo = async () => {
     try {
@@ -50,7 +50,7 @@ export const layout: RunTimeLayoutConfig = ({
       //   history.push(loginPath);`
       // }
     },
-    links: isDev
+    links: _consIsNodeEnvDev
       ? [
           <Link to="/~docs">
             <IconBookOutlined />
@@ -62,11 +62,12 @@ export const layout: RunTimeLayoutConfig = ({
     // 自定义 403 页面
     unAccessible: <div>unAccessible</div>,
     childrenRender: (children, props) => {
-      // if (initialState?.loading) return <PageLoading />;
+
+      if (initialState?.loading) return <PageLoading />;
       return (
         <HoxRoot>
           {children}
-          {!props.location?.pathname?.includes('/login') && (
+          {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
             <PSettingDrawer
               enableDarkTheme
               settings={initialState?.settings}

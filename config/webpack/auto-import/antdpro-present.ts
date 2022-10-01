@@ -53,7 +53,6 @@ export const antdProPresent = [
   // ['PageContainer', 'PPageContainer'],
   ['PageHeader', 'PPageHeader'],
   ['PageHeaderSkeleton', 'PPageHeaderSkeleton'],
-  ['PageLoading', 'PPageLoading'],
   ['ProBreadcrumb', 'PProBreadcrumb'],
   ['ProCard', 'PProCard'],
   ['ProDescriptions', 'PProDescriptions'],
