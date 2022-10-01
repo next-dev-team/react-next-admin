@@ -5,14 +5,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  img,
-  video {
-    max-width: inherit;
-  }
-  svg {
-    vertical-align: baseline;
-    color: rgb(132, 142, 156);
-    @apply cursor-pointer hover:opacity-90;
-  }
-}
+
