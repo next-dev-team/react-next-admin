@@ -5,11 +5,10 @@
   "scripts": {
     "================ENV================": "=======",
     "env:dev": "cross-env UMI_ENV=dev",
-    "env:pre": "cross-env UMI_ENV=dev",
-    "env:prod": "cross-env UMI_ENV=dev",
+    "env:pre": "cross-env UMI_ENV=pre",
+    "env:prod": "cross-env UMI_ENV=prod",
     "================DEV================": "=======",
     "dev": "pnpm env:dev max dev",
-    "dev:prod": "pnpm env:prod max dev",
     "dev:pre": "pnpm env:pre max dev",
     "==============Build/Demo==============": "=======",
     "preview": "max preview",

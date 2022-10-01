@@ -8,15 +8,21 @@ import defaultSettings from './defaultSettings';
 const { dirname } = require('path');
 const dotEnv = require('dotenv');
 
+const isUmiProd = !process.env.UMI_ENV;
+
 // support multiple env https://github.com/nuxt-community/dotenv-module/issues/59#issuecomment-814245372
 const getEnv = dotEnv.config({
-  path: `${dirname(__dirname)}/.env.${process.env.UMI_ENV ?? 'env'}`, // default is env (prod)
+  path: isUmiProd
+    ? `${dirname(__dirname)}/.env`
+    : `${dirname(__dirname)}/.env.${process.env.UMI_ENV}`, // default is env (prod)
 });
 /**
  * !check is exist env and prevent accidentally deploy to server
  */
+
 console.error(
-  '************** Please make sure you have add all  values to env or .env.dev etc **********',
+  '************** Please make sure correct ENV values in .env or .env.dev etc **********',
+  process.env.UMI_ENV,
 );
 
 // all UMI config here
@@ -25,6 +31,7 @@ export default defineConfig({
   define: {
     'process.env.version': '1.1.0',
     ...(getEnv.parsed ?? {}),
+    UMI_ENV: getEnv.parsed?.UMI_ENV || 'prod',
   },
   // not working with MSFU
   fastRefresh: false,

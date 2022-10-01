@@ -11,6 +11,8 @@ pnpm-lock.yaml
 .eslintcache
 .husky
 
+.env
+
 # production
 /dist
 # /.vscode
