@@ -5,7 +5,7 @@ import theme from './theme';
 import dotenv from 'dotenv';
 import { autoImportPlugin } from './webpack/auto-import';
 import defaultSettings from './defaultSettings';
-const isDev = process.env.NODE_ENV === 'development';
+// const isDev = process.env.NODE_ENV === 'development';
 const { dirname } = require('path');
 
 // support multiple env https://github.com/nuxt-community/dotenv-module/issues/59#issuecomment-814245372
@@ -24,8 +24,6 @@ if (isInvalidEnv) {
 // all UMI config here
 export default defineConfig({
   npmClient: 'pnpm',
-  clickToComponent: isDev ? {} : undefined,
-
   define: {
     'process.env.version': '1.1.0',
     ...(getEnv.parsed ?? {}),
@@ -52,35 +50,14 @@ export default defineConfig({
   //hash配置是否让生成的文件包含 hash 后缀，通常用于增量发布和避免浏览器加载缓存
   hash: true,
   //生成map文件
-  devtool: isDev ? 'source-map' : false,
   // 代理配置(跨域处理)
-  proxy: proxy,
+  proxy,
   //路由 不配置 默认为约定式路由
-  routes: routes,
+  routes,
   // 别名配置
   alias: {},
   ignoreMomentLocale: true,
-  /**
-   * 配置 external
-   * 对于一些大尺寸依赖，比如图表库、antd 等，可尝试通过 externals 的配置引入相关 umd 文件，减少编译消耗
-   */
-  externals: isDev
-    ? {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-      }
-    : {},
-  //配置额外的 meta 标签。数组中可以配置key:value形式的对象。
-  // metas:[],
-  //配置 <head> 里的额外脚本，数组项为字符串或对象。
-  // headScripts:[],
-  // 配置 <body> 里的额外脚本。。
-  scripts: isDev
-    ? [
-        '//unpkg.com/react@18.2.0/umd/react.production.min.js',
-        '//unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
-      ]
-    : [],
+ 
   //配置额外的 link 标签。
   // links:[],
   /**
@@ -108,8 +85,7 @@ export default defineConfig({
   //配置额外的 umi 插件。
   plugins: [],
 
-  //auto import not working with mfsu
-  mfsu: isDev,
+
   // @ts-ignore
   chainWebpack(config: any, { webpack }: any) {
     //引入全局公用方法
