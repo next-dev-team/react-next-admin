@@ -5,7 +5,7 @@ NPM_FLAGS = "--version"
 [build]
 # for demo or preview
 command = "npx pnpm i --no-frozen-lockfile --store=node_modules/.pnpm-store && pnpm run build"
-publish = "dist/pre"
+publish = "dist"
 
 [[redirects]]
 from = "/*"

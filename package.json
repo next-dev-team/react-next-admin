@@ -8,7 +8,7 @@
     "dev:pre": "cross-env UMI_ENV=pre max dev",
     "build:dev": "cross-env UMI_ENV=dev max build",
     "build:pre": "cross-env UMI_ENV=pre max build",
-    "build": "cross-env UMI_ENV=prod max build",
+    "build": "pnpm build:pre",
     "postinstall": "max setup",
     "umig": "max g",
     "serve:dev": "serve ./dist/dev",
