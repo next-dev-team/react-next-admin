@@ -1,12 +1,13 @@
 [build.environment]
-  NPM_FLAGS = "--version"
-  NODE_VERSION = "16"
+NODE_VERSION = "16"
+NPM_FLAGS = "--version"
 
 [build]
-  publish = "dist/pro"
-  command = "npx pnpm i --no-frozen-lockfile --store=node_modules/.pnpm-store && npx pnpm run build"
+# for demo or preview
+command = "npx pnpm i --no-frozen-lockfile --store=node_modules/.pnpm-store && pnpm run build"
+publish = "dist/pre"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "/*"
+status = 200
+to = "/index.html"

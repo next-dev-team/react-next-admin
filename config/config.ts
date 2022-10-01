@@ -2,14 +2,33 @@ import { defineConfig } from '@umijs/max';
 import proxy from './proxy';
 import routes from './routes';
 import theme from './theme';
+import dotenv from 'dotenv';
 import { autoImportPlugin } from './webpack/auto-import';
 import defaultSettings from './defaultSettings';
 const isDev = process.env.NODE_ENV === 'development';
+const { dirname } = require('path');
 
+// support multiple env https://github.com/nuxt-community/dotenv-module/issues/59#issuecomment-814245372
+const getEnv = dotenv.config({
+  path: `${dirname(__dirname)}/.env.${process.env.UMI_ENV ?? 'env'}`, // default is env (prod)
+});
+const isInvalidEnv = !getEnv?.parsed?.UMI_ENV; // no UMI_ENV provide will be
+/**
+ * !check is exist env and prevent accidentally deploy to server
+ */
+if (isInvalidEnv) {
+  console.error('isInvalidEnv', 'please provide .env or .env.dev etc');
+  throw Error('please provide env');
+}
+
+// all UMI config here
 export default defineConfig({
   npmClient: 'pnpm',
+  clickToComponent: isDev ? {} : undefined,
+
   define: {
     'process.env.version': '1.1.0',
+    ...(getEnv.parsed ?? {}),
   },
   fastRefresh: false,
   clientLoader: {},
@@ -33,7 +52,7 @@ export default defineConfig({
   //hash配置是否让生成的文件包含 hash 后缀，通常用于增量发布和避免浏览器加载缓存
   hash: true,
   //生成map文件
-  devtool: 'source-map',
+  devtool: isDev ? 'source-map' : false,
   // 代理配置(跨域处理)
   proxy: proxy,
   //路由 不配置 默认为约定式路由

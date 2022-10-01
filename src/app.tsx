@@ -2,6 +2,7 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
+import HeaderRight from "./components/HeaderRight";
 
 const loginPath = '/user/login';
 
@@ -43,6 +44,8 @@ export const layout: RunTimeLayoutConfig = ({
   setInitialState,
 }) => {
   return {
+      rightContentRender: () => <HeaderRight />,
+      disableContentMargin: false,
     onPageChange: () => {
       // const { location } = history;
       // 如果没有登录，重定向到 login
@@ -62,6 +65,7 @@ export const layout: RunTimeLayoutConfig = ({
     // 自定义 403 页面
     unAccessible: <div>unAccessible</div>,
     childrenRender: (children, props) => {
+      console.log('_consIsAppEnvDev', _consIsAppEnvDev);
 
       if (initialState?.loading) return <PageLoading />;
       return (

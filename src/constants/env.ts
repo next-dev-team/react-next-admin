@@ -2,7 +2,7 @@
 /**
  * App dev local
  */
-export const _consIsAppEnvDev = process.env.UMI_ENV === 'dev_local'
+export const _consIsAppEnvDev = UMI_ENV === 'dev'
 /**
  * NODE_ENV development
  */
