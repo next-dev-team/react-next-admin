@@ -4,4 +4,5 @@ export {};
 
 declare global {
   const UMI_ENV: 'dev';
+  const BASE_API: string;
 }

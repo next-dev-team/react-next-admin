@@ -94,4 +94,5 @@ export const layout: RunTimeLayoutConfig = ({
  */
 export const request: RequestConfig = {
   ...errorConfig,
+  baseURL: BASE_API,
 };

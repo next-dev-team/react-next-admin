@@ -2,7 +2,14 @@ import { SubCom } from './subCom';
 import { useWelcomeLogic } from './useWelcomeLogic';
 
 const Index = () => {
-  const { tasks, setTasks, appStore } = useWelcomeLogic();
+  const {
+    tasks,
+    setTasks,
+    appStore,
+    dataUser,
+    refetchGetUser,
+    loadingGetUser,
+  } = useWelcomeLogic();
 
   /**
    * most of the component or function are auto import by unplugin-auto-import
@@ -18,8 +25,8 @@ const Index = () => {
 
   // react
   useEffect(() => {
-    console.log('sila');
-  }, []);
+    console.log('sila', dataUser);
+  }, [dataUser]);
 
   // ahook
   _useCreation(() => {
@@ -37,7 +44,27 @@ const Index = () => {
 
   return (
     <PageContainer content={'This page can only be viewed by admin'}>
-      <ASpace>
+      <div className="flex gap-4">
+        {/* ---- share hook logic------ */}
+        <PProCard
+          loading={loadingGetUser}
+          bordered
+          title="Fetch API"
+          extra={
+            <IconIonRefreshCircleSharp
+              className="text-lg"
+              onClick={refetchGetUser}
+            />
+          }
+        >
+          <PStatisticCard
+            statistic={{
+              title: dataUser?.[0]?.name,
+              value: dataUser?.[0]?.id,
+            }}
+          />
+        </PProCard>
+
         <PProCard bordered title="Iconify">
           {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
           <div className="flex gap-2">
@@ -74,7 +101,7 @@ const Index = () => {
             <SubCom onClick={() => setTasks('test')} />
           </ASpace>
         </PProCard>
-      </ASpace>
+      </div>
     </PageContainer>
   );
 };
