@@ -11,6 +11,8 @@ const Index = () => {
     loadingGetUser,
   } = useWelcomeLogic();
 
+  const { count } = useAppStore();
+
   /**
    * most of the component or function are auto import by unplugin-auto-import
    * see in folder config/webpack/auto-import
@@ -25,8 +27,8 @@ const Index = () => {
 
   // react
   useEffect(() => {
-    console.log('sila', dataUser);
-  }, [dataUser]);
+    console.log('sila', count);
+  }, [count]);
 
   // ahook
   _useCreation(() => {
