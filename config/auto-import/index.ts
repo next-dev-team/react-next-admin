@@ -22,7 +22,7 @@ export const autoImportPlugin = () =>
         '@ant-design/pro-components': antdProPresent,
         '@ant-design/icons': antdIconPresent,
         '@umijs/max': umiPresent,
-        'hox': ['createGlobalStore','HoxRoot'],
+        hox: ['createGlobalStore', 'HoxRoot'],
       },
     ],
     vueTemplate: false,
@@ -33,6 +33,7 @@ export const autoImportPlugin = () =>
       './src/utils/**',
       './src/stores/**',
       './src/constants/**',
+      './src/components',
 
       // './composables/**', // all nested modules
     ],

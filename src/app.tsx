@@ -2,7 +2,7 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import HeaderRight from './components/HeaderRight';
+import { RequestConfig } from '@umijs/max';
 
 const loginPath = '/user/login';
 
@@ -44,7 +44,7 @@ export const layout: RunTimeLayoutConfig = ({
   setInitialState,
 }) => {
   return {
-    rightContentRender: () => <HeaderRight />,
+    rightContentRender: () => <GHeaderRight />,
     disableContentMargin: false,
     onPageChange: () => {
       // const { location } = history;
@@ -92,6 +92,6 @@ export const layout: RunTimeLayoutConfig = ({
  * 它基于 axios 和 ahooks 的 useRequest 提供了一套统一的网络请求和错误处理方案。
  * @doc https://umijs.org/docs/max/request#配置
  */
-export const request = {
+export const request: RequestConfig = {
   ...errorConfig,
 };

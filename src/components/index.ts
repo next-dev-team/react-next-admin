@@ -1,1 +1,1 @@
-export { default as HeaderRight } from './HeaderRight';
+export { default as GHeaderRight } from './HeaderRight';
