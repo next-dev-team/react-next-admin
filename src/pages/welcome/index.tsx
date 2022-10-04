@@ -42,7 +42,7 @@ const Index = () => {
   // lodash
   console.log('utils', __isArray([]));
   // pro component
-  console.log('a', _isBrowser());
+  console.log('a', _regexEmail.test('gg@fka.co'));
 
   return (
     <PageContainer content={'This page can only be viewed by admin'}>

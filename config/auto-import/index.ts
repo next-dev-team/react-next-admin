@@ -3,6 +3,7 @@ import { antdIconPresent } from './antd-icons-present';
 import { antdPresent } from './antd-present';
 import { antdProPresent } from './antdpro-present';
 import { lodashPresent } from './lodash-present';
+import { nextDevPresent } from './next-dev-present';
 import { umiPresent } from './umi-presents';
 
 const IconsResolver = require('unplugin-icons/resolver');
@@ -23,6 +24,7 @@ export const autoImportPlugin = () =>
         '@ant-design/icons': antdIconPresent,
         '@umijs/max': umiPresent,
         hox: ['createGlobalStore', 'HoxRoot'],
+        'next-dev-utils/dist': nextDevPresent,
       },
     ],
     vueTemplate: false,
