@@ -3,6 +3,7 @@ import { antdIconPresent } from './antd-icons-present';
 import { antdPresent } from './antd-present';
 import { antdProPresent } from './antdpro-present';
 import { lodashPresent } from './lodash-present';
+import { unplugPresent } from './next-antd-ui';
 import { nextDevPresent } from './next-dev-present';
 import { umiPresent } from './umi-presents';
 
@@ -25,6 +26,7 @@ export const autoImportPlugin = () =>
         '@umijs/max': umiPresent,
         hox: ['createGlobalStore', 'HoxRoot'],
         'next-dev-utils/dist': nextDevPresent,
+        'next-dev-antd-ui/dist': unplugPresent,
       },
     ],
     vueTemplate: false,

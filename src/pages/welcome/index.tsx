@@ -37,7 +37,7 @@ const Index = () => {
   }, []);
 
   // other folder
-  console.log('utils', _uuid());
+  console.log('utils');
 
   // lodash
   console.log('utils', __isArray([]));

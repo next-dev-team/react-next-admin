@@ -31,7 +31,8 @@ specifiers:
   jest: ^29.1.1
   lint-staged: ^13.0.3
   lodash-es: ^4.17.21
-  next-dev-utils: latest
+  next-dev-antd-ui: ^0.0.10
+  next-dev-utils: ^1.0.7
   prettier: ^2.7.1
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -53,7 +54,8 @@ dependencies:
   crypto-js: 4.1.1
   hox: 2.1.0_react@18.2.0
   lodash-es: 4.17.21
-  next-dev-utils: 1.0.1
+  next-dev-antd-ui: 0.0.10_x2w3agaajo6irmpibyelf6i4ne
+  next-dev-utils: 1.0.7
   react: 18.2.0
 
 devDependencies:
@@ -4163,11 +4165,9 @@ packages:
     resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
     dependencies:
       '@types/lodash': 4.14.186
-    dev: true
 
   /@types/lodash/4.14.186:
     resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
-    dev: true
 
   /@types/mapbox-gl/1.13.4:
     resolution: {integrity: sha512-yoHSG4J9uNTlpQk5GXzbaC6b+XBHGljT10yM5fX2ZAGcH2CVb96TF2uFdoYFehsmeZqlo3txNsbMWpiGh7oy2g==}
@@ -11433,13 +11433,26 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  /next-dev-utils/1.0.1:
-    resolution: {integrity: sha512-ych0vA+ZDBfAwGCKVkez4X6EzPGGOLz5ZD4Qs1QbVDKU11MReJiP6Z05AmI2cMtxF/AraatTFP21GFeyCLW5CA==}
+  /next-dev-antd-ui/0.0.10_x2w3agaajo6irmpibyelf6i4ne:
+    resolution: {integrity: sha512-mWtX3a1uYGuHvySHaOysTM9gmzw5AvByRgsLhPbcBg0kPQvaxbBpvNKcLyitwRZxOwCtrdFwbAZ6hm1FET1Y8A==}
+    peerDependencies:
+      '@ant-design/icons': '>=4'
+      '@ant-design/pro-components': '>=2'
+      antd: '>=4'
     dependencies:
+      '@ant-design/pro-components': 2.3.13_dh7rbybk2vhns24x37ivjunk4m
+      antd: 4.23.4_biqbaboplfbrettd7655fr4n2y
+      classnames: 2.3.2
+    dev: false
+
+  /next-dev-utils/1.0.7:
+    resolution: {integrity: sha512-NXQeNBdctBts5ScVySF2SRNeufcDCb2b4JEV9lxul6a/4da4MqUGWIwO8ftAKXwhGY4dpBw9B3v8iqKOY1XPQg==}
+    dependencies:
+      '@types/lodash-es': 4.17.6
       '@umijs/fabric': 2.14.0
       crypto-js: 4.1.1
       jsencrypt: 3.2.1
-      lodash: 4.17.21
+      lodash-es: 4.17.21
       lorem-ipsum: 2.0.8
       store: 2.0.12
     transitivePeerDependencies:
