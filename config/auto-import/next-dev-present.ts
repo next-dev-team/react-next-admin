@@ -7,4 +7,6 @@ export const nextDevPresent = [
   '_regexNumber',
   '_regexPassword',
   '_regexPhone',
+  '_setConfigAxios',
+  '_requestAxios',
 ];

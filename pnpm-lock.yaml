@@ -29,10 +29,11 @@ specifiers:
   fork-ts-checker-webpack-plugin: ^7.2.13
   hox: ^2.1.0
   jest: ^29.1.1
+  latest: ^0.2.0
   lint-staged: ^13.0.3
   lodash-es: ^4.17.21
-  next-dev-antd-ui: ^0.0.10
-  next-dev-utils: ^1.0.7
+  next-dev-antd-ui: latest
+  next-dev-utils: latest
   prettier: ^2.7.1
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -44,6 +45,7 @@ specifiers:
   typescript: ^4.8.4
   unplugin-auto-import: ^0.11.2
   unplugin-icons: ^0.14.11
+  up: ^1.0.2
 
 dependencies:
   '@ant-design/charts': 1.4.2_dh7rbybk2vhns24x37ivjunk4m
@@ -53,10 +55,12 @@ dependencies:
   antd-img-crop: 4.2.5_dh7rbybk2vhns24x37ivjunk4m
   crypto-js: 4.1.1
   hox: 2.1.0_react@18.2.0
+  latest: 0.2.0
   lodash-es: 4.17.21
-  next-dev-antd-ui: 0.0.10_x2w3agaajo6irmpibyelf6i4ne
-  next-dev-utils: 1.0.7
+  next-dev-antd-ui: 0.0.12_q7un34azjkngynrfchlgstj5tm
+  next-dev-utils: 1.0.8
   react: 18.2.0
+  up: 1.0.2
 
 devDependencies:
   '@iconify/json': 2.1.116
@@ -5535,7 +5539,6 @@ packages:
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: true
 
   /at-least-node/1.0.0:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
@@ -5606,7 +5609,7 @@ packages:
   /axios/0.21.4_debug@4.3.2:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.2_debug@4.3.2
+      follow-redirects: 1.15.2
     transitivePeerDependencies:
       - debug
     dev: true
@@ -5614,11 +5617,21 @@ packages:
   /axios/0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.15.2_debug@4.3.2
+      follow-redirects: 1.15.2
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug
     dev: true
+
+  /axios/1.1.2:
+    resolution: {integrity: sha512-bznQyETwElsXl2RK7HLLwb5GPpOLlycxHCtrpDR/4RqqBzjARaOTo3jz4IgtntWUYee7Ne4S8UHd92VCuzPaWA==}
+    dependencies:
+      follow-redirects: 1.15.2
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /babel-jest/28.1.3:
     resolution: {integrity: sha512-epUaPOEWMk3cWX0M/sPvCHHCe9fMFAa/9hXEgKP8nFfNl/jlGkE9ucq9NqkZGXLDduCJYS0UvSlPUwC0S+rH6Q==}
@@ -6258,7 +6271,6 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
-    dev: true
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -6902,7 +6914,6 @@ packages:
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
-    dev: true
 
   /des.js/1.0.1:
     resolution: {integrity: sha512-Q0I4pfFrv2VPd34/vfLrFOoRmlYj3OV50i7fskps1jZWK1kApMWWT9G6RRUeYedLcBDIhnSDaUvJMb3AhUlaEA==}
@@ -9012,7 +9023,7 @@ packages:
       uglify-js: 2.8.29
     dev: false
 
-  /follow-redirects/1.15.2_debug@4.3.2:
+  /follow-redirects/1.15.2:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -9020,9 +9031,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dependencies:
-      debug: 4.3.2
-    dev: true
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -9100,7 +9108,6 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
-    dev: true
 
   /fraction.js/4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
@@ -10829,6 +10836,13 @@ packages:
       l7eval5: 0.0.3
     dev: false
 
+  /latest/0.2.0:
+    resolution: {integrity: sha512-nsIM/FjwLcsKZ1KDAw5CivnM26zzMs3zGBL4SdjYXHI5tMcOWjGhFDMBKIum4WNAkZmeVw7zU1jR2H2UiKoQVA==}
+    hasBin: true
+    dependencies:
+      npm: 2.15.12
+    dev: false
+
   /lazy-ass/1.6.0:
     resolution: {integrity: sha512-cc8oEVoctTvsFZ/Oje/kGnHbpWHYBe8IAJe4C0QNc3t8uM/0Y8+erSz/7Y1ALuXTEZTMvxXwO6YbX1ey3ujiZw==}
     engines: {node: '> 0.8'}
@@ -11278,14 +11292,12 @@ packages:
   /mime-db/1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
-    dev: true
 
   /mime-types/2.1.35:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.52.0
-    dev: true
 
   /mime/2.6.0:
     resolution: {integrity: sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==}
@@ -11345,21 +11357,18 @@ packages:
 
   /ml-array-max/1.2.4:
     resolution: {integrity: sha512-BlEeg80jI0tW6WaPyGxf5Sa4sqvcyY6lbSn5Vcv44lp1I2GR6AWojfUvLnGTNsIXrZ8uqWmo8VcG1WpkI2ONMQ==}
-    deprecated: This package is not maintained anymore. An equivalent function is available in ml-spectra-processing. https://github.com/mljs/spectra-processing/tree/master/src/x
     dependencies:
       is-any-array: 2.0.0
     dev: false
 
   /ml-array-min/1.2.3:
     resolution: {integrity: sha512-VcZ5f3VZ1iihtrGvgfh/q0XlMobG6GQ8FsNyQXD3T+IlstDv85g8kfV0xUG1QPRO/t21aukaJowDzMTc7j5V6Q==}
-    deprecated: This package is not maintained anymore. An equivalent function is available in ml-spectra-processing. https://github.com/mljs/spectra-processing/tree/master/src/x
     dependencies:
       is-any-array: 2.0.0
     dev: false
 
   /ml-array-rescale/1.3.7:
     resolution: {integrity: sha512-48NGChTouvEo9KBctDfHC3udWnQKNKEWN0ziELvY3KG25GR5cA8K8wNVzracsqSW1QEkAXjTNx+ycgAv06/1mQ==}
-    deprecated: This package is not maintained anymore. An equivalent function is available in ml-spectra-processing. https://github.com/mljs/spectra-processing/tree/master/src/x
     dependencies:
       is-any-array: 2.0.0
       ml-array-max: 1.2.4
@@ -11433,29 +11442,33 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  /next-dev-antd-ui/0.0.10_x2w3agaajo6irmpibyelf6i4ne:
-    resolution: {integrity: sha512-mWtX3a1uYGuHvySHaOysTM9gmzw5AvByRgsLhPbcBg0kPQvaxbBpvNKcLyitwRZxOwCtrdFwbAZ6hm1FET1Y8A==}
+  /next-dev-antd-ui/0.0.12_q7un34azjkngynrfchlgstj5tm:
+    resolution: {integrity: sha512-rgjWiIDHkj4w0UvlH22dm1Yvak9g6zERniFs9xTE2ZYQZ+uY1qlWowDLLN2KW3mlNoKEm3ZHGmkKWDgTpvKGpA==}
     peerDependencies:
       '@ant-design/icons': '>=4'
       '@ant-design/pro-components': '>=2'
+      ahooks: '=>3'
       antd: '>=4'
     dependencies:
       '@ant-design/pro-components': 2.3.13_dh7rbybk2vhns24x37ivjunk4m
+      ahooks: 3.7.1_react@18.2.0
       antd: 4.23.4_biqbaboplfbrettd7655fr4n2y
       classnames: 2.3.2
     dev: false
 
-  /next-dev-utils/1.0.7:
-    resolution: {integrity: sha512-NXQeNBdctBts5ScVySF2SRNeufcDCb2b4JEV9lxul6a/4da4MqUGWIwO8ftAKXwhGY4dpBw9B3v8iqKOY1XPQg==}
+  /next-dev-utils/1.0.8:
+    resolution: {integrity: sha512-ceBtRa+WmXbbbkz2NnaYL0SrcOpDjKruxj2WnAfL4mDdVIAQ5s21h3+QjMsmwjG4us6SzUrwzhk33I7U88S8NA==}
     dependencies:
       '@types/lodash-es': 4.17.6
       '@umijs/fabric': 2.14.0
+      axios: 1.1.2
       crypto-js: 4.1.1
       jsencrypt: 3.2.1
       lodash-es: 4.17.21
       lorem-ipsum: 2.0.8
       store: 2.0.12
     transitivePeerDependencies:
+      - debug
       - postcss-jsx
       - postcss-markdown
       - supports-color
@@ -11568,6 +11581,83 @@ packages:
     dependencies:
       path-key: 4.0.0
     dev: true
+
+  /npm/2.15.12:
+    resolution: {integrity: sha512-WMoAJ518W0vHjWy1abYnTeyG9YQpSoYGPxAx7d0C0L7U7Jo44bZsrvTjccmDohCJGxpasdKfqsKsl6o/RUPx6A==}
+    hasBin: true
+    dev: false
+    bundledDependencies:
+      - abbrev
+      - ansi
+      - ansi-regex
+      - ansicolors
+      - ansistyles
+      - archy
+      - async-some
+      - block-stream
+      - char-spinner
+      - chmodr
+      - chownr
+      - cmd-shim
+      - columnify
+      - config-chain
+      - dezalgo
+      - editor
+      - fs-vacuum
+      - fs-write-stream-atomic
+      - fstream
+      - fstream-npm
+      - github-url-from-git
+      - github-url-from-username-repo
+      - glob
+      - graceful-fs
+      - hosted-git-info
+      - imurmurhash
+      - inflight
+      - inherits
+      - ini
+      - init-package-json
+      - lockfile
+      - lru-cache
+      - minimatch
+      - mkdirp
+      - node-gyp
+      - nopt
+      - normalize-git-url
+      - normalize-package-data
+      - npm-cache-filename
+      - npm-install-checks
+      - npm-package-arg
+      - npm-registry-client
+      - npm-user-validate
+      - npmlog
+      - once
+      - opener
+      - osenv
+      - path-is-inside
+      - read
+      - read-installed
+      - read-package-json
+      - readable-stream
+      - realize-package-specifier
+      - request
+      - retry
+      - rimraf
+      - semver
+      - sha
+      - slide
+      - sorted-object
+      - spdx-license-ids
+      - strip-ansi
+      - tar
+      - text-table
+      - uid-number
+      - umask
+      - validate-npm-package-license
+      - validate-npm-package-name
+      - which
+      - wrappy
+      - write-file-atomic
 
   /nth-check/2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
@@ -12969,7 +13059,6 @@ packages:
 
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-    dev: true
 
   /ps-tree/1.2.0:
     resolution: {integrity: sha512-0VnamPPYHl4uaU/nSFeZZpR21QAWRz+sRv4iW9+v/GS/J5U5iZB5BNN6J0RMoOvdx2gWM2+ZFMIm58q24e4UYA==}
@@ -15641,6 +15730,10 @@ packages:
     resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
     engines: {node: '>=8'}
     dev: true
+
+  /up/1.0.2:
+    resolution: {integrity: sha512-PKVGUj7i1qMWSR83H3PZpw1h+21wAr1qxqF/8zgTVHS+sHTsu1zvepQDoDJN0Kv49quNJwWgAKDAK2xPy7jocg==}
+    dev: false
 
   /update-browserslist-db/1.0.9_browserslist@4.21.4:
     resolution: {integrity: sha512-/xsqn21EGVdXI3EXSum1Yckj3ZVZugqyOZQ/CxYPBD/R+ko9NSUScf8tFF4dOKY+2pvSSJA/S+5B8s4Zr4kyvg==}

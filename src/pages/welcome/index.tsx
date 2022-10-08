@@ -1,3 +1,4 @@
+import { AntdFormCrud } from './crud';
 import { SubCom } from './subCom';
 import { useWelcomeLogic } from './useWelcomeLogic';
 
@@ -46,7 +47,7 @@ const Index = () => {
 
   return (
     <PageContainer content={'This page can only be viewed by admin'}>
-      <div className="flex gap-4">
+      <div className="flex gap-4 mb-4">
         {/* ---- share hook logic------ */}
         <PProCard
           loading={loadingGetUser}
@@ -104,6 +105,7 @@ const Index = () => {
           </ASpace>
         </PProCard>
       </div>
+      <AntdFormCrud />
     </PageContainer>
   );
 };
