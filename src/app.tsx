@@ -2,8 +2,9 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
+import { createIntl, enUSIntl } from '@ant-design/pro-components';
 import { RequestConfig } from '@umijs/max';
-
+import { ConfigProvider } from '@ant-design/pro-provider';
 const loginPath = '/user/login';
 
 /**
@@ -65,22 +66,30 @@ export const layout: RunTimeLayoutConfig = ({
     // 自定义 403 页面
     unAccessible: <div>unAccessible</div>,
     childrenRender: (children, props) => {
+      // Generate the intl object
+      const enUSIntl1 = createIntl('en_US', enUSIntl);
       if (initialState?.loading) return <PageLoading />;
       return (
         <HoxRoot>
-          {children}
-          {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
-            <PSettingDrawer
-              enableDarkTheme
-              settings={initialState?.settings}
-              onSettingChange={(settings) => {
-                setInitialState((preInitialState) => ({
-                  ...preInitialState,
-                  settings,
-                }));
-              }}
-            />
-          )}
+          <ConfigProvider
+            value={{
+              intl: enUSIntl,
+            }}
+          >
+            {children}
+            {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
+              <PSettingDrawer
+                enableDarkTheme
+                settings={initialState?.settings}
+                onSettingChange={(settings) => {
+                  setInitialState((preInitialState) => ({
+                    ...preInitialState,
+                    settings,
+                  }));
+                }}
+              />
+            )}
+          </ConfigProvider>
         </HoxRoot>
       );
     },

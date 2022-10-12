@@ -45,6 +45,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/pro-components": "^2.3.13",
+    "@ant-design/pro-provider": "^2.0.6",
     "ahooks": "^3.7.1",
     "antd": "latest",
     "antd-img-crop": "^4.2.5",
@@ -52,8 +53,8 @@
     "hox": "^2.1.0",
     "latest": "^0.2.0",
     "lodash-es": "^4.17.21",
-    "next-dev-antd-ui": "^0.0.12",
-    "next-dev-utils": "^1.0.8",
+    "next-dev-antd-ui": "^0.0.13",
+    "next-dev-utils": "^1.0.9",
     "react": "^18.2.0"
   },
   "devDependencies": {
