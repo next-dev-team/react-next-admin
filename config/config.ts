@@ -34,9 +34,15 @@ export default defineConfig({
     UMI_ENV: getEnv.parsed?.UMI_ENV || 'prod',
   },
   // not working with MSFU
-  fastRefresh: false,
-  clientLoader: {},
-  srcTranspiler: 'esbuild' as any,
+  // fastRefresh: false,
+  // Fast Refresh 热更新
+  fastRefresh: true,
+  mfsu: {
+    // esbuild: true,
+  },
+  // @ts-ignore
+  srcTranspiler: 'esbuild',
+  // clientLoader: {},
   // targets: {
   //   ie: 11,
   // },

@@ -2,7 +2,7 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import { createIntl, enUSIntl } from '@ant-design/pro-components';
+import { enUSIntl } from '@ant-design/pro-components';
 import { RequestConfig } from '@umijs/max';
 import { ConfigProvider } from '@ant-design/pro-provider';
 const loginPath = '/user/login';
@@ -56,7 +56,7 @@ export const layout: RunTimeLayoutConfig = ({
     },
     links: _consIsNodeEnvDev
       ? [
-          <Link to="/~docs">
+          <Link to="/~docs" key="docs">
             <IconBookOutlined />
             <span>Document</span>
           </Link>,
@@ -67,14 +67,16 @@ export const layout: RunTimeLayoutConfig = ({
     unAccessible: <div>unAccessible</div>,
     childrenRender: (children, props) => {
       // Generate the intl object
-      const enUSIntl1 = createIntl('en_US', enUSIntl);
+      // const enUSIntl1 = createIntl('en_US', enUSIntl);
       if (initialState?.loading) return <PageLoading />;
       return (
         <HoxRoot>
           <ConfigProvider
-            value={{
-              intl: enUSIntl,
-            }}
+            value={
+              {
+                intl: enUSIntl,
+              } as any
+            }
           >
             {children}
             {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (

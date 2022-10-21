@@ -1,6 +1,5 @@
 import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import { useForm } from 'antd/es/form/Form';
-import { enUSIntl } from '@ant-design/pro-provider';
 
 const ErrMsg = ({ err }: { err: any }) => {
   return (
@@ -8,8 +7,8 @@ const ErrMsg = ({ err }: { err: any }) => {
       <div className="flex flex-col gap-y-0.5">
         {typeof err === 'string' && err}
         {__isArray(err) &&
-          err?.map((i) => {
-            return <ATypography.Text>{i?.message}</ATypography.Text>;
+          err?.map((i, k) => {
+            return <ATypography.Text key={k}>{i?.message}</ATypography.Text>;
           })}
       </div>
     </>
