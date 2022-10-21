@@ -1,4 +1,4 @@
-import { AntdFormCrud } from './crud';
+import AntdFormCrud from './crud';
 import { SubCom } from './subCom';
 import { useWelcomeLogic } from './useWelcomeLogic';
 

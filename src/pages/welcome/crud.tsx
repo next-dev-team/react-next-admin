@@ -1,140 +1,184 @@
-import type { ActionType, ProColumns } from '@ant-design/pro-components';
+import { useRef, useState } from 'react';
+import FormCrud from 'next-dev-antd-ui/dist/FormCrud';
+
+import {
+  ActionType,
+  BetaSchemaForm,
+  ProColumns,
+} from '@ant-design/pro-components';
 import { useForm } from 'antd/es/form/Form';
 
-const ErrMsg = ({ err }: { err: any }) => {
-  return (
-    <>
-      <div className="flex flex-col gap-y-0.5">
-        {typeof err === 'string' && err}
-        {__isArray(err) &&
-          err?.map((i, k) => {
-            return <ATypography.Text key={k}>{i?.message}</ATypography.Text>;
-          })}
-      </div>
-    </>
-  );
-};
+import enUSIntl from 'antd/es/locale/en_US';
+import kmKHIntl from 'antd/es/locale/km_KH';
+import dayjs from 'dayjs';
 
 interface ResData {
-  meta: Meta;
   data: Datum[];
 }
 
 interface Datum {
+  state: string;
   id: number;
-  name: string;
-  email: string;
-  gender: string;
   status: string;
+  user_created?: any;
+  date_created: string;
+  user_updated: string;
+  date_updated: string;
+  title: string;
+  photo: string;
+  iframeUr?: any;
+  short_description: string;
+  description: string;
 }
 
-interface Meta {
-  pagination: Pagination;
-}
+type Filter = Datum;
+const ASSETS = 'https://dwmniez7.directus.app/assets/';
 
-interface Pagination {
-  total: number;
-  pages: number;
-  page: number;
-  limit: number;
-  links: Links;
-}
+const valueEnum = {
+  0: 'close',
+  1: 'running',
+  2: 'online',
+  3: 'error',
+};
 
-interface Links {
-  previous?: any;
-  current: string;
-  next: string;
-}
+const intlMap = {
+  kmKHIntl,
+  enUSIntl,
+};
 
-type Filter = Partial<Pagination & Datum>;
-
-export const AntdFormCrud = () => {
-  // set init
-  _setConfigAxios({
-    baseURL: 'https://gorest.co.in/public/v1',
-    headers: {
-      Authorization:
-        'Bearer 0b4c0fa225e4e432de7e51fe13691e86e27ac12a360ca251bf714eeb00942325',
-    },
-    onError: (err) => {
-      console.log('er', err?.data?.data?.message);
-      _message.error({
-        content: <ErrMsg err={err?.data?.data?.message || err?.data?.data} />,
-      });
-    },
-    onSuccess: (res) => {
-      if (String(res?.config?.method)?.toLowerCase() !== 'get') {
-        _message.success({
-          content: <ErrMsg err="success" />,
-        });
-      }
-    },
-  });
-
-  const addNewBlog = (params: Partial<Datum>) =>
-    _requestAxios<ResData>('/users', { params, method: 'post' });
-  const editBlog = (id: number, params: Partial<Datum>) =>
-    _requestAxios<ResData>(`/users/${id}`, { params, method: 'put' });
-
-  const deleteBlog = (id: string | number) =>
-    _requestAxios<ResData>(`/users/${id}`, { method: 'delete' });
-
+export default function DemoCrud() {
   const [form] = useForm<Datum>();
   const actionRef = useRef<ActionType>();
+  const [intl, setIntl] = useState<keyof typeof intlMap>('enUSIntl');
 
-  const columns: ProColumns<Datum, 'tag'>[] = [
+  const columns: Array<
+    React.ComponentProps<typeof BetaSchemaForm<Datum>>['columns'][0] & {
+      dataIndex?: keyof Datum | 'list';
+      customRenderType?: 'tag' | 'formList';
+    } & Omit<ProColumns<Datum>, 'valueType'>
+  > = [
     {
+      title: 'No',
+      valueType: 'indexBorder',
+      width: '10%',
+    },
+
+    {
+      order: 6,
+      width: '10%',
       title: 'Name',
-      dataIndex: 'name',
+      dataIndex: 'title',
+      tip: 'The title will automatically shrink if it is too long',
       formItemProps: {
         rules: [{ required: true }],
       },
       hideInSearch: false,
+      copyable: true,
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
+      order: 2,
+      width: '10%',
+      title: 'Photo',
+      dataIndex: 'photo',
+      valueType: { type: 'image', width: 70 },
       formItemProps: {
         rules: [{ required: true }],
+        name: 'photo',
       },
     },
     {
-      title: 'Gender',
-      dataIndex: 'gender',
-      valueType: 'radioButton',
-      fieldProps: {
-        options: [
-          {
-            label: 'Male',
-            value: 'male',
-          },
-          {
-            label: 'Female',
-            value: 'female',
-          },
-        ],
-      },
-      formItemProps: {
-        rules: [{ required: true }],
+      order: 4,
+      width: '30%',
+      title: 'Short Description',
+      dataIndex: 'short_description',
+      valueType: 'textarea',
+      ellipsis: true,
+    },
+    {
+      order: 3,
+      width: '20%',
+      title: 'Modified date',
+      dataIndex: 'date_updated',
+      valueType: 'date',
+    },
+    {
+      order: 5,
+      width: '10%',
+      title: 'state',
+      dataIndex: 'state',
+      initialValue: 'all',
+      filters: true,
+      onFilter: true,
+      valueEnum: {
+        all: { text: 'All', status: 'Default' },
+        close: { text: 'close', status: 'Default' },
+        running: { text: 'running', status: 'Processing' },
+        online: { text: 'Online', status: 'Success' },
+        error: { text: 'Exception', status: 'Error' },
       },
     },
     {
+      width: '10%',
+      title: 'List',
+      align: 'center',
+      valueType: 'formList',
+      dataIndex: 'list',
+      ellipsis: true,
+
+      initialValue: [{ state: 'all', title: 'title' }],
+      columns: [
+        {
+          valueType: 'group',
+          colProps: { span: 24 },
+          columns: [
+            {
+              title: 'status',
+              dataIndex: 'state',
+              valueType: 'select',
+              valueEnum,
+            },
+            {
+              title: 'title',
+              dataIndex: 'title',
+              formItemProps: {
+                rules: [
+                  {
+                    required: true,
+                    message: 'This item is required',
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          valueType: 'dateTime',
+          initialValue: new Date(),
+          dataIndex: 'currentTime',
+        },
+      ],
+    },
+    {
+      order: 1,
+      width: '10%',
       title: 'Status',
       hideInSearch: false,
       dataIndex: 'status',
       valueType: 'select',
+      customRenderType: 'tag',
       formItemProps: {
         rules: [{ required: true }],
       },
+      sorter: true,
       fieldProps: {
         options: [
           {
-            value: 'inactive',
-            label: 'Inactive',
+            value: 'published',
+            label: 'Published',
           },
           {
-            value: 'active',
-            label: 'Active',
+            value: 'draft',
+            label: 'Draft',
           },
         ],
       },
@@ -142,7 +186,7 @@ export const AntdFormCrud = () => {
   ];
 
   return (
-    <>
+    <AConfigProvider locale={intlMap[intl]}>
       <FormCrud<Datum, Filter>
         // manage form, setFieldsValue, resetFields ....
         form={form}
@@ -150,64 +194,120 @@ export const AntdFormCrud = () => {
         actionRef={actionRef}
         // manage all column and render form, filter...
         columns={columns as any}
-        // dataSource={[]}  is manual mode use request instead
+        options={{
+          search: true,
+        }}
+        headerTitle={
+          <ASpace>
+            <span>Advance Table</span>
+            <ASelect<keyof typeof intlMap>
+              defaultActiveFirstOption
+              bordered={false}
+              value={intl}
+              onChange={(value) => {
+                dayjs.locale(intlMap[value].locale);
+                setIntl(value);
+              }}
+              options={Object.keys(intlMap).map((value) => ({
+                value,
+                label: value,
+              }))}
+            />
+          </ASpace>
+        }
+        tableExtraRender={(_, data) => (
+          <ACard>
+            <ADescriptions size="small" column={3}>
+              <ADescriptions.Item label="Row">{data.length}</ADescriptions.Item>
+              <ADescriptions.Item label="Created">Lili Qu</ADescriptions.Item>
+              <ADescriptions.Item label="Association">
+                <a>421421</a>
+              </ADescriptions.Item>
+              <ADescriptions.Item label="Creation Time">
+                2017-01-10
+              </ADescriptions.Item>
+              <ADescriptions.Item label="Effective Time">
+                2017-10-10
+              </ADescriptions.Item>
+            </ADescriptions>
+          </ACard>
+        )}
+        // custom config, params, to _axios request
+        requestConfig={(returnVal) => {
+          const value = returnVal as unknown as ResData & typeof returnVal;
+          console.log('requestConfig', value);
 
-        // request is auto mode super fast for CRUD operation
-        request={async (params, filter, sorter) => {
-          console.log('change params', params, filter, sorter);
+          const idField = value?.id || value?.record?.id;
 
-          const finalParams = {
-            ...params,
-            limit: params?.pageSize,
-            page: params?.current,
-          } as Filter;
-
-          // re run when every param change
-          const res = await _requestAxios<ResData>('/users', {
-            params: finalParams,
-          });
           return {
-            // dataSource for table
-            data: res?.data?.data,
-            success: res?.status === 200,
-            // total for pagination
-            total: res?.data?.meta?.pagination?.total,
+            // common
+            headers: {
+              Authorization: 'Bearer D5UspbnsDoF-PMLpPSESE072T6vky2DJ',
+            },
+            baseURL: 'https://dwmniez7.directus.app/items',
+
+            // getConfig
+            getConfig: {
+              url: '/blog',
+              requestReturn: {
+                data: value?.data?.map?.((i) => {
+                  return {
+                    ...i,
+                    photo: ASSETS + i?.photo,
+                    //@ts-ignore
+                    state: valueEnum[Math.floor(Math.random() * 10) % 4],
+                  };
+                }),
+                total: 10,
+              },
+            },
+            addConfig: {
+              params: {
+                status: 'published',
+                title: 'hello',
+                short_description: 'bg',
+                description: '<p>j</p>',
+                photo: '5c2a896e-b3f4-4098-9ddf-7cefda50905c',
+              },
+            },
+
+            // delete
+            deleteUrl: `/blog/${idField}`,
+
+            //edit
+            editUrl: `/blog/${idField}`,
+            editMethod: 'put',
+            editParam: {
+              ...__omit(value, 'record'),
+            },
           };
         }}
-        // if want to persist columnsState
-        columnsState={{
-          persistenceKey: 'crud-demo-key',
-          persistenceType: 'localStorage',
-        }}
-        // after confirm delete click
-        onDeleteFinished={async (res: { id: string | number }) => {
-          return deleteBlog(res?.id);
-        }}
-        // run after success validate add form
-        onFormAddFinished={async (res) => {
-          console.log('onFormAddFinished', res);
-          return addNewBlog({
-            name: res?.name,
-            status: res?.status,
-            email: res?.email,
-            gender: res?.gender,
-          });
-        }}
-        // run after success validate edit form
-        onFormEditFinished={async (res: any) => {
-          console.log('onFormEditFinished', res);
-          return editBlog(res?.record?.id, {
-            name: res?.name,
-            status: res?.status,
-            email: res?.email,
-            gender: res?.gender,
-          });
-        }}
-        // tracking every event click
-        onSetMode={async (res) => {
-          console.log('onSetMode', res);
+        // manage actions (fixed at the right)
+        actions={{
+          // add more action to dropdown 3 dot
+          moreOptMenu: (val) => {
+            return [
+              {
+                key: 'check',
+                name: 'check',
+                icon: <IconCheckCircleOutlined />,
+                onClick: () => {
+                  _notification.info({
+                    message: 'action click',
+                    description: (
+                      <ATypography.Paragraph code>
+                        {JSON.stringify(val)}
+                      </ATypography.Paragraph>
+                    ),
+                  });
+
+                  console.log('moreOptMenu check', val);
+                },
+              },
+            ];
+          },
         }}
       />
-    </>
+    </AConfigProvider>
   );
-};
+}

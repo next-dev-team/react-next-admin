@@ -4,7 +4,7 @@ specifiers:
   '@ant-design/charts': ^1.4.2
   '@ant-design/pro-components': ^2.3.20
   '@ant-design/pro-provider': ^2.0.7
-  '@iconify/json': 2.1.116
+  '@iconify/json': ^2.1.124
   '@milahu/patch-package': ^6.4.14
   '@svgr/core': ^6.5.0
   '@testing-library/react': ^13.4.0
@@ -33,7 +33,7 @@ specifiers:
   latest: ^0.2.0
   lint-staged: ^13.0.3
   lodash-es: ^4.17.21
-  next-dev-antd-ui: ^0.0.13
+  next-dev-antd-ui: ^0.0.14-beta.1
   next-dev-utils: ^1.0.9
   prettier: ^2.7.1
   react: ^18.2.0
@@ -58,12 +58,12 @@ dependencies:
   hox: 2.1.0_react@18.2.0
   latest: 0.2.0
   lodash-es: 4.17.21
-  next-dev-antd-ui: 0.0.13_lwpllssaipfxgy26aycawodo4y
+  next-dev-antd-ui: 0.0.14-beta.1_lwpllssaipfxgy26aycawodo4y
   next-dev-utils: 1.0.9
   react: 18.2.0
 
 devDependencies:
-  '@iconify/json': 2.1.116
+  '@iconify/json': 2.1.124
   '@milahu/patch-package': 6.4.14
   '@svgr/core': 6.5.0
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
@@ -3056,8 +3056,8 @@ packages:
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
-  /@iconify/json/2.1.116:
-    resolution: {integrity: sha512-1w8S1YkZxeKWA5j9wcZPaBDuDRRjOQB2EPmFPwuSkNnnuvPPAEqyoDfoAno/b1WeJfrcfUlxIf3AE1BAdNqeZA==}
+  /@iconify/json/2.1.124:
+    resolution: {integrity: sha512-b8oQpGFiPOli65TB1deM5Pv4OGYIsN4T3+QBek85h9t+Ckae5lBg0aUVYm6lpC6FJ3iVlKU7DuPWXsqYVZdHyQ==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 0.3.9
@@ -11444,8 +11444,8 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  /next-dev-antd-ui/0.0.13_lwpllssaipfxgy26aycawodo4y:
-    resolution: {integrity: sha512-OF3fOwssaOAwc83/zVBOa2Fnr3nHWmdLnme15YIwXMk/INLC5SSNkKPGZ5+qn1xKb6ZPyLBnb9Vme5k24B4ggQ==}
+  /next-dev-antd-ui/0.0.14-beta.1_lwpllssaipfxgy26aycawodo4y:
+    resolution: {integrity: sha512-AkeVK5Jj13W7eArzWwOh3saB5mCqcHpIJBznGtRUHfE7nBK9jYEKUa0lvr3ubvj7dX0vJADiSR6OvpjXQF3jBw==}
     peerDependencies:
       '@ant-design/icons': '>=4'
       '@ant-design/pro-components': '>=2'

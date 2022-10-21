@@ -34,9 +34,7 @@ export default defineConfig({
     UMI_ENV: getEnv.parsed?.UMI_ENV || 'prod',
   },
   // not working with MSFU
-  // fastRefresh: false,
-  // Fast Refresh 热更新
-  fastRefresh: true,
+  fastRefresh: false,
   mfsu: {
     // esbuild: true,
   },
