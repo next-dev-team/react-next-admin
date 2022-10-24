@@ -2,9 +2,7 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import { enUSIntl } from '@ant-design/pro-components';
 import { RequestConfig } from '@umijs/max';
-import { ConfigProvider } from '@ant-design/pro-provider';
 const loginPath = '/user/login';
 
 /**
@@ -71,27 +69,19 @@ export const layout: RunTimeLayoutConfig = ({
       if (initialState?.loading) return <PageLoading />;
       return (
         <HoxRoot>
-          <ConfigProvider
-            value={
-              {
-                intl: enUSIntl,
-              } as any
-            }
-          >
-            {children}
-            {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
-              <PSettingDrawer
-                enableDarkTheme
-                settings={initialState?.settings}
-                onSettingChange={(settings) => {
-                  setInitialState((preInitialState) => ({
-                    ...preInitialState,
-                    settings,
-                  }));
-                }}
-              />
-            )}
-          </ConfigProvider>
+          {children}
+          {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
+            <PSettingDrawer
+              enableDarkTheme
+              settings={initialState?.settings}
+              onSettingChange={(settings) => {
+                setInitialState((preInitialState) => ({
+                  ...preInitialState,
+                  settings,
+                }));
+              }}
+            />
+          )}
         </HoxRoot>
       );
     },
@@ -105,5 +95,5 @@ export const layout: RunTimeLayoutConfig = ({
  */
 export const request: RequestConfig = {
   ...errorConfig,
-  baseURL: BASE_API,
+  baseURL: BASE_API as string,
 };
