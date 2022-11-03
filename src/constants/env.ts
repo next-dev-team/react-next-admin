@@ -2,7 +2,7 @@
 /**
  * App dev local
  */
-export const _consIsAppEnvDev = UMI_ENV === 'dev'
+export const _consIsAppEnvDev = UMI_ENV === 'dev';
 /**
  * NODE_ENV development
  */

@@ -37,6 +37,7 @@ export const umiPresent = [
   ['proxyMap', '$proxyMap'],
   ['proxySet', '$proxySet'],
   ['proxyWithComputed', '$proxyWithComputed'],
+  ['proxyWithPersistant', '$proxyWithPersistant'],
   ['proxyWithDevtools', '$proxyWithDevtools'],
   ['proxyWithHistory', '$proxyWithHistory'],
   ['renderClient', '$renderClient'],

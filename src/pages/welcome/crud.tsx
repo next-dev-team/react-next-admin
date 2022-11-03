@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
 import FormCrud from 'next-dev-antd-ui/dist/FormCrud';
+import { useRef, useState } from 'react';
 
 import {
   ActionType,
@@ -278,7 +278,7 @@ export default function DemoCrud() {
             editUrl: `/blog/${idField}`,
             editMethod: 'put',
             editParam: {
-              ...__omit(value, 'record'),
+              ..._omit(value, 'record'),
             },
           };
         }}

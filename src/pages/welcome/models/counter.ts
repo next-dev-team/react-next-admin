@@ -1,4 +1,4 @@
-export const [useWelcomeLogic] = createGlobalStore(() => {
+export default function useWelcomeLogic() {
   const appStore = useAppStore();
   const userStore = useUserStore();
   const [tasks, setTasks] = useState(userStore.name);
@@ -17,4 +17,4 @@ export const [useWelcomeLogic] = createGlobalStore(() => {
     appStore,
     userStore,
   };
-});
+}

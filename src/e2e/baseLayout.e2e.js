@@ -1,21 +1,18 @@
-const { uniq } = require("lodash");
-const RouterConfig = require("../../config/config").default.routes;
+const { uniq } = require('lodash');
+const RouterConfig = require('../../config/config').default.routes;
 
 const BASE_URL = `http://localhost:8080`;
 
-function formatter(routes, parentPath = "") {
-  const fixedParentPath = parentPath.replace(/\/{1,}/g, "/");
+function formatter(routes, parentPath = '') {
+  const fixedParentPath = parentPath.replace(/\/{1,}/g, '/');
   let result = [];
   routes.forEach((item) => {
     if (item.path) {
-      result.push(`${fixedParentPath}/${item.path}`.replace(/\/{1,}/g, "/"));
+      result.push(`${fixedParentPath}/${item.path}`.replace(/\/{1,}/g, '/'));
     }
     if (item.routes) {
       result = result.concat(
-        formatter(
-          item.routes,
-          item.path ? `${fixedParentPath}/${item.path}` : parentPath
-        )
+        formatter(item.routes, item.path ? `${fixedParentPath}/${item.path}` : parentPath),
       );
     }
   });
@@ -25,18 +22,18 @@ function formatter(routes, parentPath = "") {
 beforeEach(async () => {
   await page.goto(`${BASE_URL}`);
   await page.evaluate(() => {
-    localStorage.setItem("antd-pro-authority", '["admin"]');
+    localStorage.setItem('antd-pro-authority', '["admin"]');
   });
 });
 
-describe("E2E test", () => {
+describe('E2E test', () => {
   const testPage = (path) => async () => {
     await page.goto(`${BASE_URL}${path}`);
-    await page.waitForSelector("footer", {
+    await page.waitForSelector('footer', {
       timeout: 2000,
     });
     const haveFooter = await page.evaluate(
-      () => document.getElementsByTagName("footer").length > 0
+      () => document.getElementsByTagName('footer').length > 0,
     );
     expect(haveFooter).toBeTruthy();
   };

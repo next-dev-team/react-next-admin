@@ -68,7 +68,7 @@ export const layout: RunTimeLayoutConfig = ({
       // const enUSIntl1 = createIntl('en_US', enUSIntl);
       if (initialState?.loading) return <PageLoading />;
       return (
-        <HoxRoot>
+        <>
           {children}
           {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
             <PSettingDrawer
@@ -82,7 +82,7 @@ export const layout: RunTimeLayoutConfig = ({
               }}
             />
           )}
-        </HoxRoot>
+        </>
       );
     },
     ...initialState?.settings,

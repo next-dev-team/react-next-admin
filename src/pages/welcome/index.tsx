@@ -1,6 +1,5 @@
 import AntdFormCrud from './crud';
 import { SubCom } from './subCom';
-import { useWelcomeLogic } from './useWelcomeLogic';
 
 const Index = () => {
   const {
@@ -10,7 +9,8 @@ const Index = () => {
     dataUser,
     refetchGetUser,
     loadingGetUser,
-  } = useWelcomeLogic();
+  } = useModel('welcome.counter');
+  const { counter, dec, inc } = useModel('demo');
 
   const { count } = useAppStore();
 
@@ -37,13 +37,8 @@ const Index = () => {
     return {};
   }, []);
 
-  // other folder
-  console.log('utils');
-
   // lodash
-  console.log('utils', __isArray([]));
-  // pro component
-  console.log('a', _regexEmail.test('gg@fka.co'));
+  console.log('_omit', _omit({ a: 1, b: 2 }, 'a'));
 
   return (
     <PageContainer content={'This page can only be viewed by admin'}>
@@ -98,11 +93,27 @@ const Index = () => {
         </PProCard>
 
         {/* ---- share hook logic------ */}
-        <PProCard bordered title="Global Share hook">
-          <ASpace>
-            <AButton onClick={() => setTasks('kk')}>Main: {tasks}</AButton>
-            <SubCom onClick={() => setTasks('test')} />
-          </ASpace>
+        <PProCard bordered title="Global state model" layout="center">
+          <div className="flex flex-col justify-center gap-4">
+            <ASpace>
+              <AButton onClick={() => setTasks('kk')}>Main: {tasks}</AButton>
+              <SubCom onClick={() => setTasks('test')} />
+            </ASpace>
+            <ASpace>
+              <AButton
+                onClick={() => dec(1)}
+                danger
+                type="primary"
+                shape="circle"
+              >
+                -
+              </AButton>
+              {counter}
+              <AButton onClick={inc} type="primary" shape="circle">
+                +
+              </AButton>
+            </ASpace>
+          </div>
         </PProCard>
       </div>
       <AntdFormCrud />

@@ -14,10 +14,7 @@ const HeaderRight: React.FC = () => {
   return (
     <div>
       <ASpace>
-        <ATag
-          color={_consIsAppEnvDev ? 'orange' : 'green'}
-          style={{ textTransform: 'uppercase' }}
-        >
+        <ATag color={_consIsAppEnvDev ? 'orange' : 'green'} style={{ textTransform: 'uppercase' }}>
           {UMI_ENV}
         </ATag>
         <AvatarDropdown />
