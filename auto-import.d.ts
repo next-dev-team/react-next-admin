@@ -93,7 +93,8 @@ declare global {
   const ApplyPluginsType: typeof import('@umijs/max')['ApplyPluginsType']
   const AuthLogin1: typeof import('next-dev-antd-ui/dist')['AuthLogin1']
   const FormCrud: typeof import('next-dev-antd-ui/dist')['FormCrud']
-  const GHeaderRight: typeof import('./src/components/index')['GHeaderRight']
+  const GFooter: typeof import('./src/components/index')['GFooter']
+  const GRightContent: typeof import('./src/components/index')['GRightContent']
   const HoxRoot: typeof import('hox')['HoxRoot']
   const IconAccountBookFilled: typeof import('@ant-design/icons')['AccountBookFilled']
   const IconAccountBookOutlined: typeof import('@ant-design/icons')['AccountBookOutlined']
@@ -1168,6 +1169,7 @@ declare global {
   const createRef: typeof import('react')['createRef']
   const errorConfig: typeof import('./src/utils/requestErrorConfig')['errorConfig']
   const forwardRef: typeof import('react')['forwardRef']
+  const getMenuKey: typeof import('./src/utils/obj')['getMenuKey']
   const lazy: typeof import('react')['lazy']
   const memo: typeof import('react')['memo']
   const startTransition: typeof import('react')['startTransition']
@@ -1206,4 +1208,5 @@ declare global {
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
   const useTransition: typeof import('react')['useTransition']
   const useUserStore: typeof import('./src/stores/_index')['useUserStore']
+  const withTrKey: typeof import('./src/utils/obj')['withTrKey']
 }

@@ -4,6 +4,11 @@ export {};
 
 declare global {
   /**
+   *  ========= Locale ================
+   */
+  type LangKey = 'en-US' | 'zh-CN';
+
+  /**
    *  ========= UMI ================
    */
   type RunTimeLayoutConfig = import('@umijs/max').RunTimeLayoutConfig;

@@ -1,9 +1,9 @@
 import { defineConfig } from '@umijs/max';
+import { autoImportPlugin } from './auto-import';
+import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
 import theme from './theme';
-import { autoImportPlugin } from './auto-import';
-import defaultSettings from './defaultSettings';
 // const isDev = process.env.NODE_ENV === 'development';
 const { dirname } = require('path');
 const dotEnv = require('dotenv');
@@ -48,7 +48,7 @@ export default defineConfig({
   // title: '',
   layout: {
     // https://umijs.org/zh-CN/plugins/plugin-layout
-    locale: false,
+    locale: true,
     siderWidth: 208,
     ...defaultSettings,
   },
@@ -88,7 +88,7 @@ export default defineConfig({
    * '@primary-color': '#1DA57A',
    *},
    */
-  theme: theme,
+  theme,
   //targets
   //配置图片文件是否走 base64 编译的阈值。默认是 10000 字节，少于他会被编译为 base64 编码，否则会生成单独的文件
   inlineLimit: 10000,
@@ -96,7 +96,7 @@ export default defineConfig({
   plugins: [],
 
   // @ts-ignore
-  chainWebpack(config: any, { webpack }: any) {
+  chainWebpack(config: any, {}: any) {
     // when need to import outside src
     // config.module.rule('ts-in-node_modules').include.clear();
     //引入全局公用方法
@@ -225,12 +225,11 @@ export default defineConfig({
   // request请求配置
   request: {},
   // 国际化配置 https://umijs.org/zh-CN/plugins/plugin-locale
-  // locale: {
-  //   default: 'zh-CN',
-  //   antd: true,
-  //   baseNavigator: true,
-  // },
-  locale: false,
+  locale: {
+    default: 'zh-CN',
+    antd: true,
+    baseNavigator: true,
+  },
   //加载dumi文档配置
   // ...dumi,
   moment2dayjs: {},
