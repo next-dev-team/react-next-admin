@@ -24,7 +24,6 @@ export const autoImportPlugin = () =>
         '@ant-design/pro-components': antdProPresent,
         '@ant-design/icons': antdIconPresent,
         '@umijs/max': umiPresent,
-        hox: ['createGlobalStore', 'HoxRoot'],
         'next-dev-utils/dist': nextDevPresent,
         'next-dev-antd-ui/dist': unplugPresent,
       },
@@ -44,7 +43,14 @@ export const autoImportPlugin = () =>
     resolvers: [
       IconsResolver({
         componentPrefix: 'Icon',
-        extension: 'jsx',
+        extension: 'tsx',
+        eslintrc: {
+          enabled: true, // <-- this
+        },
       }),
     ],
+    eslintrc: {
+      enabled: true,
+      globalsPropValue: true,
+    },
   });

@@ -1,3 +1,16 @@
+/**
+ * extract obj locale menu key to one level
+ * @example
+ *   const menuObj = {
+ * 'menu.welcome': {
+     'en-US': 'welcome',
+     'zh-CN': '欢迎',
+     }
+    const getKey = getMenuKey('en-US',menuObj)
+    ====> {  'menu.welcome': 'welcome' }
+ * }
+
+ */
 export const getMenuKey = <T extends Record<string, any>>(
   langKey: LangKey,
   obj: T,
@@ -12,6 +25,14 @@ export const getMenuKey = <T extends Record<string, any>>(
   return newObj;
 };
 
-export const withTrKey = <T extends Record<LangKey, any>>(obj: T) => {
+/**
+ * define menu key base on LangKey
+ * @param obj
+ */
+export const defineLocaleMenu = <
+  T extends Record<any, Record<LangKey, string>>,
+>(
+  obj: T,
+) => {
   return obj;
 };

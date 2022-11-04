@@ -1,7 +1,7 @@
 import FormCrud from 'next-dev-antd-ui/dist/FormCrud';
 import { useRef, useState } from 'react';
 
-import {
+import type {
   ActionType,
   BetaSchemaForm,
   ProColumns,
@@ -51,12 +51,12 @@ export default function DemoCrud() {
   const actionRef = useRef<ActionType>();
   const [intl, setIntl] = useState<keyof typeof intlMap>('enUSIntl');
 
-  const columns: Array<
-    React.ComponentProps<typeof BetaSchemaForm<Datum>>['columns'][0] & {
-      dataIndex?: keyof Datum | 'list';
-      customRenderType?: 'tag' | 'formList';
-    } & Omit<ProColumns<Datum>, 'valueType'>
-  > = [
+  const columns: (React.ComponentProps<
+    typeof BetaSchemaForm<Datum>
+  >['columns'][0] & {
+    dataIndex?: keyof Datum | 'list';
+    customRenderType?: 'tag' | 'formList';
+  } & Omit<ProColumns<Datum>, 'valueType'>)[] = [
     {
       title: 'No',
       valueType: 'indexBorder',

@@ -2,7 +2,7 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import { RequestConfig } from '@umijs/max';
+import type { RequestConfig } from '@umijs/max';
 const loginPath = '/user/login';
 
 /**

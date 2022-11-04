@@ -1,4 +1,4 @@
-import { InputRef } from 'antd';
+import type { InputRef } from 'antd';
 import type { AutoCompleteProps } from 'antd/es/auto-complete';
 import classNames from 'classnames';
 import useMergedState from 'rc-util/es/hooks/useMergedState';
