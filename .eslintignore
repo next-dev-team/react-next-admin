@@ -1,2 +1,1 @@
-.eslintrc-auto-import.json
-auto-import.d.ts
+src/types/icons.d.ts

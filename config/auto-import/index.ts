@@ -1,13 +1,13 @@
-import { AhooksPresent } from './ahooks-present';
-import { antdIconPresent } from './antd-icons-present';
-import { antdPresent } from './antd-present';
-import { antdProPresent } from './antdpro-present';
+import { AhooksPresent } from './ahooks-present'
+import { antdIconPresent } from './antd-icons-present'
+import { antdPresent } from './antd-present'
+import { antdProPresent } from './antdpro-present'
 // import { lodashPresent } from './lodash-present';
-import { unplugPresent } from './next-antd-ui';
-import { nextDevPresent } from './next-dev-present';
-import { umiPresent } from './umi-presents';
+import { unplugPresent } from './next-antd-ui'
+import { nextDevPresent } from './next-dev-present'
+import { umiPresent } from './umi-presents'
 
-const IconsResolver = require('unplugin-icons/resolver');
+const IconsResolver = require('unplugin-icons/resolver')
 
 export const autoImportPlugin = () =>
   require('unplugin-auto-import/webpack')({
@@ -43,14 +43,7 @@ export const autoImportPlugin = () =>
     resolvers: [
       IconsResolver({
         componentPrefix: 'Icon',
-        extension: 'tsx',
-        eslintrc: {
-          enabled: true, // <-- this
-        },
+        extension: 'jsx',
       }),
     ],
-    eslintrc: {
-      enabled: true,
-      globalsPropValue: true,
-    },
-  });
+  })

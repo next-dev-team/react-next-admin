@@ -1,5 +1,5 @@
-import AntdFormCrud from './crud';
-import { SubCom } from './subCom';
+import AntdFormCrud from './crud'
+import { SubCom } from './subCom'
 
 const Index = () => {
   const {
@@ -9,10 +9,10 @@ const Index = () => {
     dataUser,
     refetchGetUser,
     loadingGetUser,
-  } = useModel('welcome.counter');
-  const { counter, dec, inc } = useModel('demo');
+  } = useModel('welcome.counter')
+  const { counter, dec, inc } = useModel('demo')
 
-  const { count } = useAppStore();
+  const { count } = useAppStore()
 
   /**
    * most of the component or function are auto import by unplugin-auto-import
@@ -22,23 +22,23 @@ const Index = () => {
 
   // antd
   const modal = () => {
-    AModal.info({ title: 'hello1' });
-    _notification.info({ message: 'ant notification' });
-  };
+    AModal.info({ title: 'hello1' })
+    _notification.info({ message: 'ant notification' })
+  }
 
   // react
   useEffect(() => {
-    console.log('sila', count);
-  }, [count]);
+    console.log('sila', count)
+  }, [count])
 
   // ahook
   _useCreation(() => {
-    console.log('ahook');
-    return {};
-  }, []);
+    console.log('ahook')
+    return {}
+  }, [])
 
   // lodash
-  console.log('_omit', _omit({ a: 1, b: 2 }, 'a'));
+  console.log('_omit', _omit({ a: 1, b: 2 }, 'a'))
 
   return (
     <PageContainer content={'This page can only be viewed by admin'}>
@@ -118,7 +118,7 @@ const Index = () => {
       </div>
       <AntdFormCrud />
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
