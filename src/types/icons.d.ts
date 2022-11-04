@@ -8,5 +8,7 @@
 export {}
 
 declare global {
+  const IconEmojioneFlagForCambodia: typeof SvgComponent
+  const IconTeenyicons360Solid: typeof SvgComponent
   const IconIonRefreshCircleSharp: typeof SvgComponent
 }
