@@ -25,5 +25,6 @@
     "tw\\.style\\(`([^)]*)`\\)",
     "tw\\.style\\(`([^)]*)\\)",
     "twColor\\(`([^)]*)`\\)"
-  ]
+  ],
+  "cSpell.words": ["nocheck"]
 }
