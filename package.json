@@ -19,6 +19,7 @@
     "env:dev": "cross-env UMI_ENV=dev",
     "env:pre": "cross-env UMI_ENV=pre",
     "env:prod": "cross-env UMI_ENV=prod",
+    "gen:docs": "cd src/docs && pandoc *.md metadata.yaml -s -o allDocs.md && mv allDocs.md  ../../README.md && cd ../",
     "init": "npx vh-cli-git-commit && npx vh-cli-lint-init",
     "postinstall": "max setup",
     "lint-staged": "lint-staged",
