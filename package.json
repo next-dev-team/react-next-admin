@@ -66,7 +66,7 @@
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@umijs/codemod": "^0.1.0",
-    "@umijs/max": "4.0.0-canary.20221103.1",
+    "@umijs/max": "^4.0.29",
     "@vh-cli/git-commit": "^1.0.7",
     "@vh-cli/lint": "^0.0.14",
     "carlo": "^0.9.46",
