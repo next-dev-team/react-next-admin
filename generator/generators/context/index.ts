@@ -36,7 +36,7 @@ module.exports = class extends Generator {
     });
 
     // copy page into the pages folder
-    this.fs.copyTpl(this.templatePath('_context.ts'), this.destinationPath(`contexts/${fileName}.ts`), {
+    this.fs.copyTpl(this.templatePath('_context.tsx'), this.destinationPath(`contexts/${fileName}.ts`), {
       contextName,
     });
 
