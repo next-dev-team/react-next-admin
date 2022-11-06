@@ -2,39 +2,43 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import type { RequestConfig } from '@umijs/max';
-const loginPath = '/user/login';
+import { ApolloProvider } from '@apollo/client'
+import type { RequestConfig } from '@umijs/max'
+const loginPath = '/user/login'
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
 export async function getInitialState(): Promise<{
-  settings?: Partial<LayoutSettings>;
-  currentUser?: any;
-  loading?: boolean;
-  fetchUserInfo?: () => Promise<any | undefined>;
+  settings?: Partial<LayoutSettings>
+  currentUser?: any
+  loading?: boolean
+  fetchUserInfo?: () => Promise<any | undefined>
 }> {
   const fetchUserInfo = async () => {
     try {
-      return {};
+      return {
+        name: 'Zila',
+        avatar:
+          'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+      }
     } catch (error) {
-      $history.push(loginPath);
+      $history.push(loginPath)
     }
-    return undefined;
-  };
+    return undefined
+  }
   // 如果是登录页面，不执行
   if ($history.location.pathname !== loginPath) {
-    const currentUser = await fetchUserInfo();
+    const currentUser = await fetchUserInfo()
     return {
       fetchUserInfo,
       currentUser,
-      settings: { layout: 'mix' },
-    };
+      settings: defaultSettings,
+    }
   }
   return {
     fetchUserInfo,
-    settings: { layout: 'mix' },
-  };
+  }
 }
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
@@ -92,9 +96,9 @@ export const layout: RunTimeLayoutConfig = ({
     childrenRender: (children, props) => {
       // Generate the intl object
       // const enUSIntl1 = createIntl('en_US', enUSIntl);
-      if (initialState?.loading) return <PageLoading />;
+      if (initialState?.loading) return <PageLoading />
       return (
-        <>
+        <ApolloProvider client={apolloConfig}>
           {children}
           {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
             <PSettingDrawer
@@ -104,16 +108,16 @@ export const layout: RunTimeLayoutConfig = ({
                 setInitialState((preInitialState) => ({
                   ...preInitialState,
                   settings,
-                }));
+                }))
               }}
             />
           )}
-        </>
-      );
+        </ApolloProvider>
+      )
     },
     ...initialState?.settings,
-  };
-};
+  }
+}
 /**
  * @name request 配置，可以配置错误处理
  * 它基于 axios 和 ahooks 的 useRequest 提供了一套统一的网络请求和错误处理方案。
@@ -122,4 +126,4 @@ export const layout: RunTimeLayoutConfig = ({
 export const request: RequestConfig = {
   ...errorConfig,
   baseURL: BASE_API as string,
-};
+}

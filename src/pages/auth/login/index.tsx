@@ -8,7 +8,7 @@ export default function Login() {
       >
         <AuthLogin1
           onFinish={async (values) => {
-            alert(JSON.stringify(values, null, 2));
+            alert(JSON.stringify(values, null, 2))
           }}
           logo="https://github.githubassets.com/images/modules/logos_page/Octocat.png"
           title="Github"
@@ -16,5 +16,5 @@ export default function Login() {
         />
       </PProCard>
     </PageContainer>
-  );
+  )
 }

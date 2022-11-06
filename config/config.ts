@@ -1,21 +1,21 @@
-import { defineConfig } from '@umijs/max';
-import { autoImportPlugin } from './auto-import';
-import defaultSettings from './defaultSettings';
-import proxy from './proxy';
-import routes from './routes';
-import theme from './theme';
+import { defineConfig } from '@umijs/max'
+import { autoImportPlugin } from './auto-import'
+import defaultSettings from './defaultSettings'
+import proxy from './proxy'
+import routes from './routes'
+import theme from './theme'
 // const isDev = process.env.NODE_ENV === 'development';
-const { dirname } = require('path');
-const dotEnv = require('dotenv');
+const { dirname } = require('path')
+const dotEnv = require('dotenv')
 
-const isUmiProd = !process.env.UMI_ENV;
+const isUmiProd = !process.env.UMI_ENV
 
 // support multiple env https://github.com/nuxt-community/dotenv-module/issues/59#issuecomment-814245372
 const getEnv = dotEnv.config({
   path: isUmiProd
     ? `${dirname(__dirname)}/.env`
     : `${dirname(__dirname)}/.env.${process.env.UMI_ENV}`, // default is env (prod)
-});
+})
 /**
  * !check is exist env and prevent accidentally deploy to server
  */
@@ -23,7 +23,7 @@ const getEnv = dotEnv.config({
 console.error(
   '************** Please make sure correct ENV values in .env or .env.dev etc **********',
   process.env.UMI_ENV,
-);
+)
 
 // all UMI config here
 export default defineConfig({
@@ -52,6 +52,7 @@ export default defineConfig({
     siderWidth: 208,
     ...defaultSettings,
   },
+  mdx: {},
   base: '/',
   // 为所有非三方脚本加上 crossorigin="anonymous" 属性，通常用于统计脚本错误。
   crossorigin: false,
@@ -112,10 +113,10 @@ export default defineConfig({
         compiler: 'jsx',
         jsx: 'react',
       }),
-    );
-    config.plugin('unplugin-auto-import').use(autoImportPlugin());
+    )
+    config.plugin('unplugin-auto-import').use(autoImportPlugin())
 
-    return config;
+    return config
     // //如果是build下js/css分组
     // if (env === "production") {
     //   config.output
@@ -247,4 +248,4 @@ export default defineConfig({
   //   minifyIdentifiers: true,
   //   minifySyntax: true,
   // }
-});
+})

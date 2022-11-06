@@ -1,5 +1,5 @@
 import { PostDocument } from '@/graphQl/hooks';
-import { PostQuery, PostQueryVariables } from '@/graphQl/operations';
+import { PostQuery, PostQueryVariables } from '@/graphql/operations';
 import { requestGraphql } from '@/utils';
 
 export const getAsyncNameGraph = async (variables: PostQueryVariables) => {

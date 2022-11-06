@@ -33,12 +33,13 @@ export const autoImportPlugin = () =>
     // Auto import for all module exports under directories
     // when using in file names mostly use prefixes _ and $ to avoid conflicts
     dirs: [
+      // './xx/**', // all nested modules
       './src/utils/**',
       './src/stores/**',
       './src/constants/**',
       './src/components',
-
-      // './composables/**', // all nested modules
+      // automatically import for graphql
+      './src/graphql/**',
     ],
     resolvers: [
       IconsResolver({

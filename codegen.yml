@@ -6,13 +6,13 @@ overwrite: true
 
 generates:
   # Get schemas from server
-  src/graphql/schemas.tsx:
+  src/graphql/schemas.ts:
     documents: "src/**/**.gql"
     plugins:
       - typescript
 
   # Create operations based on queries
-  src/graphql/operations.tsx:
+  src/graphql/operations.ts:
     documents: "src/**/**.gql"
     preset: import-types
     presetConfig:
@@ -22,7 +22,7 @@ generates:
 
   # 1. Export GraphQL documents
   # 2. React interface
-  src/graphql/hooks.tsx:
+  src/graphql/hooks.ts:
     documents: "src/**/**.gql"
     preset: import-types
     presetConfig:
