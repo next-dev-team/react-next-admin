@@ -4,6 +4,7 @@ specifiers:
   '@ant-design/charts': ^1.4.2
   '@ant-design/pro-components': ^2.3.28
   '@apollo/client': ^3.7.1
+  '@ebay/nice-modal-react': ^1.2.8
   '@graphql-codegen/cli': ^2.13.11
   '@graphql-codegen/import-types-preset': ^2.2.6
   '@graphql-codegen/introspection': ^2.2.1
@@ -62,6 +63,7 @@ dependencies:
   '@ant-design/charts': 1.4.2_y6b4y5vgsfkoodncpjoumz3ak4
   '@ant-design/pro-components': 2.3.28_y6b4y5vgsfkoodncpjoumz3ak4
   '@apollo/client': 3.7.1_gdcq4dv6opitr3wbfwyjmanyra
+  '@ebay/nice-modal-react': 1.2.8_biqbaboplfbrettd7655fr4n2y
   ahooks: 3.7.2_react@18.2.0
   antd: 4.24.1_biqbaboplfbrettd7655fr4n2y
   antd-img-crop: 4.2.8_y6b4y5vgsfkoodncpjoumz3ak4
@@ -2982,6 +2984,16 @@ packages:
     resolution: {integrity: sha512-QCg9sL4uhjn468FDEsb/S9hS2xUZSrv/+dApb1Ze5VKO96pTXKNJZ6MGhIpgWkc1TVhbVGH9/7rq/Mf8/jWicw==}
     dependencies:
       lodash: 4.17.21
+    dev: false
+
+  /@ebay/nice-modal-react/1.2.8_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-5C+9/zWsaYeDMI3HLVIg2clQzVmhepxOGeVdAWOyww2GZJ4Cl3NgzPHyO70SIkG0a4aXvUruyDnPM+jx7DzSJg==}
+    peerDependencies:
+      react: '>16.8.0'
+      react-dom: '>16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@emotion/hash/0.8.0:

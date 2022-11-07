@@ -6,7 +6,6 @@ export const antdProPresent = [
   ['BetaSchemaForm', 'PBetaSchemaForm'],
   ['CheckCard', 'PCheckCard'],
   ['ConfigConsumer', 'PConfigConsumer'],
-  ['ConfigProvider', 'PConfigProvider'],
   ['ConfigProviderWrap', 'PConfigProviderWrap'],
   ['DefaultFooter', 'PDefaultFooter'],
   ['DefaultHeader', 'PDefaultHeader'],
@@ -169,4 +168,4 @@ export const antdProPresent = [
   ['viVNIntl', '_viVNIntl'],
   ['zhCNIntl', '_zhCNIntl'],
   ['zhTWIntl', '_zhTWIntl'],
-];
+]

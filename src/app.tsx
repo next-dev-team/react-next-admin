@@ -3,7 +3,10 @@
  */
 
 import { ApolloProvider } from '@apollo/client'
+import NiceModal from '@ebay/nice-modal-react'
 import type { RequestConfig } from '@umijs/max'
+import { createElement } from 'react'
+
 const loginPath = '/user/login'
 
 /**
@@ -39,6 +42,46 @@ export async function getInitialState(): Promise<{
   return {
     fetchUserInfo,
   }
+}
+
+// global provider
+function WrapperApp(props: any) {
+  return (
+    <ApolloProvider client={apolloConfig}>
+      <NiceModal.Provider>{props.children}</NiceModal.Provider>
+    </ApolloProvider>
+  )
+}
+
+// global root container
+function RootApp(props: any) {
+  // global modal register
+  _allModalRegistered()
+
+  return (
+    <div>
+      {props.children}
+      <AButton
+        className="!absolute !bottom-8 right-8"
+        onClick={() => {
+          _allModal.showDrawer_devTools({
+            title: 'Tool Drawer',
+            width: '80%',
+          })
+        }}
+      >
+        Tool
+      </AButton>
+    </div>
+  )
+}
+
+export function rootContainer(container: any, opts: any) {
+  return createElement(RootApp, opts, container)
+}
+
+export function outerProvider(container: any) {
+  return createElement(WrapperApp, { title: 'outerProvider' }, container)
 }
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
@@ -98,7 +141,7 @@ export const layout: RunTimeLayoutConfig = ({
       // const enUSIntl1 = createIntl('en_US', enUSIntl);
       if (initialState?.loading) return <PageLoading />
       return (
-        <ApolloProvider client={apolloConfig}>
+        <>
           {children}
           {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
             <PSettingDrawer
@@ -112,7 +155,7 @@ export const layout: RunTimeLayoutConfig = ({
               }}
             />
           )}
-        </ApolloProvider>
+        </>
       )
     },
     ...initialState?.settings,

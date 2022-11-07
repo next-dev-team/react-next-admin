@@ -49,6 +49,28 @@ const Index = () => {
     <PageContainer content={'This page can only be viewed by admin'}>
       <ARow wrap gutter={[20, 30]}>
         <ACol span={6}>
+          {/* ---- Modal/Drawer/message------ */}
+          <PProCard loading={loadingPost} bordered title="Feedback">
+            <AButton
+              onClick={() =>
+                _allModal.showTestModal({ title: 'Feedback', children: 'body' })
+              }
+            >
+              Dynamic Modal
+            </AButton>
+            <AButton
+              onClick={() =>
+                _allModal.showDrawerTest({
+                  title: 'Feedback Drawer Test',
+                  children: 'body',
+                })
+              }
+            >
+              Dynamic Drawer
+            </AButton>
+          </PProCard>
+        </ACol>
+        <ACol span={6}>
           {/* ---- graphql------ */}
           <PProCard
             loading={loadingPost}
