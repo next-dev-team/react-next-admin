@@ -240,7 +240,7 @@ export default defineConfig({
   initialState: {},
   tailwindcss: {},
   autoprefixer: {},
-  deadCode: {},
+  // deadCode: {},
   valtio: {},
   // jsMinifier: 'esbuild',
   // jsMinifierOptions: {
