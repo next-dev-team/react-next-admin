@@ -75,7 +75,7 @@ export const antdProPresent = [
   ['ProFormMoney', 'PProFormMoney'],
   ['ProFormRadio', 'PProFormRadio'],
   ['ProFormRate', 'PProFormRate'],
-  ['ProFormSegmented', 'PProFormSegmented'],
+  // ['ProFormSegmented', 'PProFormSegmented'],
   ['ProFormSelect', 'PProFormSelect'],
   ['ProFormSlider', 'PProFormSlider'],
   ['ProFormSwitch', 'PProFormSwitch'],

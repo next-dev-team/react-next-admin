@@ -74,6 +74,21 @@ const Index = () => {
               >
                 Dynamic Drawer
               </AButton>
+
+              <AButton onClick={() => _message.success('Message Success ')}>
+                Message Success
+              </AButton>
+
+              <AButton
+                onClick={() =>
+                  _notification.success({
+                    message: 'Notification Success',
+                    description: 'Description',
+                  })
+                }
+              >
+                Notification Success
+              </AButton>
             </ASpace>
           </PProCard>
         </ACol>

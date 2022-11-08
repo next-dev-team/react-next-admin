@@ -1,3 +1,4 @@
+export { ProFormSegmented } from '@ant-design/pro-components'
 /**
  * register auto import
  */

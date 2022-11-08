@@ -57,21 +57,60 @@ function WrapperApp(props: any) {
 function RootApp(props: any) {
   // global modal register
   _allModalRegistered()
+  const allOption = [
+    {
+      label: 'Daily Dev',
+      value: 'https://app.daily.dev',
+    },
+    {
+      label: 'Next Dev',
+      value: 'https://next-dev-team.github.io/next-dev',
+    },
+
+    {
+      label: 'Antd Design',
+      value: 'https://ant.design/components/button/',
+    },
+  ]
+
+  const [iframeIndex, setIframeIndex] = useState(allOption?.[0]?.value)
+
+  const renderIframeFn = () => {
+    _allModal.showDrawer_devTools({
+      title: (
+        <ASegmented
+          options={allOption}
+          onChange={(e) => setIframeIndex(e?.toString())}
+        />
+      ),
+      width: '80%',
+      children: (
+        <>
+          <iframe
+            className="w-full  h-[calc(100vh-100px)]"
+            src={iframeIndex}
+          ></iframe>
+        </>
+      ),
+    })
+  }
+
+  _useUpdateEffect(() => {
+    renderIframeFn()
+  }, [iframeIndex])
 
   return (
     <div>
       {props.children}
-      <AButton
-        className="!absolute !bottom-8 right-8"
-        onClick={() => {
-          _allModal.showDrawer_devTools({
-            title: 'Tool Drawer',
-            width: '80%',
-          })
-        }}
+
+      <a
+        className="absolute bottom-8 right-8 inline-block p-[2px] rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:text-white active:text-opacity-75 focus:outline-none focus:ring"
+        onClick={renderIframeFn}
       >
-        Tool
-      </AButton>
+        <span className="block px-4 py-2.5 text-sm font-medium bg-white rounded-full hover:bg-transparent">
+          <IconEtTools2 className="relative text-base top-1 hover:text-white hover:font-bold hover:text-lg " />
+        </span>
+      </a>
     </div>
   )
 }
