@@ -38,7 +38,6 @@ export const antdProPresent = [
   ['IndexColumn', 'PIndexColumn'],
   ['InlineErrorFormItem', 'PInlineErrorFormItem'],
   ['IntlConsumer', 'PIntlConsumer'],
-  ['IntlProvider', 'PIntlProvider'],
   ['LabelIconTip', 'PLabelIconTip'],
   ['LightFilter', 'PLightFilter'],
   ['ListPageSkeleton', 'PListPageSkeleton'],

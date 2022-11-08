@@ -6,6 +6,7 @@ import { SubCom } from './subCom'
  */
 
 const Index = () => {
+  // useModel global store
   const {
     tasks,
     setTasks,
@@ -16,7 +17,10 @@ const Index = () => {
   } = useModel('welcome.counter')
   const { counter, dec, inc } = useModel('demo')
 
+  // global Valtio store
   const { count } = useAppStore()
+
+  // graphql
   const {
     data: dataPostRes,
     loading: loadingPost,
@@ -31,46 +35,50 @@ const Index = () => {
     _notification.info({ message: 'ant notification' })
   }
 
-  // react
+  // auto-import react
   useEffect(() => {
-    console.log('sila', count)
+    console.log('useEffect', count)
   }, [count])
 
-  // ahook
+  //auto-import ahook
   _useCreation(() => {
-    console.log('ahook')
+    // auto-import lodash
+    console.log('_omit', _omit({ a: 1, b: 2 }, 'a'))
     return {}
   }, [])
-
-  // lodash
-  console.log('_omit', _omit({ a: 1, b: 2 }, 'a'))
 
   return (
     <PageContainer content={'This page can only be viewed by admin'}>
       <ARow wrap gutter={[20, 30]}>
-        <ACol span={6}>
+        <ACol span={8}>
           {/* ---- Modal/Drawer/message------ */}
           <PProCard loading={loadingPost} bordered title="Feedback">
-            <AButton
-              onClick={() =>
-                _allModal.showTestModal({ title: 'Feedback', children: 'body' })
-              }
-            >
-              Dynamic Modal
-            </AButton>
-            <AButton
-              onClick={() =>
-                _allModal.showDrawerTest({
-                  title: 'Feedback Drawer Test',
-                  children: 'body',
-                })
-              }
-            >
-              Dynamic Drawer
-            </AButton>
+            <ASpace wrap>
+              <AButton
+                onClick={() =>
+                  _allModal.showTestModal({
+                    title: 'Feedback',
+                    children: 'body',
+                  })
+                }
+              >
+                Dynamic Modal
+              </AButton>
+              <AButton
+                onClick={() =>
+                  _allModal.showDrawerTest({
+                    title: 'Feedback Drawer Test',
+                    children: 'body',
+                  })
+                }
+              >
+                Dynamic Drawer
+              </AButton>
+            </ASpace>
           </PProCard>
         </ACol>
-        <ACol span={6}>
+
+        <ACol span={8}>
           {/* ---- graphql------ */}
           <PProCard
             loading={loadingPost}
@@ -91,7 +99,8 @@ const Index = () => {
             />
           </PProCard>
         </ACol>
-        <ACol span={6}>
+
+        <ACol span={8}>
           {/* ---- share hook logic------ */}
           <PProCard
             loading={loadingGetUser}
@@ -112,7 +121,8 @@ const Index = () => {
             />
           </PProCard>
         </ACol>
-        <ACol span={6}>
+
+        <ACol span={8}>
           <PProCard bordered title="Iconify">
             {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
             <div className="flex gap-2">
@@ -124,7 +134,8 @@ const Index = () => {
             </div>
           </PProCard>
         </ACol>
-        <ACol span={6}>
+
+        <ACol span={8}>
           {/*  antd component and valtio store */}
           <PProCard bordered title="Global State Valtio" layout="center">
             <ASpace>
@@ -144,7 +155,7 @@ const Index = () => {
           </PProCard>
         </ACol>
 
-        <ACol span={6}>
+        <ACol span={8}>
           {/* ---- share hook logic------ */}
           <PProCard bordered title="Global state model" layout="center">
             <div className="flex flex-col justify-center gap-4">
