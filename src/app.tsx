@@ -111,9 +111,16 @@ function RootApp(props: any) {
             options={allOption}
             onChange={(e) => (state.iframeIndex = e?.toString())}
           />
-          <ADropdown menu={{ items: itemsDropdown }}>
+          <ADropdown
+            menu={{
+              items: itemsDropdown,
+              onClick: (e) => {
+                state.iframeIndex = e.key
+              },
+            }}
+          >
             <ASpace>
-              Other Tools
+              Tools
               <IconDownOutlined />
             </ASpace>
           </ADropdown>
@@ -224,8 +231,8 @@ function RootApp(props: any) {
     })
   }
 
-  useEffect(() => {
-    // _useUpdateEffect(() => {
+  // useEffect(() => {
+  _useUpdateEffect(() => {
     renderIframeFn()
   }, [state.iframeIndex, state.resultIconText])
 
