@@ -347,6 +347,7 @@ declare global {
   const IconEnvironmentFilled: typeof import('@ant-design/icons')['EnvironmentFilled']
   const IconEnvironmentOutlined: typeof import('@ant-design/icons')['EnvironmentOutlined']
   const IconEnvironmentTwoTone: typeof import('@ant-design/icons')['EnvironmentTwoTone']
+  const IconEtTools2: typeof import('~icons/et/tools2.jsx')['default']
   const IconEuroCircleFilled: typeof import('@ant-design/icons')['EuroCircleFilled']
   const IconEuroCircleOutlined: typeof import('@ant-design/icons')['EuroCircleOutlined']
   const IconEuroCircleTwoTone: typeof import('@ant-design/icons')['EuroCircleTwoTone']

@@ -1,39 +1,32 @@
-# frame description
+# description
 
 > 1. Umijs and its ecology Scaffolding for secondary packaging.
 > 2. The business resources and business-related configuration in the project need to be adjusted and supplemented according to the business.
 
-# Framework Features
+## Framework Features
 
 > 1. Framework idea: Make development easier, upgrade from writing-based development to development-configured comprehensive development, greatly improve development efficiency and development unity, and configure one page and one json to complete.
 > 1. Component idea: The business component is a component based on the UI presentation form of the project business, with specific business nature and close to the business itself.
 > 1. Commonality: have the same business commonality (for example: a company has multiple management backgrounds, the UI presentation is basically the same, and the same components can be used).
-> 1. Complete document description: The dumi document extension is used, so that the project description, business description, component description, and resource description can be quickly learned and understood.
 > 1. Scaffolding encapsulates components such as forms and tables, so that the writing business can be configured.
 
 ## Project Architecture
 
-Umi (React + AntD + Less + TypeScript + dumi)
+Umi (React + AntD + TypeScript)
 
-Umi Chinese website: [https://umijs.org/zh-CN/docs/](https://umijs.org/zh-CN/docs)
+Umi website: [https://umijs.org/](https://umijs.org)
 
-React official website: [https://react.docschina.org/](https://react.docschina.org/)
+React official website: [https://reactjs.org](https://reactjs.org)
 
-AntDesign Chinese website: [https://ant.design/index-cn](https://ant.design/index-cn)
+AntDesign website: [https://ant.design](https://ant.design)
 
-AntDesign-Pro: [https://beta-pro.ant.design/index-cn/](https://beta-pro.ant.design/index-cn/)
+AntDesign-Pro: [https://pro.ant.design/docs/overview](https://pro.ant.design/docs/overview)
 
 AntDesign-Procomponents: [https://procomponents.ant.design/](https://procomponents.ant.design/)
 
 Less official website: [http://lesscss.cn/](http://lesscss.cn/)
 
 TypeScript official website: [https://www.tslang.cn/](https://www.tslang.cn/)
-
-Dumi Chinese website: [https://d.umijs.org/zh-CN/](https://d.umijs.org/zh-CN/)
-
-## Component description (must see the entire description)
-
-Component documentation, instructions for use: [xxxxx/~doc](xxxxx/~doc) See the documentation for the path
 
 ## vscode plugin installation
 
@@ -47,7 +40,7 @@ Component documentation, instructions for use: [xxxxx/~doc](xxxxx/~doc) See the 
 
 ### vscode local settings.json
 
-```
+```json
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -91,7 +84,6 @@ Component documentation, instructions for use: [xxxxx/~doc](xxxxx/~doc) See the 
     }
   ]
 }
-
 ```
 
 ## file structure
@@ -157,34 +149,12 @@ Component documentation, instructions for use: [xxxxx/~doc](xxxxx/~doc) See the 
 
 ```
 
-## Bale
+## Development
 
-Local development environment: `yarn start | npm run start`
+Local development environment: `pnpm start`
 
-Online development environment: `npm run build:dev`
+Online development environment: `pnpm build:dev`
 
-Online testing environment: `npm run build:testing`
+Online testing environment: `pnpm build:testing`
 
-Online official environment: `npm run build`
-
-### Address and description
-
-Project logic, interaction, function please read RP
-
-Project GIT: ``
-
-Project RP: ``
-
-Project UI: [Blue Lake Address]()
-
-Interface API: [Interface Documentation]()
-
-Test JIRA: [JIRA address]()
-
-### Test/Development login path
-
-/login
-
-### account
-
-#LICENSE MIT
+Online official environment: `pnpm build`
