@@ -1,7 +1,7 @@
 export default function Login() {
   return (
     <PageContainer>
-      <PProCard
+      <ProCard
         bodyStyle={{
           minHeight: 'calc(100vh - 140px)',
         }}
@@ -14,7 +14,7 @@ export default function Login() {
           title="Github"
           subTitle="Welcome to NextDev, login now to access the system"
         />
-      </PProCard>
+      </ProCard>
     </PageContainer>
   )
 }

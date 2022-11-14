@@ -7,4 +7,5 @@ export const nextDevPresent = [
   '_setConfigAxios',
   '_requestAxios',
   '_omit',
-];
+  '_asyncSleep',
+]

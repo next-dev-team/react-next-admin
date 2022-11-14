@@ -52,7 +52,7 @@ const Index = () => {
       <ARow wrap gutter={[20, 30]}>
         <ACol span={8}>
           {/* ---- Modal/Drawer/message------ */}
-          <PProCard loading={loadingPost} bordered title="Feedback">
+          <ProCard loading={loadingPost} bordered title="Feedback">
             <ASpace wrap>
               <AButton
                 onClick={() =>
@@ -90,12 +90,12 @@ const Index = () => {
                 Notification Success
               </AButton>
             </ASpace>
-          </PProCard>
+          </ProCard>
         </ACol>
 
         <ACol span={8}>
           {/* ---- graphql------ */}
-          <PProCard
+          <ProCard
             loading={loadingPost}
             bordered
             title="GraphQL"
@@ -106,18 +106,18 @@ const Index = () => {
               />
             }
           >
-            <PStatisticCard
+            <StatisticCard
               statistic={{
                 title: dataPostRes?.post?.title,
                 value: dataPostRes?.post?.id as string,
               }}
             />
-          </PProCard>
+          </ProCard>
         </ACol>
 
         <ACol span={8}>
           {/* ---- share hook logic------ */}
-          <PProCard
+          <ProCard
             loading={loadingGetUser}
             bordered
             title="Fetch API"
@@ -128,17 +128,17 @@ const Index = () => {
               />
             }
           >
-            <PStatisticCard
+            <StatisticCard
               statistic={{
                 title: dataUser?.[0]?.name,
                 value: dataUser?.[0]?.id,
               }}
             />
-          </PProCard>
+          </ProCard>
         </ACol>
 
         <ACol span={8}>
-          <PProCard bordered title="Iconify">
+          <ProCard bordered title="Iconify">
             {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
             <div className="flex gap-2">
               <IconTeenyicons360Solid
@@ -147,12 +147,12 @@ const Index = () => {
               />
               <IconEmojioneFlagForCambodia className="text-2xl text-green-500" />
             </div>
-          </PProCard>
+          </ProCard>
         </ACol>
 
         <ACol span={8}>
           {/*  antd component and valtio store */}
-          <PProCard bordered title="Global State Valtio" layout="center">
+          <ProCard bordered title="Global State Valtio" layout="center">
             <ASpace>
               <AButton
                 onClick={appStore.dec}
@@ -167,12 +167,12 @@ const Index = () => {
                 +
               </AButton>
             </ASpace>
-          </PProCard>
+          </ProCard>
         </ACol>
 
         <ACol span={8}>
           {/* ---- share hook logic------ */}
-          <PProCard bordered title="Global state model" layout="center">
+          <ProCard bordered title="Global state model" layout="center">
             <div className="flex flex-col justify-center gap-4">
               <ASpace>
                 <AButton onClick={() => setTasks('kk')}>Main: {tasks}</AButton>
@@ -193,7 +193,7 @@ const Index = () => {
                 </AButton>
               </ASpace>
             </div>
-          </PProCard>
+          </ProCard>
         </ACol>
       </ARow>
     </PageContainer>

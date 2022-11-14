@@ -1,5 +1,7 @@
 // all global modal or drawer should be register here
 
+import NiceModal from '@ebay/nice-modal-react'
+
 export enum _modalEnumKey {
   'test_modal' = 'test_modal',
   'test_drawer' = 'test_drawer',

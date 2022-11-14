@@ -21,7 +21,7 @@
     "gen:context": "cd ./src && yo umi-boilerplate:context --force",
     "gen:docs": "cd src/docs && pandoc *.md metadata.yaml -s -o allDocs.md && mv allDocs.md  ../../README.md && cd ../",
     "gen:hoc": "cd ./src && yo umi-boilerplate:hoc --force && cd ../",
-    "gen:hook": "cd ./src && yo umi-boilerplate:hook --force",
+    "gen:hooks": "cd ./src && yo umi-boilerplate:hooks --force",
     "gen:page": "cd ./src && yo umi-boilerplate:page --force",
     "gen:store": "cd ./src && yo umi-boilerplate:store --force",
     "init": "npx vh-cli-git-commit && npx vh-cli-lint-init",
@@ -54,7 +54,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^4.7.0",
-    "@ant-design/pro-components": "^2.3.30",
+    "@ant-design/pro-components": "^2.3.31",
     "@apollo/client": "^3.7.1",
     "@ebay/nice-modal-react": "^1.2.8",
     "ahooks": "^3.7.2",

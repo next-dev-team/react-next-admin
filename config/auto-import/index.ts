@@ -1,7 +1,6 @@
 import { AhooksPresent } from './ahooks-present'
 import { antdIconPresent } from './antd-icons-present'
 import { antdPresent } from './antd-present'
-import { antdProPresent } from './antdpro-present'
 // import { lodashPresent } from './lodash-present';
 import { unplugPresent } from './next-antd-ui'
 import { nextDevPresent } from './next-dev-present'
@@ -21,7 +20,7 @@ export const autoImportPlugin = () =>
         'antd/es': antdPresent,
         // 'lodash-es': lodashPresent,
         ahooks: AhooksPresent,
-        '@ant-design/pro-components': antdProPresent,
+        // '@ant-design/pro-components': antdProPresent,
         '@ant-design/icons': antdIconPresent,
         '@umijs/max': umiPresent,
         'next-dev-utils/dist': nextDevPresent,
