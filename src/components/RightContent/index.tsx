@@ -1,24 +1,23 @@
-import { SelectLang, useModel } from '@umijs/max';
-import { Space } from 'antd';
-import React from 'react';
-import HeaderSearch from '../HeaderSearch';
-import Avatar from './AvatarDropdown';
-import styles from './index.less';
+import { SelectLang, useModel } from '@umijs/max'
+import { Space } from 'antd'
+import HeaderSearch from '../HeaderSearch'
+import Avatar from './AvatarDropdown'
+import styles from './index.less'
 
-export type SiderTheme = 'light' | 'dark';
+export type SiderTheme = 'light' | 'dark'
 
-const GlobalHeaderRight: React.FC = () => {
-  const { initialState } = useModel('@@initialState');
+const GlobalHeaderRight = () => {
+  const { initialState } = useModel('@@initialState')
 
   if (!initialState || !initialState.settings) {
-    return null;
+    return null
   }
 
-  const { navTheme, layout } = initialState.settings;
-  let className = styles.right;
+  const { navTheme, layout } = initialState.settings
+  let className = styles.right
 
   if ((navTheme === 'realDark' && layout === 'top') || layout === 'mix') {
-    className = `${styles.right}  ${styles.dark}`;
+    className = `${styles.right}  ${styles.dark}`
   }
   return (
     <Space className={className}>
@@ -48,20 +47,13 @@ const GlobalHeaderRight: React.FC = () => {
         //   console.log('input', value);
         // }}
       />
-      <span
-        className={styles.action}
-        onClick={() => {
-          window.open('https://pro.ant.design/docs/getting-started');
-        }}
-      >
-        <IconQuestionCircleOutlined />
-      </span>
+
       <ATag color={_consIsAppEnvDev ? 'orange' : 'green'} className="uppercase">
         {UMI_ENV}
       </ATag>
       <Avatar />
       <SelectLang className={styles.action} />
     </Space>
-  );
-};
-export default GlobalHeaderRight;
+  )
+}
+export default GlobalHeaderRight

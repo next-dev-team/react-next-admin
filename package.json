@@ -54,7 +54,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^4.7.0",
-    "@ant-design/pro-components": "^2.3.31",
+    "@ant-design/pro-components": "^2.3.32",
     "@apollo/client": "^3.7.1",
     "@ebay/nice-modal-react": "^1.2.8",
     "ahooks": "^3.7.2",
@@ -68,14 +68,14 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.13.11",
+    "@graphql-codegen/cli": "^2.13.12",
     "@graphql-codegen/import-types-preset": "^2.2.6",
     "@graphql-codegen/introspection": "^2.2.1",
     "@graphql-codegen/plugin-helpers": "^2.7.2",
     "@graphql-codegen/typescript": "^2.8.1",
     "@graphql-codegen/typescript-operations": "^2.5.6",
     "@graphql-codegen/typescript-react-apollo": "^3.3.6",
-    "@iconify/json": "^2.1.136",
+    "@iconify/json": "^2.1.137",
     "@milahu/patch-package": "^6.4.14",
     "@svgr/core": "^6.5.1",
     "@testing-library/react": "^13.4.0",
