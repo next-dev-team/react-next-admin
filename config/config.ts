@@ -3,12 +3,12 @@ import { autoImportPlugin } from './auto-import'
 import defaultSettings from './defaultSettings'
 import proxy from './proxy'
 import routes from './routes'
-import theme from './theme'
+// import theme from './theme'
 // const isDev = process.env.NODE_ENV === 'development';
 const { dirname } = require('path')
 const dotEnv = require('dotenv')
 
-const isUmiProd = !process.env.UMI_ENV
+const isUmiProd = process.env.UMI_ENV === 'prod'
 
 // support multiple env https://github.com/nuxt-community/dotenv-module/issues/59#issuecomment-814245372
 const getEnv = dotEnv.config({
@@ -19,11 +19,13 @@ const getEnv = dotEnv.config({
 /**
  * !check is exist env and prevent accidentally deploy to server
  */
+const appEnv = getEnv?.parsed?.UMI_ENV
 
-console.error(
-  '************** Please make sure correct ENV values in .env or .env.dev etc **********',
-  process.env.UMI_ENV,
-)
+if (!appEnv) {
+  throw new Error(
+    `===========> .env seem not provide ${appEnv} <=================`,
+  )
+}
 
 // all UMI config here
 export default defineConfig({
@@ -36,7 +38,7 @@ export default defineConfig({
   // not working with MSFU
   fastRefresh: false,
   mfsu: {
-    // esbuild: true,
+    esbuild: true,
   },
   // @ts-ignore
   srcTranspiler: 'esbuild',
@@ -52,7 +54,6 @@ export default defineConfig({
     siderWidth: 208,
     ...defaultSettings,
   },
-  mdx: {},
   base: '/',
   // 为所有非三方脚本加上 crossorigin="anonymous" 属性，通常用于统计脚本错误。
   crossorigin: false,
@@ -89,7 +90,7 @@ export default defineConfig({
    * '@primary-color': '#1DA57A',
    *},
    */
-  theme,
+  // theme,
   //targets
   //配置图片文件是否走 base64 编译的阈值。默认是 10000 字节，少于他会被编译为 base64 编码，否则会生成单独的文件
   inlineLimit: 10000,
@@ -213,9 +214,9 @@ export default defineConfig({
     dark: false,
     compact: false,
     // babel-plugin-import
-    import: true,
+    // import: true,
     // less or css, default less
-    style: 'less',
+    // style: 'less',
   },
 
   //配置 html 的输出形式，常用来解决没有服务端情况下，页面的 SEO 和首屏渲染提速

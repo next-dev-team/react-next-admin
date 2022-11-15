@@ -2,7 +2,6 @@ import { SelectLang, useModel } from '@umijs/max'
 import { Space } from 'antd'
 import HeaderSearch from '../HeaderSearch'
 import Avatar from './AvatarDropdown'
-import styles from './index.less'
 
 export type SiderTheme = 'light' | 'dark'
 
@@ -13,16 +12,11 @@ const GlobalHeaderRight = () => {
     return null
   }
 
-  const { navTheme, layout } = initialState.settings
-  let className = styles.right
+  // const { navTheme, layout } = initialState.settings
 
-  if ((navTheme === 'realDark' && layout === 'top') || layout === 'mix') {
-    className = `${styles.right}  ${styles.dark}`
-  }
   return (
-    <Space className={className}>
+    <Space>
       <HeaderSearch
-        className={`${styles.action} ${styles.search}`}
         placeholder="站内搜索"
         defaultValue="umi ui"
         options={[
@@ -52,7 +46,7 @@ const GlobalHeaderRight = () => {
         {UMI_ENV}
       </ATag>
       <Avatar />
-      <SelectLang className={styles.action} />
+      <SelectLang />
     </Space>
   )
 }

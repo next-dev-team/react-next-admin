@@ -1,38 +1,37 @@
-import type { ItemType } from 'antd/es/menu/hooks/useItems';
-import type { MenuInfo } from 'rc-menu/lib/interface';
-import { flushSync } from 'react-dom';
-import HeaderDropdown from '../HeaderDropdown';
-import styles from './index.less';
+import type { ItemType } from 'antd/es/menu/hooks/useItems'
+import type { MenuInfo } from 'rc-menu/lib/interface'
+import { flushSync } from 'react-dom'
+import HeaderDropdown from '../HeaderDropdown'
 
 export type GlobalHeaderRightProps = {
-  menu?: boolean;
-};
+  menu?: boolean
+}
 
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   /**
    * 退出登录，并且将当前的 url 保存
    */
-  const loginOut = async () => {};
+  const loginOut = async () => {}
 
-  const { initialState, setInitialState } = useModel('@@initialState');
+  const { initialState, setInitialState } = useModel('@@initialState')
 
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
-      const { key } = event;
+      const { key } = event
       if (key === 'logout') {
         flushSync(() => {
-          setInitialState((s) => ({ ...s, currentUser: undefined }));
-        });
-        loginOut();
-        return;
+          setInitialState((s) => ({ ...s, currentUser: undefined }))
+        })
+        loginOut()
+        return
       }
-      $history.push(`/account/${key}`);
+      $history.push(`/account/${key}`)
     },
     [setInitialState],
-  );
+  )
 
   const loading = (
-    <span className={`${styles.action} ${styles.account}`}>
+    <span>
       <ASpin
         size="small"
         style={{
@@ -41,13 +40,13 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
         }}
       />
     </span>
-  );
+  )
 
   if (!initialState) {
-    return loading;
+    return loading
   }
 
-  const { currentUser } = initialState as any;
+  const { currentUser } = initialState as any
 
   // if (!currentUser || !currentUser.name) {
   //   return loading;
@@ -76,30 +75,20 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
       icon: <IconLogoutOutlined />,
       label: '退出登录',
     },
-  ];
+  ]
 
   const menuHeaderDropdown = (
-    <AMenu
-      className={styles.menu}
-      selectedKeys={[]}
-      onClick={onMenuClick}
-      items={menuItems}
-    />
-  );
+    <AMenu selectedKeys={[]} onClick={onMenuClick} items={menuItems} />
+  )
 
   return (
     <HeaderDropdown overlay={menuHeaderDropdown}>
-      <span className={`${styles.action} ${styles.account}`}>
-        <AAvatar
-          size="small"
-          className={styles.avatar}
-          src={currentUser.avatar}
-          alt="avatar"
-        />
-        <span className={`${styles.name} anticon`}>{currentUser.name}</span>
+      <span>
+        <AAvatar size="small" src={currentUser.avatar} alt="avatar" />
+        <span>{currentUser.name}</span>
       </span>
     </HeaderDropdown>
-  );
-};
+  )
+}
 
-export default AvatarDropdown;
+export default AvatarDropdown

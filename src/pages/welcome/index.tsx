@@ -43,7 +43,7 @@ const Index = () => {
   //auto-import ahook
   _useCreation(() => {
     // auto-import lodash
-    console.log('_omit', _omit({ a: 1, b: 2 }, 'a'))
+    // console.log('_omit', _omit({ a: 1, b: 2 }, 'a'))
     return {}
   }, [])
 

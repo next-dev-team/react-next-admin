@@ -1,21 +1,20 @@
-import type { InputRef } from 'antd';
-import type { AutoCompleteProps } from 'antd/es/auto-complete';
-import classNames from 'classnames';
-import useMergedState from 'rc-util/es/hooks/useMergedState';
-import styles from './index.less';
+import type { InputRef } from 'antd'
+import type { AutoCompleteProps } from 'antd/es/auto-complete'
+import classNames from 'classnames'
+import useMergedState from 'rc-util/es/hooks/useMergedState'
 
 export type HeaderSearchProps = {
-  onSearch?: (value?: string) => void;
-  onChange?: (value?: string) => void;
-  onVisibleChange?: (b: boolean) => void;
-  className?: string;
-  placeholder?: string;
-  options: AutoCompleteProps['options'];
-  defaultVisible?: boolean;
-  visible?: boolean;
-  defaultValue?: string;
-  value?: string;
-};
+  onSearch?: (value?: string) => void
+  onChange?: (value?: string) => void
+  onVisibleChange?: (b: boolean) => void
+  className?: string
+  placeholder?: string
+  options: AutoCompleteProps['options']
+  defaultVisible?: boolean
+  visible?: boolean
+  defaultValue?: string
+  value?: string
+}
 
 const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
   const {
@@ -25,36 +24,33 @@ const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
     placeholder,
     defaultVisible,
     ...restProps
-  } = props;
+  } = props
 
-  const inputRef = useRef<InputRef | null>(null);
+  const inputRef = useRef<InputRef | null>(null)
 
   const [value, setValue] = useMergedState<string | undefined>(defaultValue, {
     value: props.value,
     onChange: props.onChange,
-  });
+  })
 
   const [searchMode, setSearchMode] = useMergedState(defaultVisible ?? false, {
     value: props.visible,
     onChange: onVisibleChange,
-  });
+  })
 
-  const inputClass = classNames(styles.input, {
-    [styles.show]: searchMode,
-  });
   return (
     <div
-      className={classNames(className, styles.headerSearch)}
+      className={classNames(className)}
       onClick={() => {
-        setSearchMode(true);
+        setSearchMode(true)
         if (inputRef.current) {
-          inputRef.current.focus();
+          inputRef.current.focus()
         }
       }}
       onTransitionEnd={({ propertyName }) => {
         if (propertyName === 'width' && !searchMode) {
           if (onVisibleChange) {
-            onVisibleChange(searchMode);
+            onVisibleChange(searchMode)
           }
         }
       }}
@@ -67,7 +63,6 @@ const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
       />
       <AAutoComplete
         key="AutoComplete"
-        className={inputClass}
         value={value}
         options={restProps.options}
         onChange={(completeValue) => setValue(completeValue)}
@@ -81,17 +76,17 @@ const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               if (restProps.onSearch) {
-                restProps.onSearch(value);
+                restProps.onSearch(value)
               }
             }
           }}
           onBlur={() => {
-            setSearchMode(false);
+            setSearchMode(false)
           }}
         />
       </AAutoComplete>
     </div>
-  );
-};
+  )
+}
 
-export default HeaderSearch;
+export default HeaderSearch
