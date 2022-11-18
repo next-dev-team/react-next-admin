@@ -1,12 +1,10 @@
 import { defineConfig } from '@umijs/max'
+import dotEnv from 'dotenv'
+import { dirname } from 'path'
 import { autoImportPlugin } from './auto-import'
 import defaultSettings from './defaultSettings'
 import proxy from './proxy'
 import routes from './routes'
-// import theme from './theme'
-// const isDev = process.env.NODE_ENV === 'development';
-const { dirname } = require('path')
-const dotEnv = require('dotenv')
 
 const isUmiProd = process.env.UMI_ENV === 'prod'
 
@@ -19,12 +17,15 @@ const getEnv = dotEnv.config({
 /**
  * !check is exist env and prevent accidentally deploy to server
  */
-const appEnv = getEnv?.parsed?.UMI_ENV
+const appEnv = getEnv?.parsed?.UMI_ENV || 'prod' // default is env (prod) if provide UMI_ENV=prod will error stick only prod environment
 
 if (!appEnv) {
   throw new Error(
     `===========> .env seem not provide ${appEnv} <=================`,
   )
+} else {
+  console.log('========== APP Environment ========>', appEnv)
+  console.log('========== NODE Environment ========>', process.env.NODE_ENV)
 }
 
 // all UMI config here
@@ -33,7 +34,7 @@ export default defineConfig({
   define: {
     'process.env.version': '1.1.0',
     ...(getEnv.parsed ?? {}),
-    UMI_ENV: getEnv.parsed?.UMI_ENV || 'prod',
+    UMI_ENV: getEnv.parsed?.UMI_ENV,
   },
   // not working with MSFU
   fastRefresh: false,
@@ -61,8 +62,6 @@ export default defineConfig({
   // forkTSChecker: {},
   //hash配置是否让生成的文件包含 hash 后缀，通常用于增量发布和避免浏览器加载缓存
   hash: true,
-  //生成map文件
-  // 代理配置(跨域处理)
   proxy,
   //路由 不配置 默认为约定式路由
   routes,
@@ -118,93 +117,6 @@ export default defineConfig({
     config.plugin('unplugin-auto-import').use(autoImportPlugin())
 
     return config
-    // //如果是build下js/css分组
-    // if (env === "production") {
-    //   config.output
-    //     .filename(`js/${config.toConfig().output.filename}`)
-    //     .chunkFilename(`js/${config.toConfig().output.chunkFilename}`);
-
-    //   // config.plugin("extract-css").tap((args: any) => {
-    //   //   return [
-    //   //     {
-    //   //       filename: "css/[name].[contenthash:8].css",
-    //   //       chunkFilename: "css/[name].[contenthash:8].chunk.css",
-    //   //       ignoreOrder: true,
-    //   //     },
-    //   //   ];
-    //   // });
-
-    //   // 文件分块
-    //   config.merge({
-    //     optimization: {
-    //       minimize: true,
-    //       splitChunks: {
-    //         chunks: "all",
-    //         cacheGroups: {
-    //           "custom-components": {
-    //             test: /[\\/]src[\\/](components).*[\\/]/,
-    //             name: "custom-components",
-    //             enforce: true,
-    //             priority: 5,
-    //           },
-
-    //           "custom-common": {
-    //             test: /[\\/]node_modules[\\/](dayjs|lodash).*[\\/]/,
-    //             name: "custom-common",
-    //             enforce: true,
-    //             priority: 5,
-    //           },
-
-    //           "react-vendor": {
-    //             test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-    //             name: "react-vendor",
-    //             enforce: true,
-    //             priority: 5,
-    //           },
-
-    //           "ant-design": {
-    //             test: /[\\/]node_modules[\\/](@ant-design).*[\\/]/,
-    //             name: "ant-design-vendor",
-    //             enforce: true,
-    //             priority: 4,
-    //           },
-
-    //           "react-amap-vendor": {
-    //             test: /[\\/]node_modules[\\/](react-amap)[\\/]/,
-    //             name: "react-amap-vendor",
-    //             enforce: true,
-    //             priority: 4,
-    //           },
-
-    //           // 'gg-editor-vendor': {
-    //           //   test: /[\\/]node_modules[\\/](gg-editor).*[\\/]/,
-    //           //   name: 'gg-editor-vendor',
-    //           //   enforce: true,
-    //           //   priority: 4,
-    //           // },
-    //           // 'antv-vendor': {
-    //           //   test: /[\\/]node_modules[\\/](@antv)[\\/]/,
-    //           //   name: 'antv-vendor',
-    //           //   enforce: true,
-    //           //   priority: 4,
-    //           // },
-    //           "antd-vendor": {
-    //             test: /[\\/]node_modules[\\/](antd)[\\/]/,
-    //             name: "antd-vendor",
-    //             enforce: true,
-    //             priority: 4,
-    //           },
-
-    //           default: {
-    //             test: /[\\/]src[\\/]((?!(pages)).*)[\\/]/,
-    //             name: "default",
-    //             enforce: true,
-    //           },
-    //         },
-    //       },
-    //     },
-    //   });
-    // }
   },
   // 使用 antd
   antd: {
@@ -243,10 +155,10 @@ export default defineConfig({
   autoprefixer: {},
   // deadCode: {},
   valtio: {},
-  // jsMinifier: 'esbuild',
-  // jsMinifierOptions: {
-  //   minifyWhitespace: true,
-  //   minifyIdentifiers: true,
-  //   minifySyntax: true,
-  // }
+  jsMinifier: 'esbuild',
+  jsMinifierOptions: {
+    minifyWhitespace: true,
+    minifyIdentifiers: true,
+    minifySyntax: true,
+  },
 })
