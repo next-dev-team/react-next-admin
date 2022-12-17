@@ -24,7 +24,7 @@
     "gen:page": "cd ./src && yo umi-boilerplate:page --force",
     "gen:store": "cd ./src && yo umi-boilerplate:store --force",
     "init": "npx vh-cli-git-commit && npx vh-cli-lint-init",
-    "postinstall": "max setup",
+    "postinstall": "max setup && patch-package",
     "link-generator": "cd generator && pnpm local-link && cd ../",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx",
@@ -60,10 +60,12 @@
     "antd-img-crop": "^4.5.2",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",
+    "history-with-query": "^4.10.4",
     "lodash-es": "^4.17.21",
     "next-dev-antd-ui": "^0.0.14-beta.1",
     "next-dev-utils": "^1.0.11-rc4",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "use-switch-tabs": "^0.2.3"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.16.1",

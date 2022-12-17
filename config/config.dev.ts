@@ -1,7 +1,6 @@
-import { defineConfig } from '@umijs/max';
+import { defineConfig } from '@umijs/max'
 
 // console.log('config.dev is working');
-
 
 // all UMI Dev config here
 export default defineConfig({
@@ -24,7 +23,7 @@ export default defineConfig({
   // headScripts:[],
   // 配置 <body> 里的额外脚本。。
   scripts: [
-    '//unpkg.com/react@18.2.0/umd/react.production.min.js',
-    '//unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
+    '//unpkg.com/react@18.2.0/umd/react.development.js',
+    '//unpkg.com/react-dom@18.2.0/umd/react-dom.development.js',
   ],
-});
+})

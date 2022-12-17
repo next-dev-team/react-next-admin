@@ -1,5 +1,3 @@
-import menu from './translation/menu';
+import { allTranslation } from './all'
 
-export default {
-  ...getMenuKey('en-US', menu),
-};
+export default allTranslation('en-US')

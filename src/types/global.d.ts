@@ -7,6 +7,10 @@ declare global {
     props: React.SVGProps<SVGSVGElement>,
   ) => React.ReactElement
 
+  interface Window {
+    tabsAction: import('use-switch-tabs').ActionType
+    routerBase: string
+  }
   /**
    *  ========= Locale ================
    */
@@ -16,5 +20,5 @@ declare global {
    *  ========= UMI ================
    */
   type RunTimeLayoutConfig = import('@umijs/max').RunTimeLayoutConfig
-  type LayoutSettings = import('@ant-design/pro-components').Settings
+  type LayoutSettings = import('../../config/defaultSettings').SettingsConfig
 }

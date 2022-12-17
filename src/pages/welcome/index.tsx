@@ -37,7 +37,7 @@ const Index = () => {
 
   // auto-import react
   useEffect(() => {
-    console.log('useEffect', count)
+    // console.log('useEffect', count)
   }, [count])
 
   //auto-import ahook

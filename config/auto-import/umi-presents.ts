@@ -65,4 +65,6 @@ export const umiPresent = [
   ['useServerLoaderData', 'useServerLoaderData'],
   ['useSnapshot', 'useSnapshot'],
   ['withRouter', '$withRouter'],
-];
+  ['useIntl', 'useIntl'],
+  ['history', '_history'],
+]

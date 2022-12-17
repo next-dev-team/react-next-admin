@@ -37,7 +37,7 @@ export default defineConfig({
     UMI_ENV: getEnv.parsed?.UMI_ENV,
   },
   // not working with MSFU
-  fastRefresh: false,
+  fastRefresh: true,
   mfsu: {},
   // clientLoader: {},
   // targets: {
@@ -120,7 +120,6 @@ export default defineConfig({
     // configProvider: {},
     // themes
     dark: false,
-    compact: false,
     // babel-plugin-import
     // import: true,
     // less or css, default less
@@ -136,7 +135,7 @@ export default defineConfig({
   request: {},
   // 国际化配置 https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
-    default: 'zh-CN',
+    default: 'en-US',
     antd: true,
     baseNavigator: true,
   },
@@ -146,14 +145,19 @@ export default defineConfig({
   //登录以后权限不刷新
   access: {},
   model: {},
-  initialState: {},
+  initialState: {
+    loading: '@/loading',
+  },
   tailwindcss: {},
   autoprefixer: {},
   // deadCode: {},
   valtio: {},
-  jsMinifierOptions: {
-    minifyWhitespace: true,
-    minifyIdentifiers: true,
-    minifySyntax: true,
-  },
+  // jsMinifierOptions: {
+  //   minifyWhitespace: true,
+  //   minifyIdentifiers: true,
+  //   minifySyntax: true,
+  // },
+  // codeSplitting: {
+  //   jsStrategy: 'granularChunks',
+  // },
 })

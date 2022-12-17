@@ -1,5 +1,2 @@
-import menu from './translation/menu';
-
-export default {
-  ...getMenuKey('zh-CN', menu),
-};
+import { allTranslation } from './all'
+export default allTranslation('zh-CN')

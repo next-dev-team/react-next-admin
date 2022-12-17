@@ -6,6 +6,7 @@ import { ProFormText } from '@ant-design/pro-components'
 import { ApolloProvider } from '@apollo/client'
 import NiceModal from '@ebay/nice-modal-react'
 import type { RequestConfig } from '@umijs/max'
+import { capitalize } from 'lodash-es'
 import { createElement } from 'react'
 
 const loginPath = '/user/login'
@@ -147,6 +148,14 @@ function RootApp(props: any) {
                 />
                 {state.resultIconText && (
                   <>
+                    <ATypography.Text
+                      copyable
+                      className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
+                    >
+                      {_stringCase.component(
+                        'Icon' + capitalize(state.resultIconText),
+                      )}
+                    </ATypography.Text>
                     <ATypography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
@@ -318,27 +327,11 @@ export const layout: RunTimeLayoutConfig = ({
     menuHeaderRender: undefined,
     // 自定义 403 页面
     unAccessible: <div>unAccessible</div>,
-    childrenRender: (children, props) => {
+    childrenRender: (children) => {
       // Generate the intl object
       // const enUSIntl1 = createIntl('en_US', enUSIntl);
       if (initialState?.loading) return <PageLoading />
-      return (
-        <>
-          {children}
-          {!props.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
-            <PSettingDrawer
-              enableDarkTheme
-              settings={initialState?.settings}
-              onSettingChange={(settings) => {
-                setInitialState((preInitialState) => ({
-                  ...preInitialState,
-                  settings,
-                }))
-              }}
-            />
-          )}
-        </>
-      )
+      return <>{children}</>
     },
     ...initialState?.settings,
   }
