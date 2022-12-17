@@ -899,7 +899,7 @@ declare global {
   const Outlet: typeof import('@umijs/max')['Outlet']
   const PSettingDrawer: typeof import('./src/utils/index')['PSettingDrawer']
   const PageContainer: typeof import('./src/utils/index')['PageContainer']
-  const PageLoading: typeof import('./src/utils/index')['PageLoading']
+  const PageLoading: typeof import('./src/components/pageLoading')['PageLoading']
   const PluginManager: typeof import('@umijs/max')['PluginManager']
   const PostDocument: typeof import('./src/graphql/hooks')['PostDocument']
   const ProCard: typeof import('./src/utils/index')['ProCard']

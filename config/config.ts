@@ -38,11 +38,7 @@ export default defineConfig({
   },
   // not working with MSFU
   fastRefresh: false,
-  mfsu: {
-    esbuild: true,
-  },
-  // @ts-ignore
-  srcTranspiler: 'esbuild',
+  mfsu: {},
   // clientLoader: {},
   // targets: {
   //   ie: 11,
@@ -155,7 +151,6 @@ export default defineConfig({
   autoprefixer: {},
   // deadCode: {},
   valtio: {},
-  jsMinifier: 'esbuild',
   jsMinifierOptions: {
     minifyWhitespace: true,
     minifyIdentifiers: true,
