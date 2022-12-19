@@ -15,15 +15,15 @@ export const getMenuKey = <T extends Record<string, any>>(
   langKey: LangKey,
   obj: T,
 ) => {
-  let newObj = {};
+  let newObj = {}
   Object.keys(obj).forEach((i) => {
-    const draftObj = { [i]: obj?.[i]?.[langKey] };
-    newObj = { ...newObj, ...draftObj };
-  });
-  console.log('[getMenuKey]', newObj);
+    const draftObj = { [i]: obj?.[i]?.[langKey] }
+    newObj = { ...newObj, ...draftObj }
+  })
+  // console.log('[getMenuKey]', newObj);
 
-  return newObj;
-};
+  return newObj
+}
 
 /**
  * define menu key base on LangKey
@@ -34,5 +34,5 @@ export const defineLocaleMenu = <
 >(
   obj: T,
 ) => {
-  return obj;
-};
+  return obj
+}

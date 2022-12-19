@@ -1,7 +1,6 @@
 import { useMemoizedFn } from 'ahooks'
 import type { MenuProps } from 'antd/lib/menu'
 import type { TabsProps } from 'antd/lib/tabs'
-import classNames from 'classnames'
 import type * as H from 'history-with-query'
 import _get from 'lodash/get'
 import type { ActionType, UseSwitchTabsOptions } from 'use-switch-tabs'
@@ -41,7 +40,6 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
     setTabName,
     persistent,
     children,
-    footerRender,
     ...rest
   } = props
 
@@ -129,39 +127,28 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
     window.tabsAction = actionRef.current!
   }, [])
 
-  const footer = useMemo(() => {
-    if (typeof footerRender === 'function') {
-      return footerRender()
-    }
-    return footerRender
-  }, [footerRender])
-
   return (
-    <ATabs
-      tabPosition="top"
-      type="editable-card"
-      tabBarStyle={{ margin: 0 }}
-      tabBarGutter={0}
-      animated
-      className={classNames('switch-tabs', { 'switch-tabs-fixed': fixed })}
+    <PageContainer
+      fixedHeader={fixed}
       {...rest}
-      hideAdd
-      activeKey={activeKey}
-      onEdit={handleTabEdit as TabsProps['onEdit']}
-      onChange={handleSwitch}
-      size="small"
+      tabProps={{
+        type: 'editable-card',
+        hideAdd: true,
+        activeKey,
+        onEdit: handleTabEdit as TabsProps['onEdit'],
+        onChange: handleSwitch,
+        size: 'small',
+      }}
+      tabList={tabs.map((item, index) => {
+        return {
+          tab: setTab(item.title, item.key, index),
+          key: item.key,
+          closable: item.closable,
+          forceRender: _get(persistent, 'force', false),
+        }
+      })}
     >
-      {tabs.map((item, index) => (
-        <ATabs.TabPane
-          tab={setTab(item.title, item.key, index)}
-          key={item.key}
-          closable={item.closable}
-          forceRender={_get(persistent, 'force', false)}
-        >
-          <main>{item.content}</main>
-          {footer}
-        </ATabs.TabPane>
-      ))}
-    </ATabs>
+      {children}
+    </PageContainer>
   )
 }

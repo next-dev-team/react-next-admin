@@ -1,10 +1,18 @@
 export default defineLocaleMenu({
   'menu.welcome': {
-    'en-US': 'welcome',
+    'en-US': 'Welcome',
     'zh-CN': '欢迎',
   },
-  'menu.Login': {
-    'en-US': 'login',
+  'menu.login': {
+    'en-US': 'Login',
     'zh-CN': '登录',
   },
-});
+  'menu.list_page': {
+    'en-US': 'List page',
+    'zh-CN': '列表页',
+  },
+  'menu.list_page.sub_page': {
+    'en-US': 'Sub page',
+    'zh-CN': '子页面',
+  },
+})

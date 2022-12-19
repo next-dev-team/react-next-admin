@@ -1,4 +1,4 @@
-import type { MenuDataItem } from '@ant-design/pro-components';
+import type { MenuDataItem } from '@ant-design/pro-layout'
 
 const routes: MenuDataItem[] = [
   {
@@ -13,10 +13,29 @@ const routes: MenuDataItem[] = [
   },
   {
     path: '/auth/login',
-    name: 'Login',
+    name: 'login',
     icon: 'smile',
     component: './auth/login',
   },
-];
+  {
+    name: 'list_page',
+    icon: 'TabletOutlined',
+    path: '/components',
+    routes: [
+      {
+        path: '/components/test',
+        name: 'sub_page',
+        icon: 'CrownOutlined',
+        component: './components/test',
+      },
+    ],
+  },
+  {
+    path: '*',
+    layout: false,
+    hideInMenu: true,
+    component: './404',
+  },
+]
 
-export default routes;
+export default routes
