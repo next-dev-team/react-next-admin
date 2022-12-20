@@ -6,7 +6,7 @@ export default NiceModal.create((props: TNiceModal) => {
   // Use a hook to manage the modal state
   const modal = useModal()
   return (
-    <AModal
+    <Modal
       onOk={() => modal.hide()}
       open={modal.visible}
       onCancel={() => modal.hide()}
@@ -14,6 +14,6 @@ export default NiceModal.create((props: TNiceModal) => {
       {...props}
     >
       {props?.children}
-    </AModal>
+    </Modal>
   )
 })

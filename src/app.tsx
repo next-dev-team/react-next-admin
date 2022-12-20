@@ -48,9 +48,22 @@ export async function getInitialState(): Promise<{
 
 // global provider
 function WrapperApp(props: any) {
+  const { token } = useToken()
   return (
     <ApolloProvider client={apolloConfig}>
-      <NiceModal.Provider>{props.children}</NiceModal.Provider>
+      {/* 
+           https://ant.design/docs/react/customize-theme#api 
+           https://ant.design/theme-editor
+       */}
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: token.colorPrimary,
+          },
+        }}
+      >
+        <NiceModal.Provider>{props.children}</NiceModal.Provider>
+      </ConfigProvider>
     </ApolloProvider>
   )
 }
@@ -112,13 +125,13 @@ function RootApp(props: any) {
   const renderIframeFn = () => {
     _allModal.showDrawer_devTools({
       title: (
-        <ASpace size="large">
-          <ASegmented
+        <Space size="large">
+          <Segmented
             value={state.iframeIndex}
             options={allOption}
             onChange={(e) => (state.iframeIndex = e?.toString())}
           />
-          <ADropdown
+          <Dropdown
             menu={{
               items: itemsDropdown,
               onClick: (e) => {
@@ -126,19 +139,19 @@ function RootApp(props: any) {
               },
             }}
           >
-            <ASpace>
+            <Space>
               Tools
-              <IconDownOutlined />
-            </ASpace>
-          </ADropdown>
-        </ASpace>
+              <DownOutlined />
+            </Space>
+          </Dropdown>
+        </Space>
       ),
       width: '80%',
       children: (
         <>
           {state.iframeIndex === iconsValue && (
-            <ARow>
-              <ACol span={12}>
+            <Row>
+              <Col span={12}>
                 <ProFormText
                   label="Copy Icons"
                   placeholder="Basic usage"
@@ -148,66 +161,66 @@ function RootApp(props: any) {
                 />
                 {state.resultIconText && (
                   <>
-                    <ATypography.Text
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.component(
                         'Icon' + capitalize(state.resultIconText),
                       )}
-                    </ATypography.Text>
-                    <ATypography.Text
+                    </Typography.Text>
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.component(state.resultIconText)}
-                    </ATypography.Text>
-                    <ATypography.Text
+                    </Typography.Text>
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.bare(state.resultIconText)}
-                    </ATypography.Text>
-                    <ATypography.Text
+                    </Typography.Text>
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.barePascal(state.resultIconText)}
-                    </ATypography.Text>
-                    <ATypography.Text
+                    </Typography.Text>
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.componentKebab(state.resultIconText)}
-                    </ATypography.Text>
-                    <ATypography.Text
+                    </Typography.Text>
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.dash(state.resultIconText)}
-                    </ATypography.Text>
-                    <ATypography.Text
+                    </Typography.Text>
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.iconify(state.resultIconText)}
-                    </ATypography.Text>
-                    <ATypography.Text
+                    </Typography.Text>
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.pascal(state.resultIconText)}
-                    </ATypography.Text>
-                    <ATypography.Text
+                    </Typography.Text>
+                    <Typography.Text
                       copyable
                       className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700"
                     >
                       {_stringCase.unocss(state.resultIconText)}
-                    </ATypography.Text>
+                    </Typography.Text>
                   </>
                 )}
-              </ACol>
-            </ARow>
+              </Col>
+            </Row>
           )}
           <iframe
             className="w-full  h-[calc(100vh-100px)]"
@@ -216,32 +229,32 @@ function RootApp(props: any) {
         </>
       ),
       extra: (
-        <ASpace>
-          <AButton
+        <Space>
+          <Button
             type="link"
             target="_blank"
             onClick={() => {
               window.open('https://github.com/next-dev-team')
             }}
           >
-            <ASpace>
-              <IconGithubFilled />
+            <Space>
+              <GithubFilled />
               Next Dev
-            </ASpace>
-          </AButton>
-          <AButton
+            </Space>
+          </Button>
+          <Button
             type="link"
             target="_blank"
             onClick={() => {
               window.open('https://react-admin-pro.netlify.app')
             }}
           >
-            <ASpace>
-              <IconGithubFilled />
+            <Space>
+              <GithubFilled />
               Preview Site
-            </ASpace>
-          </AButton>
-        </ASpace>
+            </Space>
+          </Button>
+        </Space>
       ),
     })
   }
@@ -289,7 +302,7 @@ export const layout: RunTimeLayoutConfig = ({
     // links: _consIsNodeEnvDev
     //   ? [
     //       <Link to="/~docs" key="docs">
-    //         <IconBookOutlined />
+    //         <BookOutlined />
     //         <span>Document</span>
     //       </Link>,
     //     ]
@@ -328,9 +341,7 @@ export const layout: RunTimeLayoutConfig = ({
         width: '331px',
       },
     ],
-    // menuHeaderRender: () => {
-    //   return
-    // },
+    menuHeaderRender: undefined,
     appList: [
       {
         icon: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',

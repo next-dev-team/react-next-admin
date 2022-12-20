@@ -20,7 +20,6 @@ export const autoImportPlugin = () =>
         'antd/es': antdPresent,
         // 'lodash-es': lodashPresent,
         ahooks: AhooksPresent,
-        // '@ant-design/pro-components': antdProPresent,
         '@ant-design/icons': antdIconPresent,
         '@umijs/max': umiPresent,
         'next-dev-utils/dist': nextDevPresent,

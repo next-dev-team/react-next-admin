@@ -32,7 +32,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 
   const loading = (
     <span>
-      <ASpin
+      <Spin
         size="small"
         style={{
           marginLeft: 8,
@@ -57,12 +57,12 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
       ? [
           {
             key: 'center',
-            icon: <IconUserOutlined />,
+            icon: <UserOutlined />,
             label: '个人中心',
           },
           {
             key: 'settings',
-            icon: <IconSettingOutlined />,
+            icon: <SettingOutlined />,
             label: '个人设置',
           },
           {
@@ -72,19 +72,19 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
       : []),
     {
       key: 'logout',
-      icon: <IconLogoutOutlined />,
+      icon: <LogoutOutlined />,
       label: '退出登录',
     },
   ]
 
   const menuHeaderDropdown = (
-    <AMenu selectedKeys={[]} onClick={onMenuClick} items={menuItems} />
+    <Menu selectedKeys={[]} onClick={onMenuClick} items={menuItems} />
   )
 
   return (
     <HeaderDropdown menu={menuHeaderDropdown}>
       <span>
-        <AAvatar size="small" src={currentUser.avatar} alt="avatar" />
+        <Avatar size="small" src={currentUser.avatar} alt="avatar" />
         <span>{currentUser.name}</span>
       </span>
     </HeaderDropdown>

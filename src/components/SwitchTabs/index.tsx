@@ -1,4 +1,3 @@
-import { useMemoizedFn } from 'ahooks'
 import type { MenuProps } from 'antd/lib/menu'
 import type { TabsProps } from 'antd/lib/tabs'
 import type * as H from 'history-with-query'
@@ -43,10 +42,11 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
     ...rest
   } = props
 
+  const { token } = useToken()
+
   const { formatMessage } = useIntl()
   const location = useLocation() as any
   const actionRef = useRef<ActionType>()
-
   const {
     tabs,
     activeKey,
@@ -65,11 +65,11 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
     history: _history,
   })
 
-  const remove = useMemoizedFn((key: string) => {
+  const remove = _useMemoizedFn((key: string) => {
     handleRemove(key)
   })
 
-  const handleTabEdit = useMemoizedFn(
+  const handleTabEdit = _useMemoizedFn(
     (targetKey: string, action: 'add' | 'remove') => {
       if (action === 'remove') {
         remove(targetKey)
@@ -77,7 +77,7 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
     },
   )
 
-  const handleTabsMenuClick = useMemoizedFn(
+  const handleTabsMenuClick = _useMemoizedFn(
     (tabKey: string): MenuProps['onClick'] =>
       (event) => {
         const { key, domEvent } = event
@@ -93,32 +93,29 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
       },
   )
 
-  const setMenu = useMemoizedFn((key: string, index: number) => (
-    <AMenu onClick={handleTabsMenuClick(key)}>
-      <AMenu.Item disabled={tabs.length === 1} key={CloseTabKey.Current}>
+  const setMenu = _useMemoizedFn((key: string, index: number) => (
+    <Menu onClick={handleTabsMenuClick(key)}>
+      <Menu.Item disabled={tabs.length === 1} key={CloseTabKey.Current}>
         {formatMessage({ id: 'component.switchTabs.closeCurrent' })}
-      </AMenu.Item>
-      <AMenu.Item disabled={tabs.length === 1} key={CloseTabKey.Others}>
+      </Menu.Item>
+      <Menu.Item disabled={tabs.length === 1} key={CloseTabKey.Others}>
         {formatMessage({ id: 'component.switchTabs.closeOthers' })}
-      </AMenu.Item>
-      <AMenu.Item
-        disabled={tabs.length === index + 1}
-        key={CloseTabKey.ToRight}
-      >
+      </Menu.Item>
+      <Menu.Item disabled={tabs.length === index + 1} key={CloseTabKey.ToRight}>
         {formatMessage({ id: 'component.switchTabs.closeToRight' })}
-      </AMenu.Item>
-    </AMenu>
+      </Menu.Item>
+    </Menu>
   ))
 
-  const setTab = useMemoizedFn(
+  const setTab = _useMemoizedFn(
     (tab: React.ReactNode, key: string, index: number) => (
       <span onContextMenu={(event) => event.preventDefault()}>
-        <ADropdown
+        <Dropdown
           overlay={setMenu(key, index) as any}
           trigger={['contextMenu']}
         >
           <span className="py-2 px-2">{tab}</span>
-        </ADropdown>
+        </Dropdown>
       </span>
     ),
   )
@@ -131,6 +128,25 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
     <PageContainer
       fixedHeader={fixed}
       {...rest}
+      header={{
+        // onBack() {
+        //   $history.back()
+        // },
+        title: null,
+        style: { padding: '8px 12px 0 12px' },
+      }}
+      // footer={[
+      //   <Button key="3">Cancel</Button>,
+      //   <Button key="2" type="primary">
+      //     Submit
+      //   </Button>,
+      // ]}
+      // ghost
+      tabBarExtraContent="Hello, world!"
+      childrenContentStyle={{
+        padding: token.paddingSM,
+        margin: 0,
+      }}
       tabProps={{
         type: 'editable-card',
         hideAdd: true,
@@ -138,6 +154,11 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
         onEdit: handleTabEdit as TabsProps['onEdit'],
         onChange: handleSwitch,
         size: 'small',
+        style: {
+          margin: 0,
+          padding: 2,
+          background: 'none',
+        },
       }}
       tabList={tabs.map((item, index) => {
         return {

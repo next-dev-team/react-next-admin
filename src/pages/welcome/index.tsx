@@ -31,7 +31,7 @@ const Index = () => {
 
   // antd
   const modal = () => {
-    AModal.info({ title: 'hello1' })
+    Modal.info({ title: 'hello1' })
     _notification.info({ message: 'ant notification' })
   }
 
@@ -48,12 +48,12 @@ const Index = () => {
   }, [])
 
   return (
-    <ARow wrap gutter={[20, 30]}>
-      <ACol span={8}>
+    <Row wrap gutter={[20, 30]}>
+      <Col span={8}>
         {/* ---- Modal/Drawer/message------ */}
         <ProCard loading={loadingPost} bordered title="Feedback">
-          <ASpace wrap>
-            <AButton
+          <Space wrap>
+            <Button
               onClick={() =>
                 _allModal.showTestModal({
                   title: 'Feedback',
@@ -62,8 +62,8 @@ const Index = () => {
               }
             >
               Dynamic Modal
-            </AButton>
-            <AButton
+            </Button>
+            <Button
               onClick={() =>
                 _allModal.showDrawerTest({
                   title: 'Feedback Drawer Test',
@@ -72,13 +72,13 @@ const Index = () => {
               }
             >
               Dynamic Drawer
-            </AButton>
+            </Button>
 
-            <AButton onClick={() => _message.success('Message Success ')}>
+            <Button onClick={() => _message.success('Message Success ')}>
               Message Success
-            </AButton>
+            </Button>
 
-            <AButton
+            <Button
               onClick={() =>
                 _notification.success({
                   message: 'Notification Success',
@@ -87,12 +87,12 @@ const Index = () => {
               }
             >
               Notification Success
-            </AButton>
-          </ASpace>
+            </Button>
+          </Space>
         </ProCard>
-      </ACol>
+      </Col>
 
-      <ACol span={8}>
+      <Col span={8}>
         {/* ---- graphql------ */}
         <ProCard
           loading={loadingPost}
@@ -112,9 +112,9 @@ const Index = () => {
             }}
           />
         </ProCard>
-      </ACol>
+      </Col>
 
-      <ACol span={8}>
+      <Col span={8}>
         {/* ---- share hook logic------ */}
         <ProCard
           loading={loadingGetUser}
@@ -134,9 +134,9 @@ const Index = () => {
             }}
           />
         </ProCard>
-      </ACol>
+      </Col>
 
-      <ACol span={8}>
+      <Col span={8}>
         <ProCard bordered title="Iconify">
           {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
           <div className="flex gap-2">
@@ -147,54 +147,49 @@ const Index = () => {
             <IconEmojioneFlagForCambodia className="text-2xl text-green-500" />
           </div>
         </ProCard>
-      </ACol>
+      </Col>
 
-      <ACol span={8}>
+      <Col span={8}>
         {/*  antd component and valtio store */}
         <ProCard bordered title="Global State Valtio" layout="center">
-          <ASpace>
-            <AButton
-              onClick={appStore.dec}
-              danger
-              type="primary"
-              shape="circle"
-            >
+          <Space>
+            <Button onClick={appStore.dec} danger type="primary" shape="circle">
               -
-            </AButton>
+            </Button>
             {appStore.count}
-            <AButton onClick={appStore.inc} type="primary" shape="circle">
+            <Button onClick={appStore.inc} type="primary" shape="circle">
               +
-            </AButton>
-          </ASpace>
+            </Button>
+          </Space>
         </ProCard>
-      </ACol>
+      </Col>
 
-      <ACol span={8}>
+      <Col span={8}>
         {/* ---- share hook logic------ */}
         <ProCard bordered title="Global state model" layout="center">
           <div className="flex flex-col justify-center gap-4">
-            <ASpace>
-              <AButton onClick={() => setTasks('kk')}>Main: {tasks}</AButton>
+            <Space>
+              <Button onClick={() => setTasks('kk')}>Main: {tasks}</Button>
               <SubCom onClick={() => setTasks('test')} />
-            </ASpace>
-            <ASpace>
-              <AButton
+            </Space>
+            <Space>
+              <Button
                 onClick={() => dec(1)}
                 danger
                 type="primary"
                 shape="circle"
               >
                 -
-              </AButton>
+              </Button>
               {counter}
-              <AButton onClick={inc} type="primary" shape="circle">
+              <Button onClick={inc} type="primary" shape="circle">
                 +
-              </AButton>
-            </ASpace>
+              </Button>
+            </Space>
           </div>
         </ProCard>
-      </ACol>
-    </ARow>
+      </Col>
+    </Row>
   )
 }
 

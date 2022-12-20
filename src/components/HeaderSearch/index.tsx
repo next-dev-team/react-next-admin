@@ -55,19 +55,19 @@ const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
         }
       }}
     >
-      <IconSearchOutlined
+      <SearchOutlined
         key="Icon"
         style={{
           cursor: 'pointer',
         }}
       />
-      <AAutoComplete
+      <AutoComplete
         key="AutoComplete"
         value={value}
         options={restProps.options}
         onChange={(completeValue) => setValue(completeValue)}
       >
-        <AInput
+        <Input
           size="small"
           ref={inputRef}
           defaultValue={defaultValue}
@@ -84,7 +84,7 @@ const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
             setSearchMode(false)
           }}
         />
-      </AAutoComplete>
+      </AutoComplete>
     </div>
   )
 }

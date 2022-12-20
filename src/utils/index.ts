@@ -1,15 +1,18 @@
+/**
+ * register auto import
+ */
+import theme from 'antd/es/theme'
+export const useToken = theme.useToken
+
 export {
   getMenuData,
+  PageLoading,
   ProCard,
   ProForm,
   ProFormDigitRange,
   ProFormText,
   StatisticCard,
 } from '@ant-design/pro-components'
-export { PageLoading } from '@ant-design/pro-components/es'
-/**
- * register auto import
- */
 export { PageContainer as PageContainer } from '@ant-design/pro-layout/es/components/PageContainer'
 export { SettingDrawer as PSettingDrawer } from '@ant-design/pro-layout/es/components/SettingDrawer'
 export { default as defaultSettings } from '../../config/defaultSettings'

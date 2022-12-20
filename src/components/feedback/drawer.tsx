@@ -6,7 +6,7 @@ export default NiceModal.create((props: TNiceModal) => {
   // Use a hook to manage the modal state
   const modal = useModal()
   return (
-    <ADrawer
+    <Drawer
       open={modal.visible}
       onClose={() => modal.hide()}
       afterOpenChange={(visible) => {
@@ -15,6 +15,6 @@ export default NiceModal.create((props: TNiceModal) => {
       {...props}
     >
       {props?.children}
-    </ADrawer>
+    </Drawer>
   )
 })

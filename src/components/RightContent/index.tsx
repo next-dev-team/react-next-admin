@@ -42,9 +42,9 @@ const GlobalHeaderRight = () => {
         // }}
       />
 
-      <ATag color={_consIsAppEnvDev ? 'orange' : 'green'} className="uppercase">
+      <Tag color={_consIsAppEnvDev ? 'orange' : 'green'} className="uppercase">
         {UMI_ENV}
-      </ATag>
+      </Tag>
       <Avatar />
       <SelectLang />
     </Space>

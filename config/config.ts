@@ -48,27 +48,27 @@ export default defineConfig({
   layout: {
     // https://umijs.org/zh-CN/plugins/plugin-layout
     locale: true,
-    siderWidth: 208,
+    // siderWidth: 208,
     ...defaultSettings,
   },
   base: '/',
-  // 为所有非三方脚本加上 crossorigin="anonymous" 属性，通常用于统计脚本错误。
+  // Add the attribute crossorigin="anonymous" to all non-third-party scripts, usually used to count script errors.
   crossorigin: false,
-  //开启 TypeScript 编译时类型检查
+  //Enable TypeScript compile-time type checking
   // forkTSChecker: {},
-  //hash配置是否让生成的文件包含 hash 后缀，通常用于增量发布和避免浏览器加载缓存
+  //whether the hash configuration allows the generated file to contain a hash suffix, which is usually used for incremental publishing and avoiding browser loading cache
   hash: true,
   proxy,
-  //路由 不配置 默认为约定式路由
+  // Routing is not configured, the default is conventional routing
   routes,
-  // 别名配置
+  // alias configuration
   alias: {},
   ignoreMomentLocale: true,
 
-  //配置额外的 link 标签。
-  // links:[],
+  // Configure additional link tags.
+  // links: [],
   /**
-   * 配置额外 CSS。
+   * Configure additional CSS.
    * styles: [
    *`body { color: red; }`,
    * `https://a.com/b.css`,
@@ -77,8 +77,8 @@ export default defineConfig({
   styles: [
     // 'https://lib.baomitu.com/antd/4.9.1/antd.min.css'
   ],
-  //配置需要兼容的浏览器最低版本，会自动引入 polyfill 和做语法转换。
-  //配置主题，实际上是配 less 变量。
+  //The configuration requires the minimum version of compatible browsers, and polyfills and syntax conversions will be automatically introduced.
+  //Configure the theme, in fact, configure the less variable.
   /**
    * https://ant.design/docs/react/customize-theme-cn
    * theme: {
@@ -87,21 +87,20 @@ export default defineConfig({
    */
   // theme,
   //targets
-  //配置图片文件是否走 base64 编译的阈值。默认是 10000 字节，少于他会被编译为 base64 编码，否则会生成单独的文件
+  //Configure the threshold of base64 compilation for image files. The default is 10000 bytes, less than it will be compiled into base64 encoding, otherwise a separate file will be generated
   inlineLimit: 10000,
-  //配置额外的 umi 插件。
+  // Configure additional umi plugins.
   plugins: [],
 
-  // @ts-ignore
   chainWebpack(config: any, {}: any) {
     // when need to import outside src
     // config.module.rule('ts-in-node_modules').include.clear();
-    //引入全局公用方法
+    //Introduce global public method
     // config.plugin('$global').use(
-    //   //@ts-ignore
-    //   new webpack.ProvidePlugin({
-    //     $global: [resolve(`src/utils/globalUtils.ts`), 'default'],
-    //   }),
+    // //@ts-ignore
+    // new webpack. ProvidePlugin({
+    // $global: [resolve(`src/utils/globalUtils.ts`), 'default'],
+    // }),
     // );
 
     config.plugin('unplugin-icons').use(
@@ -116,22 +115,12 @@ export default defineConfig({
   },
   // 使用 antd
   antd: {
-    // configProvider
-    // configProvider: {},
-    // themes
     dark: false,
-    // babel-plugin-import
-    // import: true,
-    // less or css, default less
-    // style: 'less',
+    compact: false,
   },
 
   //配置 html 的输出形式，常用来解决没有服务端情况下，页面的 SEO 和首屏渲染提速
-  // exportStatic:{}
-  //启动ssr渲染
-  // ssr: {},
-
-  // request请求配置
+  // exportStatic: {},
   request: {},
   // 国际化配置 https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
