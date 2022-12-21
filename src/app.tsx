@@ -2,10 +2,15 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import { ProFormText } from '@ant-design/pro-components'
+import {
+  PageHeader,
+  ProBreadcrumb,
+  ProFormText,
+} from '@ant-design/pro-components'
 import { ApolloProvider } from '@apollo/client'
 import NiceModal from '@ebay/nice-modal-react'
 import type { RequestConfig } from '@umijs/max'
+import { getMatchMenu } from '@umijs/route-utils'
 import { capitalize } from 'lodash-es'
 import { createElement } from 'react'
 
@@ -313,6 +318,23 @@ export const layout: RunTimeLayoutConfig = ({
       content: initialState?.currentUser?.name,
     },
 
+    headerContentRender: (props) => {
+      const getCurrentMenu = getMatchMenu(
+        _history.location.pathname,
+        props?.menuData as any,
+      ).find((i) => i.path === _history.location.pathname)
+
+      return (
+        <>
+          <PageHeader
+            onBack={() => $history.back()}
+            title={getCurrentMenu?.name}
+            subTitle={<ProBreadcrumb />}
+            breadcrumb={undefined}
+          />
+        </>
+      )
+    },
     footerRender: () => <GFooter />,
     onPageChange: () => {
       // const { location } = $history;

@@ -133,8 +133,11 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
         //   $history.back()
         // },
         title: null,
-        style: { padding: '8px 12px 0 12px' },
+        subTitle: null,
+
+        style: { padding: '0px 12px 0 12px' },
       }}
+      breadcrumb={undefined}
       // footer={[
       //   <Button key="3">Cancel</Button>,
       //   <Button key="2" type="primary">

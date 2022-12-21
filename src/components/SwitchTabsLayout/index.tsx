@@ -93,7 +93,6 @@ export default function SwitchTabsLayout(
   const { formatMessage } = useIntl()
   const location = useLocation() as H.Location
   const originalTabsRoutes = memoizedOneLocaleRoutes(routes!, formatMessage)
-
   if (mode && isSwitchTab(location as any, originalTabsRoutes)) {
     if (loading) {
       return <PageLoading />

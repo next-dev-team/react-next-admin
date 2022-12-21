@@ -15,15 +15,16 @@
 const checkAuth = () => {
   // const userInfo = getUserLocalStorage();
 
-  const mockDev = true;
+  const mockDev = true
   if (mockDev) {
-    return true;
+    return true
   }
-};
+}
 
-export default () => {
+const AccessRole = () => {
   return {
     checkMenusAuth: checkAuth,
     checkPermissionAuth: checkAuth,
-  };
-};
+  }
+}
+export default AccessRole
