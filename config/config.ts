@@ -36,8 +36,6 @@ export default defineConfig({
     ...(getEnv.parsed ?? {}),
     UMI_ENV: getEnv.parsed?.UMI_ENV,
   },
-  // not working with MSFU
-  fastRefresh: true,
   mfsu: {},
   // clientLoader: {},
   // targets: {
@@ -134,20 +132,10 @@ export default defineConfig({
   //登录以后权限不刷新
   access: {},
   model: {},
-  initialState: {
-    loading: '@/loading',
-  },
+  initialState: {},
   tailwindcss: {},
   autoprefixer: {},
-  // deadCode: {},
   valtio: {},
-  // jsMinifierOptions: {
-  //   minifyWhitespace: true,
-  //   minifyIdentifiers: true,
-  //   minifySyntax: true,
-  // },
-  // codeSplitting: {
-  //   jsStrategy: 'granularChunks',
-  // },
+
   // clientLoader: {},
 })

@@ -6,8 +6,6 @@ import { defineConfig } from '@umijs/max'
 export default defineConfig({
   clickToComponent: {},
   devtool: 'source-map',
-  //auto import react is not working with mfsu
-  mfsu: {},
 
   /**
    * 配置 external
