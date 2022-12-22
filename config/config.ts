@@ -142,7 +142,6 @@ export default defineConfig({
   clientLoader: {},
   svgr: {},
   routePrefetch: {},
-  manifest: {},
   // not stable yet
   // lowImport:{}
 })
