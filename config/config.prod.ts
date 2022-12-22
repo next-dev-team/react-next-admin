@@ -4,7 +4,11 @@ import { defineConfig } from '@umijs/max'
 
 // all UMI Dev config here
 export default defineConfig({
-  // deadCode: {},
+  deadCode: {
+    // failOnHint: true, // will force a error message and exit immediately
+    // exclude some folder or directory
+    exclude: ['pages/unused/**'],
+  },
 
   jsMinifierOptions: {
     minifyWhitespace: true,

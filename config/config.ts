@@ -37,7 +37,6 @@ export default defineConfig({
     UMI_ENV: getEnv.parsed?.UMI_ENV,
   },
   mfsu: {},
-  // clientLoader: {},
   // targets: {
   //   ie: 11,
   // },
@@ -112,14 +111,18 @@ export default defineConfig({
     return config
   },
   // 使用 antd
-  antd: {
-    dark: false,
-    compact: false,
-  },
+
+  antd: {},
 
   //配置 html 的输出形式，常用来解决没有服务端情况下，页面的 SEO 和首屏渲染提速
   // exportStatic: {},
-  request: {},
+  request: {
+    /**
+     * The build-time configuration can be configured for useRequest dataField, the default value of which is data. The main purpose of this configuration is to facilitate the direct consumption of data by useRequest. If you want to get backend raw data when consuming data, you need to configure dataField as ''.
+     */
+    //@ts-ignore
+    // dataField: 'data',
+  },
   // 国际化配置 https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
     default: 'en-US',
@@ -136,6 +139,10 @@ export default defineConfig({
   tailwindcss: {},
   autoprefixer: {},
   valtio: {},
-
-  // clientLoader: {},
+  clientLoader: {},
+  svgr: {},
+  routePrefetch: {},
+  manifest: {},
+  // not stable yet
+  // lowImport:{}
 })

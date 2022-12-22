@@ -12,7 +12,13 @@ const Layout = () => {
         fixed={settings?.switchTabs?.fixed}
         routes={getMenuData(routesUmi).menuData}
       >
-        <Outlet />
+        <ProCard
+          bodyStyle={{
+            minHeight: 'calc(100vh - 180px)',
+          }}
+        >
+          <Outlet />
+        </ProCard>
       </SwitchTabsLayout>
 
       {!$history.location?.pathname?.includes('/login') && _consIsAppEnvDev && (

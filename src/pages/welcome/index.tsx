@@ -5,6 +5,11 @@ import { SubCom } from './subCom'
  *
  */
 
+export async function clientLoader() {
+  const data = await fetch('https://gorest.co.in/public/v2/users')
+  return data
+}
+
 const Index = () => {
   // useModel global store
   const {
@@ -16,6 +21,7 @@ const Index = () => {
     loadingGetUser,
   } = useModel('welcome.counter')
   const { counter, dec, inc } = useModel('demo')
+  const { data } = useClientLoaderData()
 
   // global Valtio store
   const { count } = useAppStore()
@@ -37,13 +43,22 @@ const Index = () => {
 
   // auto-import react
   useEffect(() => {
-    // console.log('useEffect', count)
+    console.log('useEffect', count)
+    console.log('useClientLoaderData', data)
   }, [count])
 
   //auto-import ahook
   _useCreation(() => {
     // auto-import lodash
     // console.log('_omit', _omit({ a: 1, b: 2 }, 'a'))
+    $terminal.log(`Some info from the app`)
+    $terminal.log({
+      json: { foo: 'bar' },
+    })
+    $terminal.info(`Hey terminal, A message from the browser`)
+    $terminal.warn(`Watch out, warning from the browser`)
+    $terminal.error(`Ups, testing an error message from the browser`)
+
     return {}
   }, [])
 

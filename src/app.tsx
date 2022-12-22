@@ -3,6 +3,7 @@
  */
 
 import {
+  MenuDataItem,
   PageHeader,
   ProBreadcrumb,
   ProFormText,
@@ -10,11 +11,41 @@ import {
 import { ApolloProvider } from '@apollo/client'
 import NiceModal from '@ebay/nice-modal-react'
 import type { RequestConfig } from '@umijs/max'
-import { getMatchMenu } from '@umijs/route-utils'
 import { capitalize } from 'lodash-es'
 import { createElement } from 'react'
 
 const loginPath = '/user/login'
+
+// export function innerProvider(container: any) {
+//   return React.createElement(Foo, { title: 'innerProvider' }, container);
+// }
+//
+// export function i18nProvider(container: any) {
+//   return React.createElement(Foo, { title: 'i18nProvider' }, container);
+// }
+//
+// export function dataflowProvider(container: any) {
+//   return React.createElement(Foo, { title: 'dataflowProvider' }, container);
+// }
+//
+
+export function onRouteChange({ location, action }: any) {
+  console.log('onRouteChange', location, action)
+}
+
+export function patchRoutes({ routes, routeComponents }: any) {
+  console.log('patchRoutes', routes, routeComponents)
+}
+
+export function patchClientRoutes({ routes }: any) {
+  console.log('patchClientRoutes', routes, Array.isArray(routes))
+}
+
+export const antd = (memo: any) => {
+  memo.theme ||= {}
+  memo.theme.algorithm = _theme.darkAlgorithm
+  return memo
+}
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
@@ -303,7 +334,10 @@ export const layout: RunTimeLayoutConfig = ({
     //   console.log('App: onError', err)
     // },
     disableContentMargin: false,
-
+    // style: {
+    //   height: '100vh',
+    // },
+    // className: 'min-h-[calc(100vh-100px)]',
     // links: _consIsNodeEnvDev
     //   ? [
     //       <Link to="/~docs" key="docs">
@@ -319,23 +353,27 @@ export const layout: RunTimeLayoutConfig = ({
     },
 
     headerContentRender: (props) => {
-      const getCurrentMenu = getMatchMenu(
-        _history.location.pathname,
+      // const getCurrentMenu = getMatchMenu(
+      //   _history.location.pathname,
+      //   props?.menuData as any,
+      // ).find((i) => i.path === _history.location.pathname)
+      const route = $matchRoutes(
         props?.menuData as any,
-      ).find((i) => i.path === _history.location.pathname)
+        location.pathname,
+      )?.pop()?.route as MenuDataItem
 
       return (
         <>
           <PageHeader
             onBack={() => $history.back()}
-            title={getCurrentMenu?.name}
+            title={route?.name}
             subTitle={<ProBreadcrumb />}
             breadcrumb={undefined}
           />
         </>
       )
     },
-    footerRender: () => <GFooter />,
+    // footerRender: () => <GFooter />,
     onPageChange: () => {
       // const { location } = $history;
       // 如果没有登录，重定向到 login

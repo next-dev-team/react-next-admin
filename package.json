@@ -37,7 +37,7 @@
     "prettier:fix": "prettier --config .prettierrc.js --write 'src/**/*.{js,jsx,tsx,ts,md,json}'",
     "preview": "max preview",
     "test": "jest",
-    "umi:clean": "rm -rf node_modules/.cache && src/.umi",
+    "umi:clean": "rm -rf node_modules/.cache src/.umi dist",
     "umig": "max g"
   },
   "lint-staged": {
@@ -62,8 +62,8 @@
     "dayjs": "^1.11.7",
     "history-with-query": "^4.10.4",
     "lodash-es": "^4.17.21",
-    "next-dev-antd-ui": "^0.0.14-beta.1",
-    "next-dev-utils": "^1.0.11-rc4",
+    "next-dev-antd-ui": "0.0.14-beta.1",
+    "next-dev-utils": "1.0.11-rc4",
     "react": "^18.2.0",
     "use-switch-tabs": "^0.2.3"
   },
@@ -85,7 +85,7 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@umijs/codemod": "^0.1.0",
-    "@umijs/max": "^4.0.38",
+    "@umijs/max": "^4.0.39",
     "@vh-cli/git-commit": "^1.0.8",
     "@vh-cli/lint": "^0.0.14",
     "carlo": "^0.9.46",
