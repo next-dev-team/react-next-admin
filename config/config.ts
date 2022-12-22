@@ -36,11 +36,13 @@ export default defineConfig({
     ...(getEnv.parsed ?? {}),
     UMI_ENV: getEnv.parsed?.UMI_ENV,
   },
-  mfsu: {},
   // targets: {
   //   ie: 11,
   // },
-
+  // Do not recognize files in the components and models directories as routes
+  conventionRoutes: {
+    exclude: [/\/components\//, /\/models\//],
+  },
   // title: '',
   layout: {
     // https://umijs.org/zh-CN/plugins/plugin-layout
@@ -142,6 +144,7 @@ export default defineConfig({
   clientLoader: {},
   svgr: {},
   routePrefetch: {},
+  manifest: {},
   // not stable yet
   // lowImport:{}
 })

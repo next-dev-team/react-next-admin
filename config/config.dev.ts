@@ -1,11 +1,12 @@
 import { defineConfig } from '@umijs/max'
 
-// console.log('config.dev is working');
+console.log('config.dev is working')
 
 // all UMI Dev config here
 export default defineConfig({
   clickToComponent: {},
   devtool: 'source-map',
+  mfsu: {},
 
   /**
    * 配置 external

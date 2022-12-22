@@ -921,6 +921,7 @@ declare global {
   const _clearCache: typeof import('ahooks')['clearCache']
   const _configResponsive: typeof import('ahooks')['configResponsive']
   const _consIsAppEnvDev: typeof import('./src/constants/env')['_consIsAppEnvDev']
+  const _consIsAppEnvProd: typeof import('./src/constants/env')['_consIsAppEnvProd']
   const _consIsNodeEnvDev: typeof import('./src/constants/env')['_consIsNodeEnvDev']
   const _consIsNodeEnvProd: typeof import('./src/constants/env')['_consIsNodeEnvProd']
   const _createUpdateEffect: typeof import('ahooks')['createUpdateEffect']

@@ -1,4 +1,5 @@
 import SwitchTabsLayout from '@/components/SwitchTabsLayout'
+import LayoutDevTools from './devTool'
 
 const Layout = () => {
   const { initialState, setInitialState } = useModel('@@initialState')
@@ -22,16 +23,19 @@ const Layout = () => {
       </SwitchTabsLayout>
 
       {!$history.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
-        <PSettingDrawer
-          enableDarkTheme
-          settings={settings}
-          onSettingChange={(settings) => {
-            setInitialState((preInitialState) => ({
-              ...preInitialState,
-              settings,
-            }))
-          }}
-        />
+        <>
+          <LayoutDevTools />
+          <PSettingDrawer
+            enableDarkTheme
+            settings={settings}
+            onSettingChange={(settings) => {
+              setInitialState((preInitialState) => ({
+                ...preInitialState,
+                settings,
+              }))
+            }}
+          />
+        </>
       )}
     </>
   )

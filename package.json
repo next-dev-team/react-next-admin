@@ -35,7 +35,8 @@
     "pre": "pnpm env:pre max dev",
     "prepare": "husky install",
     "prettier:fix": "prettier --config .prettierrc.js --write 'src/**/*.{js,jsx,tsx,ts,md,json}'",
-    "preview": "max preview",
+    "preview:pre": "pnpm env:pre max preview",
+    "preview:prod": "pnpm env:prod max preview",
     "test": "jest",
     "umi:clean": "rm -rf node_modules/.cache src/.umi dist",
     "umig": "max g"
