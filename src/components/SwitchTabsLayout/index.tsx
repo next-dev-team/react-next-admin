@@ -4,7 +4,6 @@
 import type { MenuDataItem } from '@ant-design/pro-layout'
 import { PageLoading } from '@ant-design/pro-layout'
 import deepEqual from 'fast-deep-equal'
-import type * as H from 'history-with-query'
 import _isArray from 'lodash-es/isArray'
 import memoizedOne from 'memoize-one'
 import React from 'react'
@@ -91,9 +90,9 @@ export default function SwitchTabsLayout(
   const { mode, loading, routes, children, ...rest } = props
 
   const { formatMessage } = useIntl()
-  const location = useLocation() as H.Location
+  const location = useLocation()
   const originalTabsRoutes = memoizedOneLocaleRoutes(routes!, formatMessage)
-  if (mode && isSwitchTab(location as any, originalTabsRoutes)) {
+  if (mode && isSwitchTab(location, originalTabsRoutes)) {
     if (loading) {
       return <PageLoading />
     }

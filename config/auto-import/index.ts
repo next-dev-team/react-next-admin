@@ -2,8 +2,6 @@ import { AhooksPresent } from './ahooks-present'
 import { antdIconPresent } from './antd-icons-present'
 import { antdPresent } from './antd-present'
 // import { lodashPresent } from './lodash-present';
-import { unplugPresent } from './next-antd-ui'
-import { nextDevPresent } from './next-dev-present'
 import { umiPresent } from './umi-presents'
 
 const IconsResolver = require('unplugin-icons/resolver')
@@ -22,8 +20,8 @@ export const autoImportPlugin = () =>
         ahooks: AhooksPresent,
         '@ant-design/icons': antdIconPresent,
         '@umijs/max': umiPresent,
-        'next-dev-utils/dist': nextDevPresent,
-        'next-dev-antd-ui/dist': unplugPresent,
+        // 'next-dev-utils/dist': nextDevPresent,
+        // 'next-dev-antd-ui/dist': unplugPresent,
       },
     ],
     vueTemplate: false,

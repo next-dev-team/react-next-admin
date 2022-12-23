@@ -2,16 +2,13 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import {
-  MenuDataItem,
-  PageHeader,
-  ProBreadcrumb,
-} from '@ant-design/pro-components'
+import { MenuDataItem, ProBreadcrumb } from '@ant-design/pro-components'
 import { ApolloProvider } from '@apollo/client'
 import NiceModal from '@ebay/nice-modal-react'
 import type { RequestConfig } from '@umijs/max'
+import { debounce, isEmpty } from 'lodash'
 import { createElement } from 'react'
-
+import Marquee from 'react-fast-marquee'
 const loginPath = '/user/login'
 
 // all supported functions in defineApp
@@ -49,6 +46,32 @@ export const antd = (memo: any) => {
   memo.theme.algorithm = _theme.darkAlgorithm
   return memo
 }
+
+const filterByMenuData = (
+  data: MenuDataItem[] = [],
+  keyWord = '',
+): MenuDataItem[] =>
+  data
+    .map((item) => {
+      if (
+        item?.name?.toLowerCase().includes(keyWord?.toLowerCase()) ||
+        filterByMenuData(item.children || [], keyWord).length > 0
+      ) {
+        return {
+          ...item,
+          children: filterByMenuData(item.children || [], keyWord),
+        }
+      }
+
+      return undefined
+    })
+    .filter((item) => !isEmpty(item)) as MenuDataItem[]
+
+const loopMenuItem = (menus: any[]): MenuDataItem[] =>
+  menus.map(({ routes, ...item }) => ({
+    ...item,
+    children: routes && loopMenuItem(routes),
+  }))
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
@@ -124,46 +147,129 @@ export const layout: RunTimeLayoutConfig = ({
     // onError: (err) => {
     //   console.log('App: onError', err)
     // },
+    token: {
+      sider: {
+        paddingBlockLayoutMenu: 4,
+        paddingInlineLayoutMenu: 4,
+      },
+    }, // change token layout
     disableContentMargin: false,
-    // style: {
-    //   height: '100vh',
-    // },
-    // className: 'min-h-[calc(100vh-100px)]',
-    // links: _consIsNodeEnvDev
-    //   ? [
-    //       <Link to="/~docs" key="docs">
-    //         <BookOutlined />
-    //         <span>Document</span>
-    //       </Link>,
-    //     ]
-    //   : [],
+    links: _consIsNodeEnvDev
+      ? [
+          <Link to="/~docs" key="docs">
+            <BookOutlined />
+            <span>Document</span>
+          </Link>,
+        ]
+      : [],
 
     rightContentRender: () => <GRightContent />,
+    menuFooterRender: (props) => {
+      if (props?.collapsed) return undefined
+      return (
+        <div
+          style={{
+            textAlign: 'center',
+            paddingBlockStart: 12,
+          }}
+        >
+          <div>© {new Date().getFullYear()} Made with love</div>
+          <div>by Next Dev</div>
+        </div>
+      )
+    },
     waterMarkProps: {
       content: initialState?.currentUser?.name,
     },
+    pageTitleRender: false,
+    menuDataRender: (menuData = []) => loopMenuItem(menuData),
+    postMenuData: (menus) => {
+      const searchMenu = ($history?.location.state as any)?.menu
+      const s = filterByMenuData(menus || [], searchMenu)
+      return s
+    },
+    menuExtraRender: ({ collapsed }) => {
+      // const route = $matchRoutes(menuData as any, location.pathname)?.pop()
+      //   ?.route as MenuDataItem
+      const searchMenu = ($history?.location.state as any)?.menu
 
-    headerContentRender: (props) => {
+      return (
+        !collapsed && (
+          <div className="space-y-2 mb-2">
+            <ProBreadcrumb style={{ fontSize: 12 }} />
+            <Input
+              style={{
+                borderRadius: 4,
+                backgroundColor: 'rgba(0,0,0,0.03)',
+              }}
+              prefix={
+                <SearchOutlined
+                  style={{
+                    color: 'rgba(0, 0, 0, 0.15)',
+                  }}
+                />
+              }
+              allowClear
+              defaultValue={searchMenu}
+              placeholder="Search Menu"
+              bordered={false}
+              onChange={(e) => {
+                debounce(() => {
+                  $history.push(
+                    {},
+                    { menu: (e.target as HTMLInputElement).value },
+                  )
+                }, 500)()
+              }}
+            />
+          </div>
+        )
+      )
+    },
+    headerContentRender: () => {
       // const getCurrentMenu = getMatchMenu(
       //   _history.location.pathname,
       //   props?.menuData as any,
       // ).find((i) => i.path === _history.location.pathname)
-      const route = $matchRoutes(
-        props?.menuData as any,
-        location.pathname,
-      )?.pop()?.route as MenuDataItem
 
       return (
-        <>
-          <PageHeader
-            onBack={() => $history.back()}
-            title={route?.name}
-            subTitle={<ProBreadcrumb />}
-            breadcrumb={undefined}
+        <div className="flex justify-around gap-x-4 mr-3 items-center">
+          {/* <Space>
+            <PageHeader
+              onBack={() => $history.back()}
+              title={route?.name}
+              subTitle={route?.subTitle || 'sub title'}
+            />
+            <ProBreadcrumb />
+          </Space> */}
+          <Alert
+            banner
+            type="info"
+            icon={<NotificationOutlined className="text-lg" />}
+            style={{
+              flex: 1,
+              height: 35,
+              maxWidth: screen.width * 0.5,
+            }}
+            message={
+              <Marquee pauseOnHover gradient={false}>
+                <IconEmojioneFlagForCambodia className="mr-2" />
+                To Use When you need to show alert messages to users. When you
+                need a persistent static container which is closable by user
+                actions.
+              </Marquee>
+            }
           />
-        </>
+        </div>
       )
     },
+    breadcrumbRender: (routers = []) => [
+      {
+        path: '/',
+        breadcrumbName: 'Home',
+      },
+      ...routers,
+    ],
     // footerRender: () => <GFooter />,
     onPageChange: () => {
       // const { location } = $history;
@@ -172,26 +278,27 @@ export const layout: RunTimeLayoutConfig = ({
       //   $history.push(loginPath);
       // }
     },
-    layoutBgImgList: [
+    bgLayoutImgList: [
       {
-        src: 'https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/D2LWSqNny4sAAAAAAAAAAAAAFl94AQBr',
+        src: 'https://img.alicdn.com/imgextra/i2/O1CN01O4etvp1DvpFLKfuWq_!!6000000000279-2-tps-609-606.png',
         left: 85,
         bottom: 100,
         height: '303px',
       },
       {
-        src: 'https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/C2TWRpJpiC0AAAAAAAAAAAAAFl94AQBr',
+        src: 'https://img.alicdn.com/imgextra/i2/O1CN01O4etvp1DvpFLKfuWq_!!6000000000279-2-tps-609-606.png',
         bottom: -68,
         right: -45,
         height: '303px',
       },
       {
-        src: 'https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr',
+        src: 'https://img.alicdn.com/imgextra/i3/O1CN018NxReL1shX85Yz6Cx_!!6000000005798-2-tps-884-496.png',
         bottom: 0,
         left: 0,
         width: '331px',
       },
     ],
+
     menuHeaderRender: undefined,
     appList: [
       {

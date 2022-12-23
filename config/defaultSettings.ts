@@ -11,10 +11,12 @@ export type SwitchTabsOptions = {
 export type SettingsConfig = LayoutSettings & {
   pwa?: boolean
   logo?: string
+  siderWidth?: number
   switchTabs?: SwitchTabsOptions
 }
 const Settings: SettingsConfig = {
   navTheme: 'light',
+  siderWidth: 250,
   // 拂晓蓝
   colorPrimary: '#1890ff',
   layout: 'mix',
@@ -22,7 +24,7 @@ const Settings: SettingsConfig = {
   fixedHeader: true,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'react-next-admin',
+  title: 'Next Admin',
   pwa: false,
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',

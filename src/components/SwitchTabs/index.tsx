@@ -1,6 +1,5 @@
 import type { MenuProps } from 'antd/lib/menu'
 import type { TabsProps } from 'antd/lib/tabs'
-import type * as H from 'history-with-query'
 import _get from 'lodash/get'
 import type { ActionType, UseSwitchTabsOptions } from 'use-switch-tabs'
 import useSwitchTabs from 'use-switch-tabs'
@@ -18,7 +17,7 @@ export interface RouteTab {
   content: JSX.Element
   closable?: boolean
   /** used to extends tab's properties */
-  location: Omit<H.Location, 'key'>
+  location: Omit<typeof $history['location'], 'key'>
 }
 
 export interface SwitchTabsProps
@@ -41,8 +40,6 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
     children,
     ...rest
   } = props
-
-  const { token } = useToken()
 
   const { formatMessage } = useIntl()
   const location = useLocation() as any
@@ -129,25 +126,16 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
       fixedHeader={fixed}
       {...rest}
       header={{
-        // onBack() {
-        //   $history.back()
-        // },
         title: null,
         subTitle: null,
 
-        style: { padding: '0px 12px 0 12px' },
+        style: { padding: '0px 0px 0 12px' },
       }}
+      footer={undefined}
       breadcrumb={undefined}
-      // footer={[
-      //   <Button key="3">Cancel</Button>,
-      //   <Button key="2" type="primary">
-      //     Submit
-      //   </Button>,
-      // ]}
-      // ghost
       tabBarExtraContent="Hello, world!"
       childrenContentStyle={{
-        padding: token.paddingSM,
+        padding: 0,
         margin: 0,
       }}
       tabProps={{

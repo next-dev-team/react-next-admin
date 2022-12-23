@@ -10,8 +10,8 @@ import {
   TableDropdown,
 } from '@ant-design/pro-components'
 import { Button, message, Space, Tabs, Tag } from 'antd'
-import { _axios } from 'next-dev-utils'
 import { useState } from 'react'
+import { request } from 'umi'
 
 type GithubIssueItem = {
   url: string
@@ -126,7 +126,7 @@ const NoFoundPage: React.FC = () => {
             type={type as 'table'}
             request={async (params = {}) =>
               (
-                await _axios.get<{
+                await request<{
                   data: GithubIssueItem[]
                 }>('https://proapi.azurewebsites.net/github/issues', {
                   params,
@@ -154,7 +154,7 @@ const NoFoundPage: React.FC = () => {
             }}
             columns={columns as ProDescriptionsItemProps<GithubIssueItem>[]}
             request={async (params) => {
-              const msg = await _axios.get<{
+              const msg = await request.get<{
                 data: GithubIssueItem[]
               }>('https://proapi.azurewebsites.net/github/issues', {
                 params,
