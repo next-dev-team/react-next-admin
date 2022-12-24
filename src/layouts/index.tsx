@@ -5,6 +5,9 @@ const Layout = () => {
   const { initialState, setInitialState } = useModel('@@initialState')
   const { settings } = initialState || {}
 
+  // global modal register
+  _allModalRegistered()
+
   return (
     <>
       <SwitchTabsLayout

@@ -226,43 +226,7 @@ export const layout: RunTimeLayoutConfig = ({
         )
       )
     },
-    headerContentRender: () => {
-      // const getCurrentMenu = getMatchMenu(
-      //   _history.location.pathname,
-      //   props?.menuData as any,
-      // ).find((i) => i.path === _history.location.pathname)
-
-      return (
-        <div className="flex justify-around gap-x-4 mr-3 items-center">
-          {/* <Space>
-            <PageHeader
-              onBack={() => $history.back()}
-              title={route?.name}
-              subTitle={route?.subTitle || 'sub title'}
-            />
-            <ProBreadcrumb />
-          </Space> */}
-          <Alert
-            banner
-            type="info"
-            icon={<NotificationOutlined className="text-lg" />}
-            style={{
-              flex: 1,
-              height: 35,
-              maxWidth: screen.width * 0.5,
-            }}
-            message={
-              <Marquee pauseOnHover gradient={false}>
-                <IconEmojioneFlagForCambodia className="mr-2" />
-                To Use When you need to show alert messages to users. When you
-                need a persistent static container which is closable by user
-                actions.
-              </Marquee>
-            }
-          />
-        </div>
-      )
-    },
+    headerContentRender: () => <GHeaderContentRender />,
     breadcrumbRender: (routers = []) => [
       {
         path: '/',

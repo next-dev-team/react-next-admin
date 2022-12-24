@@ -1,8 +1,7 @@
 // global root container
 function LayoutDevTools(props: any) {
   $terminal.log(`Root App`, _consIsAppEnvProd)
-  // global modal register
-  _allModalRegistered()
+
   const iconsValue = 'https://icon-sets.iconify.design'
   const allOption = [
     {

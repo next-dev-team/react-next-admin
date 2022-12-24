@@ -17,3 +17,4 @@ export { PageContainer as PageContainer } from '@ant-design/pro-layout/es/compon
 export { SettingDrawer as PSettingDrawer } from '@ant-design/pro-layout/es/components/SettingDrawer'
 export { default as defaultSettings } from '../../config/defaultSettings'
 export { default as routesUmi } from '../../config/routes'
+export { default as Marquee } from 'react-fast-marquee'
