@@ -6,5 +6,8 @@ export const antdPresent = Object.keys(antd).map((i) => {
   if (/^[a-z][A-Za-z]*$/.test(i)) {
     return [i, `_${i}`]
   }
-  return [i, `${i}`]
+  if (i === 'Image') {
+    return [i, 'AImage']
+  }
+  return [i, i]
 })

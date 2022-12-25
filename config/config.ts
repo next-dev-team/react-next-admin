@@ -1,5 +1,4 @@
 import { defineConfig } from '@umijs/max'
-import { resolve } from 'cypress/types/bluebird'
 import dotEnv from 'dotenv'
 import { dirname } from 'path'
 import { autoImportPlugin } from './auto-import'
@@ -91,16 +90,16 @@ export default defineConfig({
   // Configure additional umi plugins.
   plugins: [],
 
-  chainWebpack(config: any, { webpack }: any) {
+  chainWebpack(config, {}) {
     // when need to import outside src
     config.module.rule('ts-in-node_modules').include.clear()
     // Introduce global public method
-    config.plugin('$global').use(
-      new webpack.ProvidePlugin({
-        React: 'react',
-        ReactDOM: 'react-dom',
-      }),
-    )
+    // config.plugin('$global').use(
+    //   new webpack.ProvidePlugin({
+    //     React: 'react',
+    //     ReactDOM: 'react-dom',
+    //   }),
+    // )
 
     config.plugin('unplugin-icons').use(
       require('unplugin-icons/webpack')({
@@ -141,7 +140,6 @@ export default defineConfig({
   tailwindcss: {},
   autoprefixer: {},
   valtio: {},
-  clientLoader: {},
   svgr: {},
   routePrefetch: {},
   manifest: {},

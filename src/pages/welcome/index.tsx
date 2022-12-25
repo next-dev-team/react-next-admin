@@ -1,14 +1,4 @@
 import { SubCom } from './subCom'
-/**
- * most of the component or function are auto import by unplugin-auto-import
- * see in folder config/webpack/auto-import
- *
- */
-
-export async function clientLoader() {
-  const data = await fetch('https://gorest.co.in/public/v2/users')
-  return data
-}
 
 const Index = () => {
   // useModel global store
@@ -36,10 +26,10 @@ const Index = () => {
   })
 
   // antd
-  const modal = () => {
-    Modal.info({ title: 'hello1' })
-    _notification.info({ message: 'ant notification' })
-  }
+  // const modal = () => {
+  //   Modal.info({ title: 'hello1' })
+  //   _notification.info({ message: 'ant notification' })
+  // }
 
   // auto-import react
   useEffect(() => {
@@ -155,10 +145,7 @@ const Index = () => {
         <ProCard bordered title="Iconify">
           {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
           <div className="flex gap-2">
-            <IconTeenyicons360Solid
-              onClick={modal}
-              className="text-2xl text-green-500"
-            />
+            <IconTeenyicons360Solid className="text-2xl text-green-500" />
             <IconEmojioneFlagForCambodia className="text-2xl text-green-500" />
           </div>
         </ProCard>
