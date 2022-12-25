@@ -8,7 +8,6 @@ import NiceModal from '@ebay/nice-modal-react'
 import type { RequestConfig } from '@umijs/max'
 import { debounce, isEmpty } from 'lodash'
 import { createElement } from 'react'
-import Marquee from 'react-fast-marquee'
 const loginPath = '/user/login'
 
 // all supported functions in defineApp

@@ -1,13 +1,11 @@
+import { capitalize } from 'lodash-es'
+
 // global root container
 function LayoutDevTools(props: any) {
   $terminal.log(`Root App`, _consIsAppEnvProd)
 
   const iconsValue = 'https://icon-sets.iconify.design'
   const allOption = [
-    {
-      label: 'Daily Dev',
-      value: 'https://app.daily.dev',
-    },
     {
       label: 'ProComponents',
       value: 'https://procomponents.ant.design/en-US/components',
@@ -76,7 +74,7 @@ function LayoutDevTools(props: any) {
           </Dropdown>
         </Space>
       ),
-      width: '80%',
+      width: '95%',
       children: (
         <>
           {state.iframeIndex === iconsValue && (
