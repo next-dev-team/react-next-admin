@@ -25,21 +25,23 @@ const Layout = () => {
         </ProCard>
       </SwitchTabsLayout>
 
-      {!$history.location?.pathname?.includes('/login') && _consIsAppEnvDev && (
-        <>
-          <LayoutDevTools />
-          <PSettingDrawer
-            enableDarkTheme
-            settings={settings}
-            onSettingChange={(settings) => {
-              setInitialState((preInitialState) => ({
-                ...preInitialState,
-                settings,
-              }))
-            }}
-          />
-        </>
-      )}
+      {!$history.location?.pathname?.includes('/login') &&
+        !_consIsAppEnvProd &&
+        _consIsNodeEnvProd && (
+          <>
+            <LayoutDevTools />
+            <PSettingDrawer
+              enableDarkTheme
+              settings={settings}
+              onSettingChange={(settings) => {
+                setInitialState((preInitialState) => ({
+                  ...preInitialState,
+                  settings,
+                }))
+              }}
+            />
+          </>
+        )}
     </>
   )
 }
