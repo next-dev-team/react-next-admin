@@ -26,8 +26,7 @@ const Layout = () => {
       </SwitchTabsLayout>
 
       {!$history.location?.pathname?.includes('/login') &&
-        !_consIsAppEnvProd &&
-        _consIsNodeEnvProd && (
+        !_consIsAppEnvProd && (
           <>
             <LayoutDevTools />
             <PSettingDrawer
