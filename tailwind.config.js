@@ -3,15 +3,7 @@
 module.exports = {
   content: [
     // to reduce scan folder we need to include only folder has tsx
-    // './src/**/*.tsx',
-    './src/pages/**/*.tsx',
-    './src/components/**.tsx',
-    './src/pages/**.tsx',
-    './src/layouts/**.tsx',
-    './src/app.tsx',
-    './src/global.tsx',
-    './src/layouts/**.tsx',
-    './src/hooks/**.tsx',
+    './src/**/*.tsx',
   ],
   theme: {
     extend: {

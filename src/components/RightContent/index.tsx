@@ -7,6 +7,7 @@ export type SiderTheme = 'light' | 'dark'
 
 const GlobalHeaderRight = () => {
   const { initialState } = useModel('@@initialState')
+  const { bannerNews } = useAppStore()
 
   if (!initialState || !initialState.settings) {
     return null
@@ -15,7 +16,25 @@ const GlobalHeaderRight = () => {
   // const { navTheme, layout } = initialState.settings
 
   return (
-    <Space>
+    <Space size="middle">
+      {bannerNews.visible && (
+        <Alert
+          banner
+          type="info"
+          icon={<NotificationOutlined className="text-lg" />}
+          style={{
+            flex: 1,
+            height: 35,
+            maxWidth: screen.width * 0.3,
+          }}
+          message={
+            <Marquee pauseOnHover gradient={false}>
+              <IconEmojioneFlagForCambodia className="mr-2" />
+              {bannerNews?.content}
+            </Marquee>
+          }
+        />
+      )}
       <HeaderSearch
         placeholder="站内搜索"
         defaultValue="umi ui"

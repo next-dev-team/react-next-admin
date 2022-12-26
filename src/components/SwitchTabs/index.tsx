@@ -145,6 +145,7 @@ export default function SwitchTabs(props: SwitchTabsProps): JSX.Element {
         onEdit: handleTabEdit as TabsProps['onEdit'],
         onChange: handleSwitch,
         size: 'small',
+        className: 'page_tab',
         style: {
           margin: 0,
           padding: 2,

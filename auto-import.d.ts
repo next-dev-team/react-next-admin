@@ -468,7 +468,6 @@ declare global {
   const Html5Filled: typeof import('@ant-design/icons')['Html5Filled']
   const Html5Outlined: typeof import('@ant-design/icons')['Html5Outlined']
   const Html5TwoTone: typeof import('@ant-design/icons')['Html5TwoTone']
-  // const IconEtTools2: typeof import('~icons/et/tools2.jsx')['default']
   const IconProvider: typeof import('@ant-design/icons')['IconProvider']
   const IdcardFilled: typeof import('@ant-design/icons')['IdcardFilled']
   const IdcardOutlined: typeof import('@ant-design/icons')['IdcardOutlined']

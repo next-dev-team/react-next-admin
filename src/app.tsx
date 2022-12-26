@@ -147,10 +147,10 @@ export const layout: RunTimeLayoutConfig = ({
     //   console.log('App: onError', err)
     // },
     token: {
-      sider: {
-        paddingBlockLayoutMenu: 4,
-        paddingInlineLayoutMenu: 4,
-      },
+      // sider: {
+      //   paddingBlockLayoutMenu: 4,
+      //   paddingInlineLayoutMenu: 4,
+      // },
     }, // change token layout
     disableContentMargin: false,
     links: _consIsNodeEnvDev
@@ -195,7 +195,6 @@ export const layout: RunTimeLayoutConfig = ({
       return (
         !collapsed && (
           <div className="space-y-2 mb-2">
-            <ProBreadcrumb style={{ fontSize: 12 }} />
             <Input
               style={{
                 borderRadius: 4,
@@ -225,7 +224,8 @@ export const layout: RunTimeLayoutConfig = ({
         )
       )
     },
-    headerContentRender: () => <GHeaderContentRender />,
+    headerContentRender: ({ isMobile }) =>
+      !isMobile && <GHeaderContentRender />,
     breadcrumbRender: (routers = []) => [
       {
         path: '/',
