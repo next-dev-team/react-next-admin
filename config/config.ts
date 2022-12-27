@@ -143,6 +143,10 @@ export default defineConfig({
   svgr: {},
   routePrefetch: {},
   manifest: {},
+  clientLoader: {},
+  mock: {
+    include: ['pages/**/_mock.ts'],
+  },
   // not stable yet
   // lowImport:{}
 })

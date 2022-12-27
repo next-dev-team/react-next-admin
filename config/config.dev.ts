@@ -13,8 +13,10 @@ export default defineConfig({
    * 对于一些大尺寸依赖，比如图表库、antd 等，可尝试通过 externals 的配置引入相关 umd 文件，减少编译消耗
    */
   externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
+    // react: 'React',
+    // 'react-dom': 'ReactDOM',
+    react: 'window.React',
+    'react-dom': 'window.ReactDOM',
   },
   //配置额外的 meta 标签。数组中可以配置key:value形式的对象。
   // metas:[],

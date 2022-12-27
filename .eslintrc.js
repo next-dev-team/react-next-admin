@@ -4,6 +4,5 @@ module.exports = {
   rules: {
     // '@typescript-eslint/no-unused-vars': 0,
     'react/jsx-no-undef': [0, { allowGlobals: true }],
-    ignorePatterns: ['Icon\\w+'], // ignoring here works
   },
 }
