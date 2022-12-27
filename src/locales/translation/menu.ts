@@ -1,4 +1,8 @@
 export default defineLocaleMenu({
+  'menu.documents': {
+    'en-US': 'Documents',
+    'zh-CN': '文件',
+  },
   'menu.welcome': {
     'en-US': 'Welcome',
     'zh-CN': '欢迎',

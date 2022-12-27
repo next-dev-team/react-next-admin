@@ -180,7 +180,7 @@ Online official environment: `pnpm build`
 
 ## Create Store
 
-```tsx
+```tsx | pure
 import { createStore, useGlobalStore } from '@/hooks'
 
 /**
@@ -266,7 +266,7 @@ export const demoStore = getGlobalStore(wrapStore)
 
 ## Use store in component
 
-```tsx
+```tsx | pure
 import useSampleStore, { demoStore } from '@/store';
 
 // want to access store without using hook and can use every where
@@ -306,7 +306,7 @@ export default function HomePage() {
 
 ex: crate graphQl/gql/sample.gql
 
-```tsx
+```tsx | pure
 query post($id: ID!) {
   post(id: $id) {
     id
@@ -344,7 +344,7 @@ you will get 3 file there are
 
 - before using it don't forget to wrap withApollo for every page or global in page/app.tsx for this boilerplate already set up as global now it ready to use.
 
-```tsx
+```tsx | pure
 /**
  * with GraphQl useQuery
  */
@@ -408,7 +408,7 @@ command key + p then input > then input reload then click Reload Window
 
 ### Step 3: Usage
 
-```tsx
+```tsx | pure
 export const HomePage = () => {
 // get t func from store if those page already call seSettingsStore
 const { t } = useSettingsStore();

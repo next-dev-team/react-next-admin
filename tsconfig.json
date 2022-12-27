@@ -2,5 +2,7 @@
   "extends": "./src/.umi/tsconfig.json",
   "compilerOptions": {
     "types": ["unplugin-icons/types/react"]
-  }
+  },
+  "include": [".", ".dumi/theme/**", ".dumirc.ts"],
+  "exclude": ["dist", "build", "node_modules"]
 }

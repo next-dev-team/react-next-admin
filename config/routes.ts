@@ -12,6 +12,14 @@ const routes: MenuDataItem[] = [
     component: './welcome',
   },
   {
+    path: '/~docs',
+    name: 'documents',
+    icon: 'smile',
+    component: './~docs',
+    hideChildrenInMenu: true,
+    hideInMenu: true,
+  },
+  {
     path: '/auth/login',
     name: 'login',
     icon: 'smile',
@@ -28,7 +36,7 @@ const routes: MenuDataItem[] = [
         icon: 'CrownOutlined',
         component: './components/test',
       },
-    ],
+    ] as any,
   },
   {
     path: '*',

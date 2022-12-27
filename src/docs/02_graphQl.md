@@ -8,7 +8,7 @@
 
 ex: crate graphQl/gql/sample.gql
 
-```tsx
+```tsx | pure
 query post($id: ID!) {
   post(id: $id) {
     id
@@ -46,7 +46,7 @@ you will get 3 file there are
 
 - before using it don't forget to wrap withApollo for every page or global in page/app.tsx for this boilerplate already set up as global now it ready to use.
 
-```tsx
+```tsx | pure
 /**
  * with GraphQl useQuery
  */

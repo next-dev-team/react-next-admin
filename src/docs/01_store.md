@@ -13,7 +13,7 @@
 
 ## Create Store
 
-```tsx
+```tsx | pure
 import { createStore, useGlobalStore } from '@/hooks'
 
 /**
@@ -99,7 +99,7 @@ export const demoStore = getGlobalStore(wrapStore)
 
 ## Use store in component
 
-```tsx
+```tsx | pure
 import useSampleStore, { demoStore } from '@/store';
 
 // want to access store without using hook and can use every where

@@ -2,10 +2,10 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import { MenuDataItem, ProBreadcrumb } from '@ant-design/pro-components'
+import { MenuDataItem } from '@ant-design/pro-components'
 import { ApolloProvider } from '@apollo/client'
 import NiceModal from '@ebay/nice-modal-react'
-import type { RequestConfig } from '@umijs/max'
+import { FormattedMessage, RequestConfig } from '@umijs/max'
 import { debounce, isEmpty } from 'lodash'
 import { createElement } from 'react'
 const loginPath = '/user/login'
@@ -157,7 +157,7 @@ export const layout: RunTimeLayoutConfig = ({
       ? [
           <Link to="/~docs" key="docs">
             <BookOutlined />
-            <span>Document</span>
+            <span>{<FormattedMessage id="documents" />}</span>
           </Link>,
         ]
       : [],

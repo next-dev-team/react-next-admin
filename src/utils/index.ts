@@ -1,9 +1,9 @@
 /**
  * register auto import
  */
+export { allTranslation } from '@/locales/translation/_all'
 import theme from 'antd/es/theme'
 export const useToken = theme.useToken
-
 export {
   getMenuData,
   PageLoading,

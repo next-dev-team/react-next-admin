@@ -13,7 +13,7 @@ sidemenu: false
 
 这个组件自带了一些 Pro 的配置，你一般都需要改掉它的信息。
 
-```tsx
+```tsx | pure
 /**
  * background: '#f0f2f5'
  */
@@ -26,7 +26,7 @@ export default () => <Footer />
 
 HeaderDropdown 是 antd Dropdown 的封装，但是增加了移动端的特殊处理，用法也是相同的。
 
-```tsx
+```tsx | pure
 /**
  * background: '#f0f2f5'
  */
@@ -54,7 +54,7 @@ export default () => {
 
 一个带补全数据的输入框，支持收起和展开 Input
 
-```tsx
+```tsx | pure
 /**
  * background: '#f0f2f5'
  */
@@ -104,7 +104,7 @@ export default () => {
 
 通知工具提供一个展示多种通知信息的界面。
 
-```tsx
+```tsx | pure | pure
 /**
  * background: '#f0f2f5'
  */
@@ -207,7 +207,7 @@ export default () => {
 
 ### NoticeIconData
 
-```tsx | pure
+```tsx | pure | pure
 export type NoticeIconData {
   id: string;
   key: string;
@@ -227,7 +227,7 @@ export type NoticeIconData {
 
 RightContent 是以上几个组件的组合，同时新增了 plugins 的 `SelectLang` 插件。
 
-```tsx | pure
+```tsx | pure | pure
 <Space>
   <HeaderSearch
     placeholder="站内搜索"

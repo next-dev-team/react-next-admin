@@ -1010,6 +1010,7 @@ declare global {
   const _userStore: typeof import('./src/stores/user')['_userStore']
   const _uuid: typeof import('./src/utils/string')['_uuid']
   const _version: typeof import('antd/es')['version']
+  const allTranslation: typeof import('./src/utils/index')['allTranslation']
   const apolloConfig: typeof import('./src/utils/apolloConfig')['default']
   const createFromIconfontCN: typeof import('@ant-design/icons')['createFromIconfontCN']
   const createRef: typeof import('react')['createRef']

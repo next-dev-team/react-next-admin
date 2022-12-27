@@ -44,7 +44,7 @@ command key + p then input > then input reload then click Reload Window
 
 ### Step 3: Usage
 
-```tsx
+```tsx | pure
 export const HomePage = () => {
 // get t func from store if those page already call seSettingsStore
 const { t } = useSettingsStore();
