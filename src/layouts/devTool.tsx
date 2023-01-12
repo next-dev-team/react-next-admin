@@ -200,8 +200,8 @@ function LayoutDevTools(props: any) {
         className="absolute bottom-8 right-8 inline-block p-[2px] rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:text-white active:text-opacity-75 focus:outline-none focus:ring"
         onClick={renderIframeFn}
       >
-        <span className="block px-4 py-2.5 text-sm font-medium bg-white rounded-full hover:bg-transparent">
-          <IconEtTools2 className="relative text-base top-1 hover:text-white hover:font-bold hover:text-lg " />
+        <span className="block px-2.5 py-2 text-sm font-medium bg-white rounded-full hover:bg-transparent">
+          <Icon className="arcticons:doc-scanner relative top-0 hover:text-white hover:font-bold text-2xl hover:text-lg " />
         </span>
       </a>
     </div>

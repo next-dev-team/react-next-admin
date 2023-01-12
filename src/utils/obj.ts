@@ -11,10 +11,11 @@
  * }
 
  */
+
 export const getMenuKey = <T extends Record<string, any>>(
   langKey: LangKey,
   obj: T,
-) => {
+): T => {
   let newObj = {}
   Object.keys(obj).forEach((i) => {
     const draftObj = { [i]: obj?.[i]?.[langKey] }
@@ -25,7 +26,7 @@ export const getMenuKey = <T extends Record<string, any>>(
   })
   // console.log('[getMenuKey]', newObj);
 
-  return newObj
+  return newObj as T
 }
 
 /**

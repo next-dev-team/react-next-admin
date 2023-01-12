@@ -25,11 +25,11 @@ const GlobalHeaderRight = () => {
           style={{
             flex: 1,
             height: 35,
-            maxWidth: screen.width * 0.3,
+            maxWidth: screen.width * 0.25,
           }}
           message={
             <Marquee pauseOnHover gradient={false}>
-              <IconEmojioneFlagForCambodia className="mr-2" />
+              <Icon className="emojione:flag-for-cambodia mr-2" />
               {bannerNews?.content}
             </Marquee>
           }

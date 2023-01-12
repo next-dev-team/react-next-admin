@@ -104,8 +104,8 @@ const Index = () => {
           bordered
           title="GraphQL"
           extra={
-            <IconIonRefreshCircleSharp
-              className="text-lg"
+            <Icon
+              className="ion:refresh-circle-sharp text-lg"
               onClick={() => refetchPost()}
             />
           }
@@ -126,8 +126,8 @@ const Index = () => {
           bordered
           title="Fetch API"
           extra={
-            <IconIonRefreshCircleSharp
-              className="text-lg"
+            <Icon
+              className="ion:refresh-circle-sharp text-lg"
               onClick={refetchGetUser}
             />
           }
@@ -145,8 +145,7 @@ const Index = () => {
         <ProCard bordered title="Iconify">
           {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
           <div className="flex gap-2">
-            <IconTeenyicons360Solid className="text-2xl text-green-500" />
-            <IconEmojioneFlagForCambodia className="text-2xl text-green-500" />
+            <Icon className="emojione:flag-for-cambodia" />
           </div>
         </ProCard>
       </Col>

@@ -4,7 +4,6 @@ console.log('config.dev is working')
 
 // all UMI Dev config here
 export default defineConfig({
-  clickToComponent: {},
   devtool: 'source-map',
   mfsu: {},
 

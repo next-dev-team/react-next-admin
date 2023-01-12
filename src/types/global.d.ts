@@ -14,7 +14,12 @@ declare global {
   /**
    *  ========= Locale ================
    */
-  type LangKey = 'en-US' | 'zh-CN'
+
+  type LangKey = LiteralUnion<'en-US' | 'zh-CN', string>
+
+  type TranKey = keyof ReturnType<
+    typeof import('@/locales/translation/_all')['allTranslation']
+  >
 
   /**
    *  ========= UMI ================

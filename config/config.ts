@@ -30,11 +30,13 @@ if (!appEnv) {
 
 // all UMI config here
 export default defineConfig({
+  clickToComponent: {},
   npmClient: 'pnpm',
   define: {
     'process.env.version': '1.1.0',
     ...(getEnv.parsed ?? {}),
     UMI_ENV: getEnv.parsed?.UMI_ENV,
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   },
   // targets: {
   //   ie: 11,
@@ -88,7 +90,6 @@ export default defineConfig({
   //Configure the threshold of base64 compilation for image files. The default is 10000 bytes, less than it will be compiled into base64 encoding, otherwise a separate file will be generated
   inlineLimit: 10000,
   // Configure additional umi plugins.
-  plugins: [],
 
   chainWebpack(config, {}) {
     // when need to import outside src
@@ -101,12 +102,13 @@ export default defineConfig({
     //   }),
     // )
 
-    config.plugin('unplugin-icons').use(
-      require('unplugin-icons/webpack')({
-        compiler: 'jsx',
-        jsx: 'react',
-      }),
-    )
+    // use Uno Icon instead
+    // config.plugin('unplugin-icons').use(
+    //   require('unplugin-icons/webpack')({
+    //     compiler: 'jsx',
+    //     jsx: 'react',
+    //   }),
+    // )
     config.plugin('unplugin-auto-import').use(autoImportPlugin())
 
     return config
@@ -128,16 +130,24 @@ export default defineConfig({
   locale: {
     default: 'en-US',
     antd: true,
-    baseNavigator: true,
+    baseNavigator: false,
   },
-  //加载dumi文档配置
   // ...dumi,
   moment2dayjs: {},
-  //登录以后权限不刷新
   access: {},
   model: {},
+  plugins: [require.resolve('@umijs/plugins/dist/unocss')],
+
   initialState: {},
-  tailwindcss: {},
+  unocss: {
+    watch: [
+      'src/**/**.tsx',
+      'src/**.tsx',
+      'src/**/**/**.tsx',
+      'src/**/**/**/**.tsx',
+    ],
+  },
+  // tailwindcss: {},
   autoprefixer: {},
   valtio: {},
   svgr: {},

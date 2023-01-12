@@ -1,0 +1,13 @@
+diff --git a/node_modules/@umijs/plugins/libs/locale/localeExports.tpl b/node_modules/@umijs/plugins/libs/locale/localeExports.tpl
+index 08b40a1..c388c34 100644
+--- a/node_modules/@umijs/plugins/libs/locale/localeExports.tpl
++++ b/node_modules/@umijs/plugins/libs/locale/localeExports.tpl
+@@ -239,7 +239,7 @@ export const setLocale = (lang: string, realReload: boolean = true) => {
+   updater();
+ };
+
+-let firstWaring = true;
++let firstWaring = false;
+
+ /**
+  * intl.formatMessage 的语法糖

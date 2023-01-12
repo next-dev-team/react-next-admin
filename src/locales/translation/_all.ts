@@ -1,6 +1,18 @@
+import common from './common'
 import component from './component'
 import menu from './menu'
-import common from './common'
+
+/**
+ *  Translates value type suggestions to avoid wrong parameters
+ *  @example
+ *  t('welcome',{'welcome': { name: 'sila', days: 'Monday' }})
+ */
+export type TransValue = {
+  welcome: {
+    name: string
+    days: string
+  }
+}
 
 export const allTranslation = (langKey: LangKey) => {
   return {

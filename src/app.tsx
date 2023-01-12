@@ -5,7 +5,7 @@
 import { MenuDataItem } from '@ant-design/pro-components'
 import { ApolloProvider } from '@apollo/client'
 import NiceModal from '@ebay/nice-modal-react'
-import { FormattedMessage, RequestConfig } from '@umijs/max'
+import { RequestConfig } from '@umijs/max'
 import { debounce, isEmpty } from 'lodash'
 import { createElement } from 'react'
 const loginPath = '/user/login'
@@ -157,7 +157,7 @@ export const layout: RunTimeLayoutConfig = ({
       ? [
           <Link to="/~docs" key="docs">
             <BookOutlined />
-            <span>{<FormattedMessage id="documents" />}</span>
+            <span>{t('documents')}</span>
           </Link>,
         ]
       : [],

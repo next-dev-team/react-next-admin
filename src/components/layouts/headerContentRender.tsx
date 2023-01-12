@@ -14,7 +14,11 @@ export default function HeaderContentRender() {
       <span>{route.breadcrumbName}</span>
     ) : (
       <Link to={paths.join('/')} style={{ color: token.colorPrimaryText }}>
-        {route.breadcrumbName == 'Home' ? <HomeFilled /> : route.breadcrumbName}
+        {route.breadcrumbName === 'Home' ? (
+          <HomeFilled />
+        ) : (
+          route.breadcrumbName
+        )}
       </Link>
     )
   }

@@ -2,5 +2,6 @@
 export { default as GDrawer } from './feedback/drawer'
 export { default as GModal } from './feedback/modal'
 export { default as GFooter } from './Footer'
-export { default as GRightContent } from './RightContent'
+export { default as Icon } from './Icon'
 export { default as GHeaderContentRender } from './layouts/headerContentRender'
+export { default as GRightContent } from './RightContent'
