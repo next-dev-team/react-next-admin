@@ -28,17 +28,17 @@ const loginPath = '/user/login'
 // }
 //
 
-export function onRouteChange({ location, action }: any) {
-  console.log('onRouteChange', location, action)
-}
+// export function onRouteChange({ location, action }: any) {
+//   console.log('onRouteChange', location, action)
+// }
 
-export function patchRoutes({ routes, routeComponents }: any) {
-  console.log('patchRoutes', routes, routeComponents)
-}
+// export function patchRoutes({ routes, routeComponents }: any) {
+//   console.log('patchRoutes', routes, routeComponents)
+// }
 
-export function patchClientRoutes({ routes }: any) {
-  console.log('patchClientRoutes', routes, Array.isArray(routes))
-}
+// export function patchClientRoutes({ routes }: any) {
+//   console.log('patchClientRoutes', routes, Array.isArray(routes))
+// }
 
 export const antd = (memo: any) => {
   memo.theme ||= {}

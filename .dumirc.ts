@@ -1,8 +1,30 @@
 import { defineConfig } from 'dumi'
+import umiConfig from './config/config'
+
+const newConfig = () => {
+  const config = { ...umiConfig }
+  // some config are not support dumi
+  const excludeKey = ['locale', 'layout', 'initialState', 'routes']
+  Object.keys(config).forEach((key) => {
+    if (excludeKey.includes(key)) {
+      delete config[key]
+    }
+  })
+  return config
+}
 
 export default defineConfig({
-  plugins: [require.resolve('@umijs/plugins/dist/tailwindcss')],
-  tailwindcss: {},
+  ...newConfig(),
+  plugins: [
+    require.resolve('@umijs/plugins/dist/moment2dayjs'),
+    require.resolve('@umijs/plugins/dist/antd'),
+    require.resolve('@umijs/plugins/dist/unocss'),
+    require.resolve('@umijs/plugins/dist/valtio'),
+    require.resolve('@umijs/plugins/dist/request'),
+    require.resolve('@umijs/plugins/dist/model'),
+    require.resolve('@umijs/plugins/dist/access'),
+  ],
+  mfsu: false,
   locales: [{ id: 'en-US', name: 'EN', suffix: '' }],
   alias: {},
   // apiParser: {},
@@ -27,9 +49,9 @@ export default defineConfig({
     logo: 'https://gw.alipayobjects.com/zos/bmw-prod/d3e3eb39-1cd7-4aa5-827c-877deced6b7e/lalxt4g3_w256_h256.png',
     footer: `Open-source MIT Licensed | Copyright © 2019-${new Date().getFullYear()}<br /> Powered by Next Dev`,
   },
-  ssr: process.env.NODE_ENV === 'development' ? undefined : {},
-  chainWebpack(config, { webpack }) {
-    config.module.rule('ts-in-node_modules').include.clear()
-    return config
-  },
+  // ssr: process.env.NODE_ENV === 'development' ? undefined : {},
+  // chainWebpack(config, { webpack }) {
+  //   config.module.rule('ts-in-node_modules').include.clear()
+  //   return config
+  // },
 })
