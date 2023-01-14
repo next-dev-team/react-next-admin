@@ -1,5 +1,5 @@
 import { defineConfig, presetIcons, presetUno } from 'unocss'
-import { antdUnoColor } from './src/constants/colors'
+import { antdUnoColor } from './config/defaultSettings/seedColors'
 
 export function createConfig({ dev = true } = {}) {
   return defineConfig({
@@ -12,10 +12,18 @@ export function createConfig({ dev = true } = {}) {
     ],
     theme: {
       colors: {
-        // veryCool: '#0000ff', // class="text-very-cool",
+        // veryCool: '#0000ff', // class="text-very-cool bg-very-cool",
         ...(antdUnoColor() || {}),
       },
     },
+    rules: [
+      [
+        /^text-(.*)$/,
+        ([, c], { theme }: { theme: any }) => {
+          if (theme.colors[c]) return { color: theme.colors[c] }
+        },
+      ],
+    ],
   })
 }
 

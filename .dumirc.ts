@@ -34,7 +34,8 @@ export default defineConfig({
     // auto generate docs
     atomDirs: [
       // utils
-      { type: 'docs', dir: 'src' },
+      { type: 'docs', dir: '.' },
+      // { type: 'docs', dir: 'src' },
     ],
   },
   favicons: [

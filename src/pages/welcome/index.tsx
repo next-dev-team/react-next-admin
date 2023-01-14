@@ -41,13 +41,13 @@ const Index = () => {
   _useCreation(() => {
     // auto-import lodash
     // console.log('_omit', _omit({ a: 1, b: 2 }, 'a'))
-    $terminal.log(`Some info from the app`)
-    $terminal.log({
-      json: { foo: 'bar' },
-    })
-    $terminal.info(`Hey terminal, A message from the browser`)
-    $terminal.warn(`Watch out, warning from the browser`)
-    $terminal.error(`Ups, testing an error message from the browser`)
+    // $terminal.log(`Some info from the app`)
+    // $terminal.log({
+    //   json: { foo: 'bar' },
+    // })
+    // $terminal.info(`Hey terminal, A message from the browser`)
+    // $terminal.warn(`Watch out, warning from the browser`)
+    // $terminal.error(`Ups, testing an error message from the browser`)
 
     return {}
   }, [])

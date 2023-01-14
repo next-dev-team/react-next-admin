@@ -8,6 +8,7 @@ import NiceModal from '@ebay/nice-modal-react'
 import { RequestConfig } from '@umijs/max'
 import { debounce, isEmpty } from 'lodash'
 import { createElement } from 'react'
+import { defaultSettings } from './utils'
 const loginPath = '/user/login'
 
 // all supported functions in defineApp
@@ -109,21 +110,18 @@ export async function getInitialState(): Promise<{
 
 // global provider
 function WrapperApp(props: any) {
-  const { token } = useToken()
   return (
     <ApolloProvider client={apolloConfig}>
       {/* 
            https://ant.design/docs/react/customize-theme#api 
            https://ant.design/theme-editor
        */}
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: token.colorPrimary,
-          },
-        }}
-      >
-        <NiceModal.Provider>{props.children}</NiceModal.Provider>
+      <ConfigProvider theme={defaultSettings.themeConfig}>
+        <NiceModal.Provider>
+          {/* ---- children ----- */}
+          {props.children}
+          {/* ----------------- */}
+        </NiceModal.Provider>
       </ConfigProvider>
     </ApolloProvider>
   )
@@ -317,12 +315,12 @@ export const layout: RunTimeLayoutConfig = ({
     ],
     // 自定义 403 页面
     unAccessible: <div>unAccessible</div>,
-    // childrenRender: (children) => {
-    //   // Generate the intl object
-    //   // const enUSIntl1 = createIntl('en_US', enUSIntl);
-    //   if (initialState?.loading) return <PageLoading />
-    //   return <>{children}</>
-    // },
+    childrenRender: (children) => {
+      // global modal register
+      _allModalRegistered()
+      if (initialState?.loading) return <PageLoading />
+      return <>{children}</>
+    },
     ...initialState?.settings,
   }
 }

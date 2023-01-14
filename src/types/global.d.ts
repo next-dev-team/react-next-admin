@@ -25,5 +25,6 @@ declare global {
    *  ========= UMI ================
    */
   type RunTimeLayoutConfig = import('@umijs/max').RunTimeLayoutConfig
-  type LayoutSettings = import('../../config/defaultSettings').SettingsConfig
+  type LayoutSettings =
+    import('../../config/defaultSettings/defaultSettings').SettingsConfig
 }

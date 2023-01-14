@@ -2,7 +2,7 @@ import { defineConfig } from '@umijs/max'
 import dotEnv from 'dotenv'
 import { dirname } from 'path'
 import { autoImportPlugin } from './auto-import'
-import defaultSettings from './defaultSettings'
+import { defaultSettings } from './defaultSettings'
 import proxy from './proxy'
 import routes from './routes'
 
@@ -33,10 +33,8 @@ export default defineConfig({
   clickToComponent: {},
   npmClient: 'pnpm',
   define: {
-    'process.env.version': '1.1.0',
     ...(getEnv.parsed ?? {}),
     UMI_ENV: getEnv.parsed?.UMI_ENV,
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   },
   // targets: {
   //   ie: 11,
@@ -87,13 +85,19 @@ export default defineConfig({
    */
   // theme,
   //targets
-  //Configure the threshold of base64 compilation for image files. The default is 10000 bytes, less than it will be compiled into base64 encoding, otherwise a separate file will be generated
-  inlineLimit: 10000,
+
   // Configure additional umi plugins.
+  mfsu: {
+    shared: {
+      react: {
+        singleton: true,
+      },
+    },
+  },
 
   chainWebpack(config, {}) {
     // when need to import outside src
-    config.module.rule('ts-in-node_modules').include.clear()
+    // config.module.rule('ts-in-node_modules').include.clear()
     // Introduce global public method
     // config.plugin('$global').use(
     //   new webpack.ProvidePlugin({

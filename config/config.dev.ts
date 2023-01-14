@@ -4,8 +4,8 @@ console.log('config.dev is working')
 
 // all UMI Dev config here
 export default defineConfig({
-  devtool: 'source-map',
-  mfsu: {},
+  // devtool: 'source-map',
+  // mfsu: {},
 
   /**
    * 配置 external
@@ -14,16 +14,16 @@ export default defineConfig({
   externals: {
     // react: 'React',
     // 'react-dom': 'ReactDOM',
-    react: 'window.React',
-    'react-dom': 'window.ReactDOM',
+    // react: 'window.React',
+    // 'react-dom': 'window.ReactDOM',
   },
   //配置额外的 meta 标签。数组中可以配置key:value形式的对象。
   // metas:[],
   //配置 <head> 里的额外脚本，数组项为字符串或对象。
   // headScripts:[],
   // 配置 <body> 里的额外脚本。。
-  scripts: [
-    '//unpkg.com/react@18.2.0/umd/react.development.js',
-    '//unpkg.com/react-dom@18.2.0/umd/react-dom.development.js',
-  ],
+  // scripts: [
+  //   '//unpkg.com/react@18.2.0/umd/react.development.js',
+  //   '//unpkg.com/react-dom@18.2.0/umd/react-dom.development.js',
+  // ],
 })

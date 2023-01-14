@@ -1,12 +1,8 @@
 import SwitchTabsLayout from '@/components/SwitchTabsLayout'
-import LayoutDevTools from './devTool'
 
 const Layout = () => {
-  const { initialState, setInitialState } = useModel('@@initialState')
+  const { initialState } = useModel('@@initialState')
   const { settings } = initialState || {}
-
-  // global modal register
-  _allModalRegistered()
 
   return (
     <>
@@ -28,17 +24,7 @@ const Layout = () => {
       {!$history.location?.pathname?.includes('/login') &&
         !_consIsAppEnvProd && (
           <>
-            <LayoutDevTools />
-            <PSettingDrawer
-              enableDarkTheme
-              settings={settings}
-              onSettingChange={(settings) => {
-                setInitialState((preInitialState) => ({
-                  ...preInitialState,
-                  settings,
-                }))
-              }}
-            />
+            <GDevTools />
           </>
         )}
     </>

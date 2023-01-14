@@ -1,24 +1,32 @@
 import { Settings as LayoutSettings } from '@ant-design/pro-components'
 import { Mode, UseSwitchTabsOptions } from 'use-switch-tabs'
+import { themeConfig } from './theme'
 
 export type SwitchTabsOptions = {
   mode: Mode
-  /** 固定标签页头部 */
+  /** Fixed tab header */
   fixed?: boolean
-  /** 是否在顶栏显示刷新按钮 */
+  /** Whether to display the refresh button on the top bar */
   reloadable?: boolean
 } & Pick<UseSwitchTabsOptions, 'persistent'>
+// ================ Antd Theme Config ================
+
+/**
+ * all default static settings
+ */
 export type SettingsConfig = LayoutSettings & {
   pwa?: boolean
   logo?: string
   siderWidth?: number
   switchTabs?: SwitchTabsOptions
+  themeConfig?: typeof themeConfig
 }
-const Settings: SettingsConfig = {
+
+export const defaultSettings: SettingsConfig = {
+  // ------------ All layout config ---------
   navTheme: 'light',
   siderWidth: 250,
-  // 拂晓蓝
-  colorPrimary: '#1890ff',
+  colorPrimary: themeConfig.token?.colorPrimary,
   layout: 'mix',
   contentWidth: 'Fluid',
   fixedHeader: true,
@@ -28,6 +36,7 @@ const Settings: SettingsConfig = {
   pwa: false,
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',
+  // ------------ Custom config ---------
   switchTabs: {
     mode: Mode.Route,
     fixed: true,
@@ -36,6 +45,5 @@ const Settings: SettingsConfig = {
       force: true,
     },
   },
+  themeConfig,
 }
-
-export default Settings

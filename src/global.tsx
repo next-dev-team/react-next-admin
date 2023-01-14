@@ -1,4 +1,4 @@
-import defaultSettings from '../config/defaultSettings'
+import { defaultSettings } from './utils'
 
 const { pwa } = defaultSettings
 const isHttps = document.location.protocol === 'https:'

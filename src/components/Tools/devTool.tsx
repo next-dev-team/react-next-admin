@@ -1,40 +1,55 @@
-import { capitalize } from 'lodash-es'
+export default function DevTools(props: any) {
+  const { initialState, setInitialState } = useModel('@@initialState')
+  const antdColor = antdColorToken()
+  const token = useToken()
 
-// global root container
-function LayoutDevTools(props: any) {
-  $terminal.log(`Root App`, _consIsAppEnvProd)
-
+  const { settings } = initialState || {}
   const iconsValue = 'https://icon-sets.iconify.design'
   const allOption = [
     {
-      label: 'ProComponents',
-      value: 'https://procomponents.ant.design/en-US/components',
+      label: 'UMPAY System',
+      value: 'UMPAY System',
     },
-    {
-      label: 'Next Dev',
-      value: 'https://next-dev-team.github.io/next-dev',
-    },
-    {
-      label: 'Icons',
-      value: iconsValue,
-    },
-
     {
       label: 'Antd Design',
       value: 'https://ant.design/components/button',
     },
 
     {
-      label: 'Antd design pro',
-      value: 'https://pro.ant.design/docs/getting-started/',
+      label: 'Uno Css',
+      value: 'https://uno.antfu.me/',
+    },
+    {
+      label: 'Docs',
+      value: 'http://localhost:3001/docs',
+    },
+    {
+      label: 'Hooks',
+      value: 'https://ahooks.js.org/hooks/use-request/index',
+    },
+    {
+      label: 'Icons',
+      value: iconsValue,
+    },
+    {
+      label: 'ProComponents',
+      value: 'https://procomponents.ant.design/en-US/components',
+    },
+  ]
+  const itemsDropdown: { label: string; key: string }[] = [
+    { label: 'Bundle Size', key: 'https://bundlephobia.com' },
+    {
+      label: 'Antd Theme',
+      key: 'https://ant.design/theme-editor',
     },
     {
       label: 'Tailwindcss',
-      value: 'https://tailwindcss.com/docs/customizing-colors',
+      key: 'https://tailwindcss.com/docs/customizing-colors',
     },
-  ]
-  const itemsDropdown = [
-    { label: 'Bundle Size', key: 'https://bundlephobia.com' },
+    {
+      label: 'Antd Color',
+      key: 'https://ant.design/docs/spec/colors#base-color-palettes',
+    },
   ]
 
   const state = _useReactive({
@@ -45,7 +60,6 @@ function LayoutDevTools(props: any) {
   const { run: onConvertIconsText } = _useDebounceFn(
     (e) => {
       state.resultIconText = e.target.value
-      // console.log('Copy Icons', e.target.value)
     },
     { wait: 300 },
   )
@@ -61,7 +75,7 @@ function LayoutDevTools(props: any) {
           />
           <Dropdown
             menu={{
-              items: itemsDropdown,
+              items: itemsDropdown as any,
               onClick: (e) => {
                 state.iframeIndex = e.key
               },
@@ -74,7 +88,7 @@ function LayoutDevTools(props: any) {
           </Dropdown>
         </Space>
       ),
-      width: '95%',
+      width: '92%',
       children: (
         <>
           {state.iframeIndex === iconsValue && (
@@ -87,7 +101,7 @@ function LayoutDevTools(props: any) {
                     onChange: onConvertIconsText,
                   }}
                 />
-                {state.resultIconText && (
+                {/* {state.resultIconText && (
                   <>
                     <Typography.Text
                       copyable
@@ -146,14 +160,71 @@ function LayoutDevTools(props: any) {
                       {_stringCase.unocss(state.resultIconText)}
                     </Typography.Text>
                   </>
-                )}
+                )} */}
               </Col>
             </Row>
           )}
-          <iframe
-            className="w-full  h-[calc(100vh-100px)]"
-            src={state.iframeIndex}
-          ></iframe>
+          {state.iframeIndex === allOption[0].value ? (
+            <div className="w-full  h-[calc(100vh-100px)]">
+              <ProCard
+                defaultCollapsed
+                collapsible
+                title="Antd Color"
+                headerBordered
+              >
+                <div className="space-y-2">
+                  <GText>Usage:</GText>
+                  <GText>{`  <div className='bg-colorPrimary' /> or <GText type="warn"> hello</GText> or  <UTitle level={1}> hello</UTitle>`}</GText>
+
+                  <div className="flex flex-wrap gap-2">
+                    {Object.keys(antdColor).map((color) => {
+                      //@ts-ignore
+                      const colorValue = antdColor?.[color]
+                      return (
+                        <div
+                          key={color}
+                          className="flex flex-col gap-7 justify-between "
+                        >
+                          <div>
+                            <div
+                              onClick={() => _copyToClipboard(color, true)}
+                              className="outline outline-1 outline-colorBorder  h-10 w-35 rounded cursor-pointer"
+                              style={{ background: colorValue }}
+                            />
+                            <Space>
+                              <GText>{color}</GText>
+                              <GText>{colorValue}</GText>
+                            </Space>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </ProCard>
+              <ProCard
+                defaultCollapsed
+                collapsible
+                title={
+                  <Space>
+                    Antd Theme Config
+                    <Icon
+                      className="clarity:copy-to-clipboard-line text-base"
+                      onClick={() => _copyToClipboard(token?.token, true)}
+                    />
+                  </Space>
+                }
+                headerBordered
+              >
+                <GParagraph code>{JSON.stringify(token?.token)} </GParagraph>
+              </ProCard>
+            </div>
+          ) : (
+            <iframe
+              className="w-full  h-[calc(100vh-100px)]"
+              src={state.iframeIndex}
+            ></iframe>
+          )}
         </>
       ),
       extra: (
@@ -162,12 +233,14 @@ function LayoutDevTools(props: any) {
             type="link"
             target="_blank"
             onClick={() => {
-              window.open('https://github.com/next-dev-team')
+              window.open(
+                'https://gitlab.initcapp.com/umpay/umpay/-/tree/main/apps/umpay-web',
+              )
             }}
           >
             <Space>
               <GithubFilled />
-              Next Dev
+              UMPAY REPO
             </Space>
           </Button>
           <Button
@@ -187,25 +260,64 @@ function LayoutDevTools(props: any) {
     })
   }
 
-  // useEffect(() => {
   _useUpdateEffect(() => {
     renderIframeFn()
   }, [state.iframeIndex, state.resultIconText])
 
   return (
     <div>
+      <PSettingDrawer
+        enableDarkTheme
+        settings={settings}
+        colorList={[
+          {
+            key: '#9E823C',
+            color: '#9E823C',
+            title: '#9E823C',
+          },
+          {
+            key: '#E1A900',
+            color: '#E1A900',
+            title: '#E1A900',
+          },
+          {
+            key: '#F2C450',
+            color: '#F2C450',
+            title: '#F2C450',
+          },
+          {
+            key: '#FED12E',
+            color: '#FED12E',
+            title: '#FED12E',
+          },
+          {
+            key: '#FFAD00',
+            color: '#FFAD00',
+            title: '#FFAD00',
+          },
+          {
+            key: '#FFBB00',
+            color: '#FFBB00',
+            title: '#FFBB00',
+          },
+        ]}
+        onSettingChange={(settings) => {
+          setInitialState((preInitialState: any) => ({
+            ...preInitialState,
+            settings,
+          }))
+        }}
+      />
       {props.children}
 
       <a
-        className="absolute bottom-8 right-8 inline-block p-[2px] rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:text-white active:text-opacity-75 focus:outline-none focus:ring"
+        className="absolute bottom-0 right-8 inline-block p-[2px] rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:text-white active:text-opacity-75 focus:outline-none focus:ring"
         onClick={renderIframeFn}
       >
-        <span className="block px-2.5 py-2 text-sm font-medium bg-white rounded-full hover:bg-transparent">
-          <Icon className="arcticons:doc-scanner relative top-0 hover:text-white hover:font-bold text-2xl hover:text-lg " />
+        <span className="block px-2 py-2  font-medium bg-white rounded-full hover:bg-transparent">
+          <Icon className="arcticons:doc-scanner text-black" />
         </span>
       </a>
     </div>
   )
 }
-
-export default LayoutDevTools
