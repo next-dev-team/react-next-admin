@@ -7,8 +7,8 @@ export default function DevTools(props: any) {
   const iconsValue = 'https://icon-sets.iconify.design'
   const allOption = [
     {
-      label: 'UMPAY System',
-      value: 'UMPAY System',
+      label: 'Design System',
+      value: 'Design System',
     },
     {
       label: 'Antd Design',
@@ -240,7 +240,7 @@ export default function DevTools(props: any) {
           >
             <Space>
               <GithubFilled />
-              UMPAY REPO
+              Github
             </Space>
           </Button>
           <Button
