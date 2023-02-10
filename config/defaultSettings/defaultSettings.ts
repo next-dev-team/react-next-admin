@@ -33,7 +33,7 @@ export const defaultSettings: SettingsConfig = {
   fixSiderbar: true,
   colorWeak: false,
   title: 'Next Admin',
-  pwa: false,
+  pwa: true,
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '',
   // ------------ Custom config ---------

@@ -56,6 +56,7 @@ export default defineConfig({
   // forkTSChecker: {},
   //whether the hash configuration allows the generated file to contain a hash suffix, which is usually used for incremental publishing and avoiding browser loading cache
   hash: true,
+  // https: {},
   proxy,
   // Routing is not configured, the default is conventional routing
   routes,
@@ -140,24 +141,17 @@ export default defineConfig({
   moment2dayjs: {},
   access: {},
   model: {},
-  plugins: [require.resolve('@umijs/plugins/dist/unocss')],
+  // plugins: [require.resolve('@umijs/plugins/dist/unocss')],
 
   initialState: {},
-  unocss: {
-    watch: [
-      'src/**/**.tsx',
-      'src/**.tsx',
-      'src/**/**/**.tsx',
-      'src/**/**/**/**.tsx',
-    ],
-  },
-  // tailwindcss: {},
+  tailwindcss: {},
   autoprefixer: {},
+  icons: {},
   valtio: {},
   svgr: {},
   routePrefetch: {},
   manifest: {},
-  clientLoader: {},
+  // clientLoader: {},
   mock: {
     include: ['pages/**/_mock.ts'],
   },

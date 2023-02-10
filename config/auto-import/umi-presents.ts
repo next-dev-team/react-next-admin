@@ -36,7 +36,7 @@ export const umiPresent = [
   ['proxy', '$proxy'],
   ['proxyMap', '$proxyMap'],
   ['proxySet', '$proxySet'],
-  ['proxyWithComputed', '$proxyWithComputed'],
+  // ['proxyWithComputed', '$proxyWithComputed'],
   ['proxyWithDevtools', '$proxyWithDevtools'],
   ['proxyWithHistory', '$proxyWithHistory'],
   ['renderClient', '$renderClient'],
@@ -66,4 +66,5 @@ export const umiPresent = [
   ['withRouter', '$withRouter'],
   ['useIntl', 'useIntl'],
   ['history', '_history'],
+  ['Icon', 'Icon'],
 ]

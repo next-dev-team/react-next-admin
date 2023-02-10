@@ -7,7 +7,7 @@ export type SiderTheme = 'light' | 'dark'
 
 const GlobalHeaderRight = () => {
   const { initialState } = useModel('@@initialState')
-  const { bannerNews } = useAppStore()
+  // const { bannerNews } = useAppStore()
 
   if (!initialState || !initialState.settings) {
     return null
@@ -17,7 +17,7 @@ const GlobalHeaderRight = () => {
 
   return (
     <Space size="middle">
-      {bannerNews.visible && (
+      {
         <Alert
           banner
           type="info"
@@ -29,12 +29,12 @@ const GlobalHeaderRight = () => {
           }}
           message={
             <Marquee pauseOnHover gradient={false}>
-              <Icon className="emojione:flag-for-cambodia mr-2" />
-              {bannerNews?.content}
+              <Icon icon="emojione:flag-for-cambodia" className="mr-2" />
+              welcome to react-next-admin
             </Marquee>
           }
         />
-      )}
+      }
       <HeaderSearch
         placeholder="站内搜索"
         defaultValue="umi ui"

@@ -1,3 +1,4 @@
+import { Icon } from '@umijs/max'
 import { SubCom } from './subCom'
 
 const Index = () => {
@@ -14,7 +15,6 @@ const Index = () => {
   const { data } = useClientLoaderData()
 
   // global Valtio store
-  const { count } = useAppStore()
 
   // graphql
   const {
@@ -32,10 +32,10 @@ const Index = () => {
   // }
 
   // auto-import react
-  useEffect(() => {
-    console.log('useEffect', count)
-    console.log('useClientLoaderData', data)
-  }, [count])
+  // useEffect(() => {
+  //   console.log('useEffect', count)
+  //   console.log('useClientLoaderData', data)
+  // }, [count])
 
   //auto-import ahook
   _useCreation(() => {
@@ -103,12 +103,7 @@ const Index = () => {
           loading={loadingPost}
           bordered
           title="GraphQL"
-          extra={
-            <Icon
-              className="ion:refresh-circle-sharp text-lg"
-              onClick={() => refetchPost()}
-            />
-          }
+          extra={<Icon icon="emojione:flag-for-cambodia" />}
         >
           <StatisticCard
             statistic={{
@@ -127,7 +122,8 @@ const Index = () => {
           title="Fetch API"
           extra={
             <Icon
-              className="ion:refresh-circle-sharp text-lg"
+              icon="ion:refresh-circle-sharp"
+              className=" text-lg"
               onClick={refetchGetUser}
             />
           }
@@ -145,23 +141,8 @@ const Index = () => {
         <ProCard bordered title="Iconify">
           {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
           <div className="flex gap-2">
-            <Icon className="emojione:flag-for-cambodia" />
+            <Icon icon="emojione:flag-for-cambodia" />
           </div>
-        </ProCard>
-      </Col>
-
-      <Col span={8}>
-        {/*  antd component and valtio store */}
-        <ProCard bordered title="Global State Valtio" layout="center">
-          <Space>
-            <Button onClick={appStore.dec} danger type="primary" shape="circle">
-              -
-            </Button>
-            {appStore.count}
-            <Button onClick={appStore.inc} type="primary" shape="circle">
-              +
-            </Button>
-          </Space>
         </ProCard>
       </Col>
 

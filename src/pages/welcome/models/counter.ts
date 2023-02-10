@@ -1,7 +1,5 @@
 export default function useWelcomeLogic() {
-  const appStore = useAppStore();
-  const userStore = useUserStore();
-  const [tasks, setTasks] = useState(userStore.name);
+  const [tasks, setTasks] = useState('');
   const {
     data: dataUser,
     loading: loadingGetUser,
@@ -14,7 +12,6 @@ export default function useWelcomeLogic() {
     loadingGetUser,
     setTasks,
     tasks,
-    appStore,
-    userStore,
+
   };
 }

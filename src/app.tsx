@@ -9,7 +9,9 @@ import { RequestConfig } from '@umijs/max'
 import { debounce, isEmpty } from 'lodash'
 import { createElement } from 'react'
 import { defaultSettings } from './utils'
+
 const loginPath = '/user/login'
+
 
 // all supported functions in defineApp
 // $defineApp({
