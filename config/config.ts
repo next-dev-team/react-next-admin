@@ -65,7 +65,6 @@ export default defineConfig({
   ignoreMomentLocale: true,
 
   // Configure additional link tags.
-  // links: [],
   /**
    * Configure additional CSS.
    * styles: [
@@ -149,6 +148,7 @@ export default defineConfig({
   icons: {},
   valtio: {},
   svgr: {},
+
   routePrefetch: {},
   manifest: {},
   // clientLoader: {},
