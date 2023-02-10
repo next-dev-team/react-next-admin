@@ -12,7 +12,6 @@ import { defaultSettings } from './utils'
 
 const loginPath = '/user/login'
 
-
 // all supported functions in defineApp
 // $defineApp({
 

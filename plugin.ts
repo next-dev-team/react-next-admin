@@ -11,7 +11,7 @@ export default (api: IApi) => {
     return $
   })
   //   api.addHTMLMetas(() => [{ name: 'foo', content: 'bar' }])
-  //   api.addHTMLLinks(() => [{ rel: 'foo', content: 'bar' }])
+  // api.addHTMLLinks(() => [{ rel: '', content: 'bar' }])
   //   api.addHTMLStyles(() => [`body { color: red; }`])
   //   api.addHTMLHeadScripts(() => [`console.log('hello world from head')`])
   //   api.addHTMLScripts(() => [`console.log('hello world')`])
