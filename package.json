@@ -59,7 +59,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^5.0.1",
-    "@ant-design/pro-components": "2.3.54",
+    "@ant-design/pro-components": "^2.3.54",
     "@apollo/client": "^3.7.7",
     "@ebay/nice-modal-react": "^1.2.8",
     "ahooks": "^3.7.4",
@@ -100,7 +100,7 @@
     "cross-env": "^7.0.3",
     "cypress": "^12.5.1",
     "dotenv": "^16.0.3",
-    "eslint": "^8.33.0",
+    "eslint": "^8.34.0",
     "eslint-plugin-valtio": "^0.6.1",
     "fork-ts-checker-webpack-plugin": "^7.3.0",
     "graphql": "^16.6.0",
