@@ -1,6 +1,6 @@
 export default function DevTools(props: any) {
   const { initialState, setInitialState } = useModel('@@initialState')
-  const antdColor = antdColorToken()
+  const antdColor = {}
   const token = useToken()
 
   const { settings } = initialState || {}
@@ -208,11 +208,11 @@ export default function DevTools(props: any) {
                 title={
                   <Space>
                     Antd Theme Config
-                    <Icon
+                    {/* <Icon
                       icon="clarity:copy-to-clipboard-line"
                       className="text-base"
                       onClick={() => _copyToClipboard(token?.token, true)}
-                    />
+                    /> */}
                   </Space>
                 }
                 headerBordered
@@ -316,7 +316,7 @@ export default function DevTools(props: any) {
         onClick={renderIframeFn}
       >
         <span className="block px-2 py-2  font-medium bg-white rounded-full hover:bg-transparent">
-          <Icon icon="arcticons-doc-scanner" className="text-black" />
+          {/* <Icon icon="arcticons-doc-scanner" className="text-black" /> */}
         </span>
       </a>
     </div>

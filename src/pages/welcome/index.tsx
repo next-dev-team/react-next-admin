@@ -1,4 +1,3 @@
-import { Icon } from '@umijs/max'
 import { SubCom } from './subCom'
 
 const Index = () => {
@@ -99,12 +98,7 @@ const Index = () => {
 
       <Col span={8}>
         {/* ---- graphql------ */}
-        <ProCard
-          loading={loadingPost}
-          bordered
-          title="GraphQL"
-          extra={<Icon icon="emojione:flag-for-cambodia" />}
-        >
+        <ProCard loading={loadingPost} bordered title="GraphQL">
           <StatisticCard
             statistic={{
               title: dataPostRes?.post?.title,
@@ -120,13 +114,10 @@ const Index = () => {
           loading={loadingGetUser}
           bordered
           title="Fetch API"
-          extra={
-            <Icon
-              icon="ion:refresh-circle-sharp"
-              className=" text-lg"
-              onClick={refetchGetUser}
-            />
-          }
+          // <Icon
+          //   className=" text-lg"
+          //   onClick={refetchGetUser}
+          // />˝
         >
           <StatisticCard
             statistic={{
@@ -140,9 +131,7 @@ const Index = () => {
       <Col span={8}>
         <ProCard bordered title="Iconify">
           {/*  icons --> command+p -> find icons -> search icons -> copy name + Prefix Icon*/}
-          <div className="flex gap-2">
-            <Icon icon="emojione:flag-for-cambodia" />
-          </div>
+          <div className="flex gap-2"></div>
         </ProCard>
       </Col>
 

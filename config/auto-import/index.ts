@@ -1,10 +1,7 @@
 import { AhooksPresent } from './ahooks-present'
 import { antdIconPresent } from './antd-icons-present'
 import { antdPresent } from './antd-present'
-// import { lodashPresent } from './lodash-present';
 import { umiPresent } from './umi-presents'
-
-const IconsResolver = require('unplugin-icons/resolver')
 
 export const autoImportPlugin = () =>
   require('unplugin-auto-import/webpack')({
@@ -37,10 +34,5 @@ export const autoImportPlugin = () =>
       // automatically import for graphql
       './src/graphql/**',
     ],
-    resolvers: [
-      IconsResolver({
-        componentPrefix: 'Icon',
-        extension: 'jsx',
-      }),
-    ],
+    resolvers: [],
   })

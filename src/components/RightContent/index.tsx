@@ -29,7 +29,6 @@ const GlobalHeaderRight = () => {
           }}
           message={
             <Marquee pauseOnHover gradient={false}>
-              <Icon icon="emojione:flag-for-cambodia" className="mr-2" />
               welcome to react-next-admin
             </Marquee>
           }
