@@ -82,7 +82,7 @@
     "@graphql-codegen/typescript": "^3.0.2",
     "@graphql-codegen/typescript-operations": "^3.0.2",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
-    "@iconify/json": "^2.2.42",
+    "@iconify/json": "^2.2.43",
     "@milahu/patch-package": "^6.4.14",
     "@svgr/core": "^7.0.0",
     "@testing-library/react": "^14.0.0",
