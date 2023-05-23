@@ -205,6 +205,7 @@ declare global {
   const CoffeeOutlined: typeof import('@ant-design/icons')['CoffeeOutlined']
   const Col: typeof import('antd/es')['Col']
   const Collapse: typeof import('antd/es')['Collapse']
+  const ColorPicker: typeof import('antd/es')['ColorPicker']
   const ColumnHeightOutlined: typeof import('@ant-design/icons')['ColumnHeightOutlined']
   const ColumnWidthOutlined: typeof import('@ant-design/icons')['ColumnWidthOutlined']
   const CommentOutlined: typeof import('@ant-design/icons')['CommentOutlined']
