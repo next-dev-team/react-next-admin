@@ -79,9 +79,12 @@ devDependencies:
   '@graphql-codegen/typescript-react-apollo':
     specifier: ^3.3.7
     version: registry.npmjs.org/@graphql-codegen/typescript-react-apollo@3.3.7(graphql-tag@2.12.6)(graphql@16.7.1)
-  '@iconify/json':
-    specifier: ^2.2.82
-    version: registry.npmjs.org/@iconify/json@2.2.82
+  '@iconify-json/el':
+    specifier: 1.1.4
+    version: registry.npmjs.org/@iconify-json/el@1.1.4
+  '@iconify-json/heroicons':
+    specifier: 1.1.11
+    version: registry.npmjs.org/@iconify-json/heroicons@1.1.11
   '@milahu/patch-package':
     specifier: ^6.4.14
     version: registry.npmjs.org/@milahu/patch-package@6.4.14
@@ -5937,13 +5940,20 @@ packages:
     name: '@humanwhocodes/object-schema'
     version: 1.2.1
 
-  registry.npmjs.org/@iconify/json@2.2.82:
-    resolution: {integrity: sha512-MBnhpcVZl6Gq0L50+yO1x4t+IWS3jpJUjnelBNHvXgQZ1lhQOmL6q5fIyrkTIBas8XA+tbhWwYe2kdZabNDH8w==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@iconify/json/-/json-2.2.82.tgz}
-    name: '@iconify/json'
-    version: 2.2.82
+  registry.npmjs.org/@iconify-json/el@1.1.4:
+    resolution: {integrity: sha512-WETX/bWm+lPc0+lVhgL1YcovPxTpgnV+GcFHO7RKVNjzTwR8F5pfb54pqSuvyt8xXowGYAu+qWpdh7VY8TfeLA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@iconify-json/el/-/el-1.1.4.tgz}
+    name: '@iconify-json/el'
+    version: 1.1.4
     dependencies:
       '@iconify/types': registry.npmjs.org/@iconify/types@2.0.0
-      pathe: registry.npmjs.org/pathe@1.1.1
+    dev: true
+
+  registry.npmjs.org/@iconify-json/heroicons@1.1.11:
+    resolution: {integrity: sha512-Autw98FvUTmBCgb4CuKZ7iQQ2633YBCmcCbAbVNU9hAo6vms9uVcbtrAQt/qlB+qzNi52PV3DWDiRtJgmPeZIw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@iconify-json/heroicons/-/heroicons-1.1.11.tgz}
+    name: '@iconify-json/heroicons'
+    version: 1.1.11
+    dependencies:
+      '@iconify/types': registry.npmjs.org/@iconify/types@2.0.0
     dev: true
 
   registry.npmjs.org/@iconify/types@2.0.0:
@@ -8174,7 +8184,7 @@ packages:
     version: 5.0.0
     deprecated: This is a stub types definition. history provides its own type definitions, so you do not need this installed.
     dependencies:
-      history: registry.npmjs.org/history@4.10.1
+      history: registry.npmjs.org/history@5.3.0
     dev: true
 
   registry.npmjs.org/@types/hoist-non-react-statics@3.3.1:
@@ -8421,7 +8431,7 @@ packages:
       '@types/history': registry.npmjs.org/@types/history@4.7.11
       '@types/react': registry.npmjs.org/@types/react@18.2.14
       '@types/react-router': registry.npmjs.org/@types/react-router@5.1.20
-      redux: registry.npmjs.org/redux@3.7.2
+      redux: registry.npmjs.org/redux@4.2.1
     dev: true
 
   registry.npmjs.org/@types/react-router@5.1.20:
@@ -19642,7 +19652,7 @@ packages:
     dependencies:
       universalify: registry.npmjs.org/universalify@2.0.0
     optionalDependencies:
-      graceful-fs: registry.npmjs.org/graceful-fs@4.2.10
+      graceful-fs: registry.npmjs.org/graceful-fs@4.2.11
 
   registry.npmjs.org/jsonify@0.0.1:
     resolution: {integrity: sha512-2/Ki0GcmuqSrgFyelQq9M05y7PS0mEwuIzrf3f1fPqkVDVRvZrPZtVSMHxdgo8Aq0sxAOb/cr2aqqA3LeWHVPg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/jsonify/-/jsonify-0.0.1.tgz}

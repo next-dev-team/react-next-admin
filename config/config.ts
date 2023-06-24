@@ -31,6 +31,7 @@ if (!appEnv) {
 
 // all UMI config here
 export default defineConfig({
+  
   clickToComponent: {},
   npmClient: 'pnpm',
   define: {
@@ -168,7 +169,7 @@ export default defineConfig({
   initialState: {},
   tailwindcss: {},
   autoprefixer: {},
-  icons: {},
+  icons: { autoInstall: {} },
   valtio: {},
   svgr: {},
 

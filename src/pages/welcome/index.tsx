@@ -1,5 +1,4 @@
 import { SubCom } from './subCom'
-
 const Index = () => {
   // useModel global store
   const {
@@ -11,7 +10,6 @@ const Index = () => {
     loadingGetUser,
   } = useModel('welcome.counter')
   const { counter, dec, inc } = useModel('demo')
-  const { data } = useClientLoaderData()
 
   // global Valtio store
 
@@ -53,6 +51,14 @@ const Index = () => {
 
   return (
     <Row wrap gutter={[20, 30]}>
+      <Col span={8}>
+        <ProCard bordered title="Icons">
+          <Space>
+            <Icon icon="local:apple" fontSize={40} />
+            <Icon icon="heroicons:archive-box-x-mark" fontSize={40} />
+          </Space>
+        </ProCard>
+      </Col>
       <Col span={8}>
         {/* ---- Modal/Drawer/message------ */}
         <ProCard loading={loadingPost} bordered title="Feedback">
