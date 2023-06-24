@@ -71,7 +71,6 @@
     "memoize-one": "^6.0.0",
     "react": "^18.2.0",
     "react-fast-marquee": "^1.6.0",
-    "use-immer": "^0.9.0",
     "use-switch-tabs": "^0.2.3"
   },
   "devDependencies": {
@@ -82,6 +81,8 @@
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@iconify-json/el": "1.1.4",
+    "@iconify-json/heroicons": "1.1.11",
     "@milahu/patch-package": "^6.4.14",
     "@svgr/core": "^8.0.0",
     "@testing-library/react": "^14.0.0",
@@ -121,13 +122,28 @@
     "workbox-routing": "^7.0.0",
     "workbox-strategies": "^7.0.0",
     "workbox-webpack-plugin": "^7.0.0",
-    "workbox-window": "^7.0.0",
-    "yeoman-generator": "^5.9.0",
-    "yo": "^4.3.1",
-    "@iconify-json/el": "1.1.4",
-    "@iconify-json/heroicons": "1.1.11"
+    "workbox-window": "^7.0.0"
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "d3-color@<3.1.0": ">=3.1.0",
+      "got@<11.8.5": ">=11.8.5",
+      "immer@<9.0.6": ">=9.0.6",
+      "axios@<0.21.1": ">=0.21.1",
+      "follow-redirects@<1.14.8": ">=1.14.8",
+      "ssri@<5.2.2": ">=5.2.2",
+      "ssri@>=5.2.2 <6.0.2": ">=6.0.2",
+      "follow-redirects@<1.14.7": ">=1.14.7",
+      "node-fetch@<2.6.7": ">=2.6.7",
+      "axios@<0.21.2": ">=0.21.2",
+      "node-fetch@<2.6.1": ">=2.6.1",
+      "nth-check@<2.0.1": ">=2.0.1",
+      "vite@>=4.3.0 <4.3.9": ">=4.3.9",
+      "semver@<7.5.2": ">=7.5.2",
+      "http-cache-semantics@<4.1.1": ">=4.1.1"
+    }
   }
 }
