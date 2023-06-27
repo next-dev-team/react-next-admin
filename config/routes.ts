@@ -25,19 +25,19 @@ const routes: MenuDataItem[] = [
     icon: 'smile',
     component: './auth/login',
   },
-  {
-    name: 'list_page',
-    icon: 'TabletOutlined',
-    path: '/components',
-    routes: [
-      {
-        path: '/components/test',
-        name: 'sub_page',
-        icon: 'CrownOutlined',
-        component: './components/test',
-      },
-    ] as any,
-  },
+  // {
+  //   name: 'list_page',
+  //   icon: 'TabletOutlined',
+  //   path: '/components',
+  //   routes: [
+  //     {
+  //       path: '/components/test',
+  //       name: 'sub_page',
+  //       icon: 'CrownOutlined',
+  //       component: './components/test',
+  //     },
+  //   ] as any,
+  // },
   {
     path: '*',
     layout: false,
