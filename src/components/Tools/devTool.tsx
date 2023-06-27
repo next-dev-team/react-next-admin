@@ -315,8 +315,8 @@ export default function DevTools(props: any) {
         className="absolute bottom-0 right-8 inline-block p-[2px] rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:text-white active:text-opacity-75 focus:outline-none focus:ring"
         onClick={renderIframeFn}
       >
-        <span className="block px-2 py-2  font-medium bg-white rounded-full hover:bg-transparent">
-          {/* <Icon icon="arcticons-doc-scanner" className="text-black" /> */}
+        <span className="block px-2 py-2  font-medium bg-white rounded-full hover:bg-transparent hover:opacity-80">
+          <Icon icon="local:apple" fontSize={60} />
         </span>
       </a>
     </div>

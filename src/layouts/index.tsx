@@ -21,12 +21,11 @@ const Layout = () => {
         </ProCard>
       </SwitchTabsLayout>
 
-      {!$history.location?.pathname?.includes('/login') &&
-        !_consIsAppEnvProd && (
-          <>
-            <GDevTools />
-          </>
-        )}
+      {!$history.location?.pathname?.includes('/login') && (
+        <>
+          <GDevTools />
+        </>
+      )}
     </>
   )
 }

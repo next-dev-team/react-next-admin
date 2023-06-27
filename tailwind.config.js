@@ -9,7 +9,7 @@ module.exports = {
 const antdToken = require('./tailwind-color_seed');
 const { theme } = require('tailwindcss/defaultConfig');
 const colors = require('tailwindcss/colors');
-console.log('theme tw', theme);
+// console.log('theme tw', theme);
 const pick = (
   obj,
   keys,
