@@ -4,7 +4,7 @@ import umiConfig from './config/config'
 const newConfig = () => {
   const config = { ...umiConfig }
   // some config are not support dumi
-  const excludeKey = ['locale', 'layout', 'initialState', 'routes']
+  const excludeKey = ['locale', 'layout', 'initialState', 'routes', 'icons']
   Object.keys(config).forEach((key) => {
     if (excludeKey.includes(key)) {
       delete config[key]
@@ -18,7 +18,7 @@ export default defineConfig({
   plugins: [
     require.resolve('@umijs/plugins/dist/moment2dayjs'),
     require.resolve('@umijs/plugins/dist/antd'),
-    require.resolve('@umijs/plugins/dist/unocss'),
+    require.resolve('@umijs/plugins/dist/tailwindcss'),
     require.resolve('@umijs/plugins/dist/valtio'),
     require.resolve('@umijs/plugins/dist/request'),
     require.resolve('@umijs/plugins/dist/model'),

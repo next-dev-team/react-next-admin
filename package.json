@@ -96,7 +96,7 @@
     "carlo": "^0.9.46",
     "commander": "^11.0.0",
     "cross-env": "^7.0.3",
-    "cypress": "^12.15.0",
+    "cypress": "^12.16.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.43.0",
     "eslint-plugin-valtio": "^0.6.2",
