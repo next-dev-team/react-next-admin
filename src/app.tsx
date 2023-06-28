@@ -43,7 +43,7 @@ const loginPath = '/user/login'
 // }
 
 export const antd = (memo: any) => {
-  memo.theme ||= {}
+  memo.theme ??= {}
   memo.theme.algorithm = _theme.darkAlgorithm
   return memo
 }
@@ -117,7 +117,11 @@ function WrapperApp(props: any) {
            https://ant.design/docs/react/customize-theme#api 
            https://ant.design/theme-editor
        */}
-      <ConfigProvider theme={defaultSettings.themeConfig}>
+      <ConfigProvider
+        theme={{
+          ...defaultSettings.themeConfig,
+        }}
+      >
         <NiceModal.Provider>
           {/* ---- children ----- */}
           {props.children}
