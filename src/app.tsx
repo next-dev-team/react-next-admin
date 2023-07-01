@@ -5,7 +5,8 @@
 import { MenuDataItem } from '@ant-design/pro-components'
 import { ApolloProvider } from '@apollo/client'
 import NiceModal from '@ebay/nice-modal-react'
-import { RequestConfig } from '@umijs/max'
+import { RequestConfig, RuntimeAntdConfig } from '@umijs/max'
+import { theme } from 'antd'
 import { debounce, isEmpty } from 'lodash'
 import { createElement } from 'react'
 import { defaultSettings } from './utils'
@@ -42,9 +43,16 @@ const loginPath = '/user/login'
 //   console.log('patchClientRoutes', routes, Array.isArray(routes))
 // }
 
-export const antd = (memo: any) => {
+export const antd: RuntimeAntdConfig = (memo: any) => {
   memo.theme ??= {}
-  memo.theme.algorithm = _theme.darkAlgorithm
+  memo.theme.algorithm = theme.darkAlgorithm // 配置 antd5 的预设 dark 算法
+
+  memo.appConfig = {
+    message: {
+      // maxCount: 3,
+    },
+  }
+
   return memo
 }
 
@@ -86,6 +94,7 @@ export async function getInitialState(): Promise<{
   const fetchUserInfo = async () => {
     try {
       return {
+        theme: 'light',
         name: 'Zila',
         avatar:
           'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
@@ -101,7 +110,10 @@ export async function getInitialState(): Promise<{
     return {
       fetchUserInfo,
       currentUser,
-      settings: defaultSettings,
+      settings: {
+        ...defaultSettings,
+        navTheme: currentUser?.theme ?? defaultSettings.navTheme,
+      },
     }
   }
   return {
@@ -323,6 +335,7 @@ export const layout: RunTimeLayoutConfig = ({
     childrenRender: (children) => {
       // global modal register
       _allModalRegistered()
+
       if (initialState?.loading) return <PageLoading />
       return <>{children}</>
     },

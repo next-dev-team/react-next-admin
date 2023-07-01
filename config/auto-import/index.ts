@@ -29,6 +29,7 @@ export const autoImportPlugin = () =>
       // './xx/**', // all nested modules
       './src/utils/**',
       './src/stores/**',
+      './src/hooks',
       './src/constants/**',
       './src/components',
       // automatically import for graphql

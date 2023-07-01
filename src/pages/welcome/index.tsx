@@ -1,19 +1,10 @@
-import Title from 'antd/es/typography/Title'
+import ThemeComp from './components/Theme'
 import { SubCom } from './subCom'
 const Index = () => {
   // useModel global store
-  const {
-    tasks,
-    setTasks,
-    appStore,
-    dataUser,
-    refetchGetUser,
-    loadingGetUser,
-  } = useModel('welcome.counter')
-  const { counter, dec, inc, setDarkMode, darkMode } = useModel('demo')
-  const handleDarkTheme = () => {
-    setDarkMode(darkMode === 'light' ? 'realDark' : 'light')
-  }
+  const { tasks, setTasks, dataUser, loadingGetUser } =
+    useModel('welcome.counter')
+  const { counter, dec, inc } = useModel('demo')
 
   // global Valtio store
 
@@ -56,34 +47,7 @@ const Index = () => {
   return (
     <Row wrap gutter={[20, 30]}>
       <Col span={24}>
-        <ProCard bordered title="Theme">
-          <Space>
-            <Button onClick={handleDarkTheme} shape="round" type="primary">
-              {darkMode === 'light' ? 'Dark' : 'Light'}
-            </Button>
-            <Title level={1} type="danger">
-              Heading1
-            </Title>
-            <Title level={2} type="secondary">
-              Heading2
-            </Title>
-            <Title level={3} type="success">
-              Heading3
-            </Title>
-            <Title level={4} type="warning">
-              Heading4
-            </Title>
-            <Typography.Text type="danger">Text</Typography.Text>
-            <Typography.Text type="secondary">Text</Typography.Text>
-            <Typography.Text type="success">Text</Typography.Text>
-            <Typography.Text strong type="warning">
-              Text
-            </Typography.Text>
-            <Typography.Paragraph type="secondary">
-              Paragraph Paragraph Paragraph Paragraph Paragraph
-            </Typography.Paragraph>
-          </Space>
-        </ProCard>
+        <ThemeComp />
       </Col>
       <Col span={8}>
         <ProCard bordered title="Icons">

@@ -1,9 +1,8 @@
 import SwitchTabsLayout from '@/components/SwitchTabsLayout'
 
 const Layout = () => {
-  const { initialState } = useModel('@@initialState')
+  const { initialState } = useModels('@@initialState', ['initialState'])
   const { settings } = initialState || {}
-
   return (
     <>
       <SwitchTabsLayout
