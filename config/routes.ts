@@ -24,6 +24,13 @@ const routes: MenuDataItem[] = [
     name: 'login',
     icon: 'smile',
     component: './auth/login',
+    layout: false,
+  },
+  {
+    path: '/data-table',
+    name: 'Data Table',
+    icon: 'smile',
+    component: './data-table',
   },
   // {
   //   name: 'list_page',
