@@ -22,7 +22,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
         flushSync(() => {
           setInitialState((s) => ({ ...s, currentUser: undefined }))
         })
-        loginOut()
+        location.href = '/auth/login'
         return
       }
       $history.push(`/account/${key}`)
@@ -46,11 +46,11 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     return loading
   }
 
-  const { currentUser } = initialState as any
+  const { currentUser } = initialState
 
-  // if (!currentUser || !currentUser.name) {
-  //   return loading;
-  // }
+  if (!currentUser || !currentUser.name) {
+    return loading
+  }
 
   const menuItems: ItemType[] = [
     ...(menu

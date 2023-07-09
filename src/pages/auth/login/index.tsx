@@ -14,20 +14,67 @@ const ActionIcons = () => {
 
 const Lang = () => {
   return (
-    <div data-lang className="float-right">
+    <div data-lang className="flex justify-end">
       {SelectLang && <SelectLang />}
     </div>
   )
 }
 
 const Login = () => {
+  const { isMdDown } = useMediaQuery()
+  const form = (
+    <>
+      {/* <Lang /> */}
+      <LoginForm
+        logo={<img alt="logo" src="https://preview.pro.ant.design/logo.svg" />}
+        title="Ant Design"
+        subTitle={
+          'Ant Design is the most influential web design specification in Xihu district'
+        }
+        initialValues={{
+          autoLogin: true,
+        }}
+        actions={[
+          <Space align="center" key="actions">
+            <GText key="text">Login with :</GText>
+            <ActionIcons />
+          </Space>,
+        ]}
+      >
+        <ProFormText
+          name="username"
+          fieldProps={{
+            size: 'large',
+            prefix: <UserOutlined className={'prefixIcon'} />,
+          }}
+          placeholder={'用户名: admin or user'}
+          rules={[
+            {
+              required: true,
+              message: '请输入用户名!',
+            },
+          ]}
+        />
+        <ProFormText.Password
+          name="password"
+          fieldProps={{
+            size: 'large',
+            prefix: <LockOutlined className={'prefixIcon'} />,
+          }}
+          placeholder={'密码: ant.design'}
+          rules={[
+            {
+              required: true,
+              message: '请输入密码！',
+            },
+          ]}
+        />
+      </LoginForm>
+    </>
+  )
   return (
     <PageContainer
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
-        overflow: 'auto',
         backgroundImage:
           "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
         backgroundSize: '100% 100%',
@@ -37,60 +84,19 @@ const Login = () => {
         style={{
           backgroundImage:
             "url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg')",
-          display: 'flex',
           justifyContent: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          height: '70vh',
         }}
       >
-        <ProCard style={{ maxWidth: 560 }}>
-          <Lang />
-          <LoginForm
-            logo={
-              <img alt="logo" src="https://preview.pro.ant.design/logo.svg" />
-            }
-            title="Ant Design"
-            subTitle={
-              'Ant Design is the most influential web design specification in Xihu district'
-            }
-            initialValues={{
-              autoLogin: true,
-            }}
-            actions={[
-              <Space align="center" key="actions">
-                <GText key="text">Login with :</GText>
-                <ActionIcons />
-              </Space>,
-            ]}
-          >
-            <ProFormText
-              name="username"
-              fieldProps={{
-                size: 'large',
-                prefix: <UserOutlined className={'prefixIcon'} />,
-              }}
-              placeholder={'用户名: admin or user'}
-              rules={[
-                {
-                  required: true,
-                  message: '请输入用户名!',
-                },
-              ]}
-            />
-            <ProFormText.Password
-              name="password"
-              fieldProps={{
-                size: 'large',
-                prefix: <LockOutlined className={'prefixIcon'} />,
-              }}
-              placeholder={'密码: ant.design'}
-              rules={[
-                {
-                  required: true,
-                  message: '请输入密码！',
-                },
-              ]}
-            />
-          </LoginForm>
-        </ProCard>
+        {isMdDown ? (
+          <div>{form}</div>
+        ) : (
+          <ProCard style={{ maxWidth: 480 }} bodyStyle={{ padding: 4 }}>
+            {form}
+          </ProCard>
+        )}
       </div>
     </PageContainer>
   )
