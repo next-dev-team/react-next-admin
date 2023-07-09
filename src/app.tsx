@@ -5,13 +5,12 @@
 import { MenuDataItem } from '@ant-design/pro-components'
 import { ApolloProvider } from '@apollo/client'
 import NiceModal from '@ebay/nice-modal-react'
-import { RequestConfig, RuntimeAntdConfig } from '@umijs/max'
-import { theme } from 'antd'
-import { debounce, isEmpty } from 'lodash'
+import { RequestConfig, request as axios } from '@umijs/max'
+import { debounce, isEmpty } from 'lodash-es'
 import { createElement } from 'react'
 import { defaultSettings } from './utils'
 
-const loginPath = '/user/login'
+const loginPath = '/auth/login'
 
 // all supported functions in defineApp
 // $defineApp({
@@ -31,9 +30,21 @@ const loginPath = '/user/login'
 // }
 //
 
-// export function onRouteChange({ location, action }: any) {
-//   console.log('onRouteChange', location, action)
-// }
+export function onRouteChange({ routes = {}, location }: any) {
+  const token = getToken()
+
+  const outsideLayout = Object.values(routes).filter((item) => {
+    return 'layout' in item && !item.layout
+  })
+  const isOutsideLayout = outsideLayout.some(
+    (item) => item.path === location.pathname,
+  )
+
+  if (!token && !isOutsideLayout && !(location.pathname === _route.LOGIN)) {
+    // console.log('d', location.pathname)
+    $history.push(_route.LOGIN)
+  }
+}
 
 // export function patchRoutes({ routes, routeComponents }: any) {
 //   console.log('patchRoutes', routes, routeComponents)
@@ -42,19 +53,6 @@ const loginPath = '/user/login'
 // export function patchClientRoutes({ routes }: any) {
 //   console.log('patchClientRoutes', routes, Array.isArray(routes))
 // }
-
-export const antd: RuntimeAntdConfig = (memo: any) => {
-  memo.theme ??= {}
-  memo.theme.algorithm = theme.darkAlgorithm // 配置 antd5 的预设 dark 算法
-
-  memo.appConfig = {
-    message: {
-      // maxCount: 3,
-    },
-  }
-
-  return memo
-}
 
 const filterByMenuData = (
   data: MenuDataItem[] = [],
@@ -91,9 +89,19 @@ export async function getInitialState(): Promise<{
   loading?: boolean
   fetchUserInfo?: () => Promise<any | undefined>
 }> {
+  const token = getToken()
+
+  if (!token) {
+    return {
+      settings: defaultSettings,
+    }
+  }
   const fetchUserInfo = async () => {
     try {
+      const user = await axios(_api.USER)
+      // console.log('getInitialState', user)
       return {
+        ...user,
         theme: 'light',
         name: 'Zila',
         avatar:
@@ -102,8 +110,21 @@ export async function getInitialState(): Promise<{
     } catch (error) {
       $history.push(loginPath)
     }
-    return undefined
   }
+  // const fetchUserInfo1 = async () => {
+  //   try {
+  //     return {
+  //       theme: 'light',
+  //       name: 'Zila',
+  //       avatar:
+  //         'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+  //     }
+  //   } catch (error) {
+  //     $history.push(loginPath)
+  //   }
+  //   return undefined
+  // }
+
   // 如果是登录页面，不执行
   if ($history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo()

@@ -4,6 +4,7 @@ type ThemeScheme = 'light' | 'realDark'
 
 export default function useDemo() {
   const [counter, setCounter] = useState(0)
+
   const [darkMode, setDarkMode] = useLocalStorageState<ThemeScheme>(
     'darkMode',
     {

@@ -11,7 +11,9 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   /**
    * 退出登录，并且将当前的 url 保存
    */
-  const loginOut = async () => {}
+  const loginOut = async () => {
+    setToken()
+  }
 
   const { initialState, setInitialState } = useModel('@@initialState')
 
@@ -19,6 +21,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     (event: MenuInfo) => {
       const { key } = event
       if (key === 'logout') {
+        loginOut()
         flushSync(() => {
           setInitialState((s) => ({ ...s, currentUser: undefined }))
         })
@@ -58,12 +61,12 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
           {
             key: 'center',
             icon: <UserOutlined />,
-            label: '个人中心',
+            label: 'Center',
           },
           {
             key: 'settings',
             icon: <SettingOutlined />,
-            label: '个人设置',
+            label: 'Settings',
           },
           {
             type: 'divider' as const,
@@ -73,7 +76,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     {
       key: 'logout',
       icon: <LogoutOutlined />,
-      label: '退出登录',
+      label: 'Logout',
     },
   ]
 

@@ -22,17 +22,21 @@ const Lang = () => {
 
 const Login = () => {
   const { isMdDown } = useMediaQuery()
+  const { handleLogin, loadingLogin } = useModel('auth.login.model')
   const form = (
     <>
-      {/* <Lang /> */}
+      <Lang />
       <LoginForm
+        loading={loadingLogin}
+        onFinish={handleLogin}
         logo={<img alt="logo" src="https://preview.pro.ant.design/logo.svg" />}
         title="Ant Design"
         subTitle={
           'Ant Design is the most influential web design specification in Xihu district'
         }
         initialValues={{
-          autoLogin: true,
+          username: 'admin',
+          password: 'admin',
         }}
         actions={[
           <Space align="center" key="actions">
@@ -47,11 +51,10 @@ const Login = () => {
             size: 'large',
             prefix: <UserOutlined className={'prefixIcon'} />,
           }}
-          placeholder={'用户名: admin or user'}
+          placeholder={'Enter your username'}
           rules={[
             {
               required: true,
-              message: '请输入用户名!',
             },
           ]}
         />
@@ -61,11 +64,10 @@ const Login = () => {
             size: 'large',
             prefix: <LockOutlined className={'prefixIcon'} />,
           }}
-          placeholder={'密码: ant.design'}
+          placeholder={'Enter your password'}
           rules={[
             {
               required: true,
-              message: '请输入密码！',
             },
           ]}
         />
@@ -81,13 +83,10 @@ const Login = () => {
       }}
     >
       <div
+        className="justify-center flex h-[70vh] items-center"
         style={{
           backgroundImage:
             "url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg')",
-          justifyContent: 'center',
-          display: 'flex',
-          alignItems: 'center',
-          height: '70vh',
         }}
       >
         {isMdDown ? (

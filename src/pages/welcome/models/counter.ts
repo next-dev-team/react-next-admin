@@ -1,10 +1,10 @@
 export default function useWelcomeLogic() {
-  const [tasks, setTasks] = useState('');
+  const [tasks, setTasks] = useState('')
   const {
     data: dataUser,
     loading: loadingGetUser,
     refresh: refetchGetUser,
-  } = useRequest('/users');
+  } = {} as any
 
   return {
     refetchGetUser,
@@ -12,6 +12,5 @@ export default function useWelcomeLogic() {
     loadingGetUser,
     setTasks,
     tasks,
-
-  };
+  }
 }
