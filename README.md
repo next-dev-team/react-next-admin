@@ -17,8 +17,7 @@ The next generation of admin enterprise applications with awesome architecture, 
 - 💡 TypeScript, of course 100%
 - ✅ State management: Umi Model(context with selector) / Valtio (Proxy Base)
 - ✅ Apollo GraphQL: auto generator base on gql schema
-- 🎨 UnoCSS - The instant on-demand atomic CSS engine (Uno,Tailwind,Bootstrap...)
-- 😃 Use UnoCSS icons in Pure CSS, small bundles
+- 🎨 Tailwind Css
 - 💎 Antd V5: Beautiful, Fast, enterprise UI components
 - ✅ Antd Procomponents - Template component, Layout/Skeleton/Table/Form/Validation/Charts
 - 📱 Responsive: Designed for variable screen sizes
