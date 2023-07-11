@@ -14,10 +14,11 @@ export default function useLoginModel() {
     console.log('value', value)
     const isLogged = value.password === mockUser && value.username === mockUser
     if (isLogged) {
-      runLogin().finally(() => {
-        setToken(API_TOKEN)
-        redirectSuccess()
-      })
+      redirectSuccess()
+      setToken(API_TOKEN)
+      // runLogin().finally(() => {
+      //   redirectSuccess()
+      // })
     } else {
       message.error('Invalid credentials')
     }
