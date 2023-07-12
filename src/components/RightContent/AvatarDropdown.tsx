@@ -26,6 +26,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
           setInitialState((s) => ({ ...s, currentUser: undefined }))
         })
         location.href = '/auth/login'
+        localStorage.removeItem('tabLocations')
         return
       }
       $history.push(`/account/${key}`)
