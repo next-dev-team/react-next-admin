@@ -73,3 +73,5 @@ server
 server/
 /server/
 docs-dist
+
+dist_electron

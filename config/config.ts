@@ -47,7 +47,7 @@ export default defineConfig({
   // title: '',
   layout: {
     // https://umijs.org/zh-CN/plugins/plugin-layout
-    locale: true,
+    locale: false,
     ...defaultSettings,
   },
   base: '/',
@@ -164,7 +164,7 @@ export default defineConfig({
   access: {},
   model: {},
   // plugins: [require.resolve('@umijs/plugins/dist/unocss')],
-
+  plugins: ['umi-plugin-electron-builder'],
   initialState: {},
   tailwindcss: {},
   autoprefixer: {},
