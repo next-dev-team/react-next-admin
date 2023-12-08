@@ -238,29 +238,33 @@ const DataTable = <
             >
               <EditFilled style={{ color: 'white', fontSize: 15 }} />
             </Button>,
-            <TableDropdown
-              key={'export'}
-              menus={[
-                {
-                  disabled: state.loadingDelete,
-                  key: 'delete',
-                  name: (
-                    <Popconfirm
-                      title="Are you sure to delete?"
-                      onConfirm={() => onClickDelete(row as any)}
-                      trigger={['click']}
-                    >
-                      <DeleteOutlined
-                        style={{
-                          color: token.colorError,
-                          fontSize: token.fontSizeLG,
-                        }}
-                      />
-                    </Popconfirm>
-                  ),
-                },
-              ]}
-            />,
+            <Dropdown trigger={['click','contextMenu']} menu={{ items:[
+              {
+                label: (
+                  <Popconfirm
+                  title="Are you sure to delete?"
+                  onConfirm={() => onClickDelete(row as any)}
+                  trigger={['click']}
+                >
+                 <Space size="small">
+                 <DeleteOutlined
+                    style={{
+                      color: token.colorError,
+                      fontSize: token.fontSizeLG,
+                    }}
+                  />
+                  Delete
+                 </Space>
+                </Popconfirm>
+                ),
+                key: '0',
+              },
+            ] }}>
+            <a className='text-text-secondary text-lg' onClick={(e) => e.preventDefault()}>
+                <MoreOutlined />
+            </a>
+          </Dropdown>
+            ,
             ...actionsRender,
           ].filter(Boolean)
         },
