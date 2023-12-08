@@ -392,6 +392,7 @@ declare global {
   const FlagFilled: typeof import('@ant-design/icons')['FlagFilled']
   const FlagOutlined: typeof import('@ant-design/icons')['FlagOutlined']
   const FlagTwoTone: typeof import('@ant-design/icons')['FlagTwoTone']
+  const Flex: typeof import('antd/es')['Flex']
   const FloatButton: typeof import('antd/es')['FloatButton']
   const FolderAddFilled: typeof import('@ant-design/icons')['FolderAddFilled']
   const FolderAddOutlined: typeof import('@ant-design/icons')['FolderAddOutlined']

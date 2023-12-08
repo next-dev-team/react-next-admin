@@ -4,7 +4,7 @@ import { antdPresent } from './antd-present'
 import { umiPresent } from './umi-presents'
 
 export const autoImportPlugin = () =>
-  require('unplugin-auto-import/webpack')({
+  require('unplugin-auto-import/webpack').default({
     dts: './auto-import.d.ts',
     include: [
       /\.[t]sx?$/, // .ts, .tsx,
