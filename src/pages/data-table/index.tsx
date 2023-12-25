@@ -120,7 +120,7 @@ const Page = () => {
           // view props
           detailProp: {
             detailTitle: `Detail user: ${tblState?.row?.name}`,
-            viewConfigs: (row) => ({
+            configs: (row) => ({
               url: `/users/${row?.id}`,
             }),
           },
@@ -132,11 +132,11 @@ const Page = () => {
             }),
           },
           listProps: {
-            listResponse: (res) => ({
+            response: (res) => ({
               data: res?.data?.data || [],
               total: res?.data.meta.pagination.total,
             }),
-            listConfigs: ({ pageSize, current, ...filter }) => ({
+            configs: ({ pageSize, current, ...filter }) => ({
               url: '/users',
               params: {
                 per_page: pageSize,

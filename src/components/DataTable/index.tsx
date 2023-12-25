@@ -9,7 +9,6 @@ import {
   ProDescriptions,
   ProTable,
   BetaSchemaForm as SchemaForm,
-  TableDropdown,
 } from '@ant-design/pro-components'
 import { useLockFn, useMemoizedFn } from 'ahooks'
 import {
@@ -74,8 +73,8 @@ const DataTable = <
     uiProps = {},
     editResponse,
   } = addEditProps || {}
-  const { detailTitle, desProps = {}, viewConfigs } = detailProp || {}
-  const { listResponse, listConfigs } = listProps || {}
+  const { detailTitle, desProps = {}, configs: viewConfigs } = detailProp || {}
+  const { response: listResponse, configs: listConfigs } = listProps || {}
 
   const { isEditMode, isViewMode, isAddMode } = useMemo(() => {
     const openCrudModal = state.openCrudModal
@@ -238,33 +237,40 @@ const DataTable = <
             >
               <EditFilled style={{ color: 'white', fontSize: 15 }} />
             </Button>,
-            <Dropdown trigger={['click','contextMenu']} menu={{ items:[
-              {
-                label: (
-                  <Popconfirm
-                  title="Are you sure to delete?"
-                  onConfirm={() => onClickDelete(row as any)}
-                  trigger={['click']}
-                >
-                 <Space size="small">
-                 <DeleteOutlined
-                    style={{
-                      color: token.colorError,
-                      fontSize: token.fontSizeLG,
-                    }}
-                  />
-                  Delete
-                 </Space>
-                </Popconfirm>
-                ),
-                key: '0',
-              },
-            ] }}>
-            <a className='text-text-secondary text-lg' onClick={(e) => e.preventDefault()}>
+            <Dropdown
+              trigger={['click', 'contextMenu']}
+              menu={{
+                items: [
+                  {
+                    label: (
+                      <Popconfirm
+                        title="Are you sure to delete?"
+                        onConfirm={() => onClickDelete(row as any)}
+                        trigger={['click']}
+                      >
+                        <Space size="small">
+                          <DeleteOutlined
+                            style={{
+                              color: token.colorError,
+                              fontSize: token.fontSizeLG,
+                            }}
+                          />
+                          Delete
+                        </Space>
+                      </Popconfirm>
+                    ),
+                    key: '0',
+                  },
+                ],
+              }}
+            >
+              <a
+                className="text-text-secondary text-lg"
+                onClick={(e) => e.preventDefault()}
+              >
                 <MoreOutlined />
-            </a>
-          </Dropdown>
-            ,
+              </a>
+            </Dropdown>,
             ...actionsRender,
           ].filter(Boolean)
         },
