@@ -50,6 +50,7 @@ export namespace IDataTable {
     TEditData = Record<any, any>,
     TDetail = any,
   > = {
+    mapDataSource?: (res: TDataList) => TData
     state: State<TData>
     crudProps: {
       form: FormInstance<TEditData>

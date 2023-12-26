@@ -34,6 +34,11 @@ const Page = () => {
       },
     },
     {
+      title: 'Profile',
+      dataIndex: 'profile',
+      hideInForm: true,
+    },
+    {
       title: 'Gender',
       dataIndex: 'gender',
       formItemProps: {

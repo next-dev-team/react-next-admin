@@ -43,6 +43,7 @@ const DataTable = <
     columns = [],
     columnsOptions,
     axios,
+    mapDataSource,
     ...tblProProps
   } = props
   const listActionRef = tblProProps.actionRef as MutableRefObject<ActionType>
@@ -238,6 +239,7 @@ const DataTable = <
               <EditFilled style={{ color: 'white', fontSize: 15 }} />
             </Button>,
             <Dropdown
+              key={'actions'}
               trigger={['click', 'contextMenu']}
               menu={{
                 items: [
@@ -453,14 +455,22 @@ const DataTable = <
         columns={getColumns}
         request={async (params, ...args) => {
           const response = await axios.request(
-            listConfigs({ ...state.filter, ...params }, ...args),
+            listConfigs?.({ ...state.filter, ...params }, ...args),
           )
           if (listResponse) {
             const getVal = listResponse?.(response)
-            state.dataSource = getVal?.data || []
+            state.dataSource = []
+            const nextData = mapDataSource
+              ? mapDataSource(getVal || [])
+              : Array.isArray(getVal?.data)
+                ? getVal?.data
+                : []
+
+            console.log('nextData', nextData)
 
             return {
               ...getVal,
+              data: nextData,
               success: true,
             }
           }
