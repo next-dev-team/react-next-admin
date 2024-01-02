@@ -18,3 +18,5 @@ export * from '../../config/defaultSettings' // default settings
 export { default as routesUmi } from '../../config/routes'
 import theme from 'antd/es/theme'
 export const useToken = theme.useToken
+import mockjs  from 'mockjs'
+export const _mock = mockjs

@@ -430,7 +430,8 @@ const DataTable = <
 
       <Modal
         open={isViewMode}
-        width="70%"
+        width="60%"
+        styles={{body: { minHeight: 300 }}}
         title={detailTitle || 'View'}
         onCancel={() => setCrudMode('reset', {})}
       >
@@ -459,14 +460,12 @@ const DataTable = <
           )
           if (listResponse) {
             const getVal = listResponse?.(response)
-            state.dataSource = []
             const nextData = mapDataSource
               ? mapDataSource(getVal || [])
               : Array.isArray(getVal?.data)
                 ? getVal?.data
                 : []
-
-            console.log('nextData', nextData)
+          state.dataSource = nextData
 
             return {
               ...getVal,

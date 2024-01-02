@@ -90,7 +90,9 @@ const Page = () => {
       },
     },
   ]
-
+  const imageData = _mock.Random.image('100x100', '#000', '#fff')
+  const dataSource = tblState.dataSource?.map((item) => ({ ...item, img: imageData  }))
+  console.log('dataSource', dataSource);
   return (
     <>
       <DataTable<
@@ -102,6 +104,7 @@ const Page = () => {
         actionRef={tblRef}
         columns={columns}
         state={tblState}
+        dataSource={dataSource}
         crudProps={{
           form: editForm,
           // addEditProps

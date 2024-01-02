@@ -937,6 +937,7 @@ declare global {
   const _history: typeof import('@umijs/max')['history']
   const _isCamelCase: typeof import('./src/utils/string')['_isCamelCase']
   const _message: typeof import('antd/es')['message']
+  const _mock: typeof import('./src/utils/index')['_mock']
   const _modalEnumKey: typeof import('./src/utils/modal')['_modalEnumKey']
   const _notification: typeof import('antd/es')['notification']
   const _route: typeof import('./src/constants/config')['_route']
