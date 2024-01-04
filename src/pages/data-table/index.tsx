@@ -36,6 +36,7 @@ const Page = () => {
     {
       title: 'Profile',
       dataIndex: 'profile',
+      valueType: 'image',
       hideInForm: true,
     },
     {
@@ -91,8 +92,11 @@ const Page = () => {
     },
   ]
   const imageData = _mock.Random.image('100x100', '#000', '#fff')
-  const dataSource = tblState.dataSource?.map((item) => ({ ...item, img: imageData  }))
-  console.log('dataSource', dataSource);
+  const dataSource = tblState.dataSource?.map((item) => ({
+    ...item,
+    img: imageData,
+  }))
+  console.log('dataSource', dataSource)
   return (
     <>
       <DataTable<
@@ -153,7 +157,9 @@ const Page = () => {
               },
             }),
           },
-          deleteUrl: ({ id }) => `/users/${id}`,
+          deleteProps: {
+            url: ({ id }) => `/users/${id}`,
+          },
         }}
       />
     </>

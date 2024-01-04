@@ -54,7 +54,9 @@ export namespace IDataTable {
     state: State<TData>
     crudProps: {
       form: FormInstance<TEditData>
-      deleteUrl?: (row: TEditData) => string
+      deleteProps?: {
+        url: (row: TEditData) => string
+      }
       detailUrl?: string
       exportProps?: {
         hideFilter?: boolean

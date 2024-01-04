@@ -54,7 +54,7 @@ const DataTable = <
     resDetailFieldKey = ['data'],
     resListFiledKey = ['data'],
     listTotal,
-    deleteUrl,
+    deleteProps,
     crudId = 'id',
     onModeChange,
     addEditProps,
@@ -66,7 +66,7 @@ const DataTable = <
   const { isSmUp } = useMediaQuery()
   const [params, setParams] = useSearchParams()
   const { token } = theme.useToken()
-
+  const { url: deleteUrl } = deleteProps || {}
   const {
     editTitle,
     addConfigs,
@@ -431,7 +431,7 @@ const DataTable = <
       <Modal
         open={isViewMode}
         width="60%"
-        styles={{body: { minHeight: 300 }}}
+        styles={{ body: { minHeight: 300 } }}
         title={detailTitle || 'View'}
         onCancel={() => setCrudMode('reset', {})}
       >
@@ -465,7 +465,7 @@ const DataTable = <
               : Array.isArray(getVal?.data)
                 ? getVal?.data
                 : []
-          state.dataSource = nextData
+            state.dataSource = nextData
 
             return {
               ...getVal,
