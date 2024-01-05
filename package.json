@@ -82,6 +82,7 @@
     "use-switch-tabs": "^0.2.3"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.23.7",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/import-types-preset": "^3.0.0",
     "@graphql-codegen/introspection": "^4.0.0",
@@ -101,7 +102,7 @@
     "@types/jest": "^29.5.11",
     "@types/lodash-es": "^4.17.12",
     "@types/mockjs": "^1.0.10",
-    "@types/node": "^20.10.6",
+    "@types/node": "^18.19.4",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "@umijs/codemod": "^0.1.0",
