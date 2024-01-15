@@ -74,7 +74,13 @@ const DataTable = <
     uiProps = {},
     editResponse,
   } = addEditProps || {}
-  const { detailTitle, desProps = {}, configs: viewConfigs } = detailProp || {}
+  const {
+    detailTitle,
+    desProps = {},
+    configs: viewConfigs,
+    response: viewResponse,
+    modalWidth = '60%',
+  } = detailProp || {}
   const { response: listResponse, configs: listConfigs } = listProps || {}
 
   const { isEditMode, isViewMode, isAddMode } = useMemo(() => {
@@ -390,8 +396,9 @@ const DataTable = <
       (obj, level) => obj[level],
       response.data,
     )
+    const nextRes = viewResponse ? viewResponse(response) : getRes
     return {
-      data: getRes || [],
+      data: nextRes || [],
       success: true,
     }
   })
@@ -430,7 +437,7 @@ const DataTable = <
 
       <Modal
         open={isViewMode}
-        width="60%"
+        width={isSmUp ? modalWidth : '100%'}
         styles={{ body: { minHeight: 300 } }}
         title={detailTitle || 'View'}
         onCancel={() => setCrudMode('reset', {})}

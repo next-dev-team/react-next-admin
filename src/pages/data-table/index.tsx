@@ -36,7 +36,10 @@ const Page = () => {
     {
       title: 'Profile',
       dataIndex: 'profile',
-      valueType: 'image',
+      valueType: {
+        type: 'image',
+        width: 100,
+      },
       hideInForm: true,
     },
     {
@@ -91,12 +94,17 @@ const Page = () => {
       },
     },
   ]
-  const imageData = _mock.Random.image('100x100', '#000', '#fff')
+  const imageData = _mock.Random.image(
+    '100x100',
+    _mock.Random.color(),
+    'png',
+    'User Profile',
+  )
   const dataSource = tblState.dataSource?.map((item) => ({
     ...item,
     img: imageData,
   }))
-  console.log('dataSource', dataSource)
+
   return (
     <>
       <DataTable<
@@ -131,10 +139,20 @@ const Page = () => {
           },
           // view props
           detailProp: {
+            modalWidth: '70%',
             detailTitle: `Detail user: ${tblState?.row?.name}`,
             configs: (row) => ({
               url: `/users/${row?.id}`,
             }),
+            response(res) {
+              return {
+                ...res?.data.data,
+                profile: imageData,
+              }
+            },
+            desProps: {
+              layout: 'vertical',
+            },
           },
           exportProps: {
             filename: 'user_report',

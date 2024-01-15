@@ -66,6 +66,7 @@ export namespace IDataTable {
         ) => RequestData<any>
       }
       detailProp?: {
+        modalWidth?: any
         detailTitle?: string | ReactNode
         desProps?: ProDescriptionsProps
         configs?: (
@@ -76,6 +77,7 @@ export namespace IDataTable {
             keyword?: string
           },
         ) => Partial<AxiosResponse<TDataList, any>['config']>
+        response?: (res?: AxiosResponse<TDetail, any>) => Partial<TDetail>
       }
       listUrl?: string
       actionsRender?: any[]
