@@ -5,7 +5,6 @@ import { autoImportPlugin } from './auto-import'
 import { defaultSettings } from './defaultSettings'
 import proxy from './proxy'
 import routes from './routes'
-const { InjectManifest } = require('workbox-webpack-plugin')
 
 const isUmiProd = process.env.UMI_ENV === 'prod'
 
@@ -101,14 +100,7 @@ export default defineConfig({
       },
     },
 
-    exclude: [
-      'workbox-precaching',
-      'workbox-strategies',
-      'workbox-routing',
-      'workbox-expiration',
-      'workbox-core',
-      'workbox-cacheable-response',
-    ],
+    exclude: [],
   },
 
   chainWebpack(config, {}) {
@@ -130,13 +122,6 @@ export default defineConfig({
     //   }),
     // )
     config.plugin('unplugin-auto-import').use(autoImportPlugin())
-
-    config.plugin('sw').use(
-      new InjectManifest({
-        swSrc: '/src/service-worker.js',
-        swDest: 'sw.js',
-      }),
-    )
 
     return config
   },

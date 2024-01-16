@@ -132,15 +132,7 @@
     "typescript": "^5.3.3",
     "umi-plugin-electron-builder": "^4.0.7",
     "unplugin-auto-import": "^0.17.3",
-    "webpack": "^5.89.0",
-    "workbox-cacheable-response": "^7.0.0",
-    "workbox-core": "^7.0.0",
-    "workbox-expiration": "^7.0.0",
-    "workbox-precaching": "^7.0.0",
-    "workbox-routing": "^7.0.0",
-    "workbox-strategies": "^7.0.0",
-    "workbox-webpack-plugin": "^7.0.0",
-    "workbox-window": "^7.0.0"
+    "webpack": "^5.89.0"
   },
   "engines": {
     "node": ">=16.0.0"

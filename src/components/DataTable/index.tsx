@@ -252,10 +252,11 @@ const DataTable = <
                   {
                     label: (
                       <Popconfirm
-                        title="Are you sure to delete?"
+                        title={`Are you sure to delete "${row?.name || row?.title || ''}" ?`}
                         onConfirm={() => onClickDelete(row as any)}
                         trigger={['click']}
                       >
+                        {console.log('row', row)}
                         <Space size="small">
                           <DeleteOutlined
                             style={{
@@ -263,7 +264,7 @@ const DataTable = <
                               fontSize: token.fontSizeLG,
                             }}
                           />
-                          Delete
+                          {t('Delete')}
                         </Space>
                       </Popconfirm>
                     ),

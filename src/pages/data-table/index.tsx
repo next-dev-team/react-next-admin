@@ -38,9 +38,10 @@ const Page = () => {
       dataIndex: 'profile',
       valueType: {
         type: 'image',
-        width: 100,
+        width: 80,
       },
       hideInForm: true,
+      hideInSearch: true,
     },
     {
       title: 'Gender',
@@ -98,13 +99,8 @@ const Page = () => {
     '100x100',
     _mock.Random.color(),
     'png',
-    'User Profile',
+    'User',
   )
-  const dataSource = tblState.dataSource?.map((item) => ({
-    ...item,
-    img: imageData,
-  }))
-
   return (
     <>
       <DataTable<
@@ -116,7 +112,6 @@ const Page = () => {
         actionRef={tblRef}
         columns={columns}
         state={tblState}
-        dataSource={dataSource}
         crudProps={{
           form: editForm,
           // addEditProps
@@ -163,7 +158,10 @@ const Page = () => {
           },
           listProps: {
             response: (res) => ({
-              data: res?.data?.data || [],
+              data: res?.data?.data?.map((item) => ({
+                ...item,
+                profile: imageData,
+              })),
               total: res?.data.meta.pagination.total,
             }),
             configs: ({ pageSize, current, ...filter }) => ({
