@@ -9,7 +9,6 @@ import {
   ProDescriptions,
   ProTable,
   BetaSchemaForm as SchemaForm,
-  TableDropdown,
 } from '@ant-design/pro-components'
 import { useLockFn, useMemoizedFn } from 'ahooks'
 import {
@@ -44,6 +43,7 @@ const DataTable = <
     columns = [],
     columnsOptions,
     axios,
+    mapDataSource,
     ...tblProProps
   } = props
   const listActionRef = tblProProps.actionRef as MutableRefObject<ActionType>
@@ -54,7 +54,7 @@ const DataTable = <
     resDetailFieldKey = ['data'],
     resListFiledKey = ['data'],
     listTotal,
-    deleteUrl,
+    deleteProps,
     crudId = 'id',
     onModeChange,
     addEditProps,
@@ -66,7 +66,7 @@ const DataTable = <
   const { isSmUp } = useMediaQuery()
   const [params, setParams] = useSearchParams()
   const { token } = theme.useToken()
-
+  const { url: deleteUrl } = deleteProps || {}
   const {
     editTitle,
     addConfigs,
@@ -74,8 +74,14 @@ const DataTable = <
     uiProps = {},
     editResponse,
   } = addEditProps || {}
-  const { detailTitle, desProps = {}, viewConfigs } = detailProp || {}
-  const { listResponse, listConfigs } = listProps || {}
+  const {
+    detailTitle,
+    desProps = {},
+    configs: viewConfigs,
+    response: viewResponse,
+    modalWidth = '60%',
+  } = detailProp || {}
+  const { response: listResponse, configs: listConfigs } = listProps || {}
 
   const { isEditMode, isViewMode, isAddMode } = useMemo(() => {
     const openCrudModal = state.openCrudModal
@@ -238,29 +244,42 @@ const DataTable = <
             >
               <EditFilled style={{ color: 'white', fontSize: 15 }} />
             </Button>,
-            <TableDropdown
-              key={'export'}
-              menus={[
-                {
-                  disabled: state.loadingDelete,
-                  key: 'delete',
-                  name: (
-                    <Popconfirm
-                      title="Are you sure to delete?"
-                      onConfirm={() => onClickDelete(row as any)}
-                      trigger={['click']}
-                    >
-                      <DeleteOutlined
-                        style={{
-                          color: token.colorError,
-                          fontSize: token.fontSizeLG,
-                        }}
-                      />
-                    </Popconfirm>
-                  ),
-                },
-              ]}
-            />,
+            <Dropdown
+              key={'actions'}
+              trigger={['click', 'contextMenu']}
+              menu={{
+                items: [
+                  {
+                    label: (
+                      <Popconfirm
+                        title={`Are you sure to delete "${row?.name || row?.title || ''}" ?`}
+                        onConfirm={() => onClickDelete(row as any)}
+                        trigger={['click']}
+                      >
+                        {console.log('row', row)}
+                        <Space size="small">
+                          <DeleteOutlined
+                            style={{
+                              color: token.colorError,
+                              fontSize: token.fontSizeLG,
+                            }}
+                          />
+                          {t('Delete')}
+                        </Space>
+                      </Popconfirm>
+                    ),
+                    key: '0',
+                  },
+                ],
+              }}
+            >
+              <a
+                className="text-text-secondary text-lg"
+                onClick={(e) => e.preventDefault()}
+              >
+                <MoreOutlined />
+              </a>
+            </Dropdown>,
             ...actionsRender,
           ].filter(Boolean)
         },
@@ -378,8 +397,9 @@ const DataTable = <
       (obj, level) => obj[level],
       response.data,
     )
+    const nextRes = viewResponse ? viewResponse(response) : getRes
     return {
-      data: getRes || [],
+      data: nextRes || [],
       success: true,
     }
   })
@@ -418,7 +438,8 @@ const DataTable = <
 
       <Modal
         open={isViewMode}
-        width="70%"
+        width={isSmUp ? modalWidth : '100%'}
+        styles={{ body: { minHeight: 300 } }}
         title={detailTitle || 'View'}
         onCancel={() => setCrudMode('reset', {})}
       >
@@ -443,14 +464,20 @@ const DataTable = <
         columns={getColumns}
         request={async (params, ...args) => {
           const response = await axios.request(
-            listConfigs({ ...state.filter, ...params }, ...args),
+            listConfigs?.({ ...state.filter, ...params }, ...args),
           )
           if (listResponse) {
             const getVal = listResponse?.(response)
-            state.dataSource = getVal?.data || []
+            const nextData = mapDataSource
+              ? mapDataSource(getVal || [])
+              : Array.isArray(getVal?.data)
+                ? getVal?.data
+                : []
+            state.dataSource = nextData
 
             return {
               ...getVal,
+              data: nextData,
               success: true,
             }
           }

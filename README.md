@@ -33,6 +33,22 @@ The next generation of admin enterprise applications with awesome architecture, 
 - ✅ Page Tab: multi-page navigation like chrome with persistent support
 - ✅ Documents/DevTool: use Dumi for writing doc and Floating dev tools browsing view in one place
 
+## Translate
+
+- Fist init check config in `script/locale/locale-config.json`
+- Run script `script/locale/locale-translate.ts`
+
+### Auto with lobe/i18n using gpt
+
+- Setup: `lobe-i18n -0`
+- Enter key or proxy server
+- Translate `lobe-i18n`
+
+### Manual Translate
+
+- Go tor src/locale/translation/\*
+- every add split file need to import to \_all
+
 ## TODO
 
 - CRUD components

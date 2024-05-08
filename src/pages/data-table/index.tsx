@@ -34,6 +34,16 @@ const Page = () => {
       },
     },
     {
+      title: 'Profile',
+      dataIndex: 'profile',
+      valueType: {
+        type: 'image',
+        width: 80,
+      },
+      hideInForm: true,
+      hideInSearch: true,
+    },
+    {
       title: 'Gender',
       dataIndex: 'gender',
       formItemProps: {
@@ -85,7 +95,12 @@ const Page = () => {
       },
     },
   ]
-
+  const imageData = _mock.Random.image(
+    '100x100',
+    _mock.Random.color(),
+    'png',
+    'User',
+  )
   return (
     <>
       <DataTable<
@@ -119,10 +134,20 @@ const Page = () => {
           },
           // view props
           detailProp: {
+            modalWidth: '70%',
             detailTitle: `Detail user: ${tblState?.row?.name}`,
-            viewConfigs: (row) => ({
+            configs: (row) => ({
               url: `/users/${row?.id}`,
             }),
+            response(res) {
+              return {
+                ...res?.data.data,
+                profile: imageData,
+              }
+            },
+            desProps: {
+              layout: 'vertical',
+            },
           },
           exportProps: {
             filename: 'user_report',
@@ -132,11 +157,14 @@ const Page = () => {
             }),
           },
           listProps: {
-            listResponse: (res) => ({
-              data: res?.data?.data || [],
+            response: (res) => ({
+              data: res?.data?.data?.map((item) => ({
+                ...item,
+                profile: imageData,
+              })),
               total: res?.data.meta.pagination.total,
             }),
-            listConfigs: ({ pageSize, current, ...filter }) => ({
+            configs: ({ pageSize, current, ...filter }) => ({
               url: '/users',
               params: {
                 per_page: pageSize,
@@ -145,7 +173,9 @@ const Page = () => {
               },
             }),
           },
-          deleteUrl: ({ id }) => `/users/${id}`,
+          deleteProps: {
+            url: ({ id }) => `/users/${id}`,
+          },
         }}
       />
     </>

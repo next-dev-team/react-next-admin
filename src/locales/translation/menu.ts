@@ -1,3 +1,5 @@
+import { defineLocaleMenu } from '@/utils/obj';
+
 export default defineLocaleMenu({
   'menu.documents': {
     'en-US': 'Documents',
@@ -19,4 +21,4 @@ export default defineLocaleMenu({
     'en-US': 'Sub page',
     'zh-CN': '子页面',
   },
-})
+});

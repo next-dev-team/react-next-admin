@@ -1,0 +1,6 @@
+{
+  "defaultLang": "en-US",
+  "langs": ["zh-CN", "en-US"],
+  "removeLangs": ["ru-RU"],
+  "filetype": "json"
+}
