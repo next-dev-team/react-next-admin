@@ -1,6 +1,7 @@
-import common from './common'
-import component from './component'
-import menu from './menu'
+import { getMenuKey } from '@/utils/obj';
+import common from './common';
+import component from './component';
+import menu from './menu';
 
 /**
  *  Translates value type suggestions to avoid wrong parameters
@@ -9,15 +10,15 @@ import menu from './menu'
  */
 export type TransValue = {
   welcome: {
-    name: string
-    days: string
-  }
-}
+    name: string;
+    days: string;
+  };
+};
 
 export const allTranslation = (langKey: LangKey) => {
   return {
     ...getMenuKey(langKey, common),
     ...getMenuKey(langKey, menu),
     ...getMenuKey(langKey, component),
-  }
-}
+  };
+};

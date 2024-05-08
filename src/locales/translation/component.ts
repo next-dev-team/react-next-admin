@@ -1,3 +1,5 @@
+import { defineLocaleMenu } from '@/utils/obj';
+
 export default defineLocaleMenu({
   'component.tagSelect.expand': {
     'en-US': 'Expand',
@@ -23,4 +25,4 @@ export default defineLocaleMenu({
     'en-US': 'Close tabs to the right',
     'zh-CN': '关闭右侧的标签',
   },
-})
+});

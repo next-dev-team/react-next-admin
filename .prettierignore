@@ -1,16 +1,3 @@
 node_modules
 .umi
 .umi-production
-
-generator
-
-/.env.local
-/.umirc.local.ts
-/.umirc.local.js
-/config/config.local.ts
-/config/config.local.js
-/src/.umi
-/.umi
-
-/cypress/screenshots
-/cypress/videos

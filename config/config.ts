@@ -1,31 +1,31 @@
-import { defineConfig } from '@umijs/max'
-import dotEnv from 'dotenv'
-import { dirname } from 'path'
-import { autoImportPlugin } from './auto-import'
-import { defaultSettings } from './defaultSettings'
-import proxy from './proxy'
-import routes from './routes'
+import { defineConfig } from '@umijs/max';
+import dotEnv from 'dotenv';
+import { dirname } from 'path';
+import { autoImportPlugin } from './auto-import';
+import { defaultSettings } from './defaultSettings';
+import proxy from './proxy';
+import routes from './routes';
 
-const isUmiProd = process.env.UMI_ENV === 'prod'
+const isUmiProd = process.env.UMI_ENV === 'prod';
 
 // support multiple env https://github.com/nuxt-community/dotenv-module/issues/59#issuecomment-814245372
 const getEnv = dotEnv.config({
   path: isUmiProd
     ? `${dirname(__dirname)}/.env`
     : `${dirname(__dirname)}/.env.${process.env.UMI_ENV}`, // default is env (prod)
-})
+});
 /**
  * !check is exist env and prevent accidentally deploy to server
  */
-const appEnv = getEnv?.parsed?.UMI_ENV || 'prod' // default is env (prod) if provide UMI_ENV=prod will error stick only prod environment
+const appEnv = getEnv?.parsed?.UMI_ENV || 'prod'; // default is env (prod) if provide UMI_ENV=prod will error stick only prod environment
 
 if (!appEnv) {
   throw new Error(
     `===========> .env seem not provide ${appEnv} <=================`,
-  )
+  );
 } else {
-  console.log('========== APP Environment ========>', appEnv)
-  console.log('========== NODE Environment ========>', process.env.NODE_ENV)
+  console.log('========== APP Environment ========>', appEnv);
+  console.log('========== NODE Environment ========>', process.env.NODE_ENV);
 }
 
 // all UMI config here
@@ -105,7 +105,7 @@ export default defineConfig({
 
   chainWebpack(config, {}) {
     // when need to import outside src
-    // config.module.rule('ts-in-node_modules').include.clear()
+    config.module.rule('ts-in-node_modules').include.clear();
     // Introduce global public method
     // config.plugin('$global').use(
     //   new webpack.ProvidePlugin({
@@ -121,9 +121,9 @@ export default defineConfig({
     //     jsx: 'react',
     //   }),
     // )
-    config.plugin('unplugin-auto-import').use(autoImportPlugin())
+    config.plugin('unplugin-auto-import').use(autoImportPlugin());
 
-    return config
+    return config;
   },
   // 使用 antd
 
@@ -165,4 +165,4 @@ export default defineConfig({
   },
   // not stable yet
   // lowImport:{}
-})
+});
