@@ -246,7 +246,7 @@ export const layout: RunTimeLayoutConfig = ({
               allowClear
               defaultValue={searchMenu}
               placeholder="Search Menu"
-              bordered={false}
+             variant="borderless"
               onChange={(e) => {
                 debounce(() => {
                   $history.push(
