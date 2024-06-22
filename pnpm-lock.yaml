@@ -1388,7 +1388,7 @@ packages:
   /@types/node@20.11.1:
     resolution: {integrity: sha512-DsXojJUES2M+FE8CpptJTKpg+r54moV9ZEncPstni1WHFmTcCzeFLnMFfyhCVS8XNOy/OQG+8lVxRLRrVHmV5A==, tarball: https://registry.npmjs.org/@types/node/-/node-20.11.1.tgz}
     dependencies:
-      undici-types: 5.26.5
+      undici-types: registry.npmjs.org/undici-types@5.26.5
     dev: true
 
   /@types/prop-types@15.7.11:
@@ -2687,7 +2687,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==, tarball: https://registry.npmjs.org/jest-worker/-/jest-worker-27.5.1.tgz}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.19.7
+      '@types/node': registry.npmjs.org/@types/node@18.19.7
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
