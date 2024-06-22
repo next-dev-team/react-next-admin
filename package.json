@@ -20,7 +20,7 @@
     "electron:dir": "umi build electron --dir",
     "electron:init": "max electron init",
     "enum": "cd ./src && yo umi-boilerplate:enum --force",
-    "env:dev": "UMI_ENV=dev",
+    "env:dev": "cross-env UMI_ENV=dev",
     "env:pre": "cross-env UMI_ENV=pre",
     "env:prod": "cross-env UMI_ENV=prod",
     "gen:com": "cd ./src && yo umi-boilerplate:component --force",
