@@ -1,8 +1,8 @@
 /**
  * https://github.com/yunsii/ant-design-pro-plus/blob/master/src/layouts/SwitchTabsLayout/index.tsx
  */
-import type { MenuDataItem } from '@ant-design/pro-layout'
-import { PageLoading } from '@ant-design/pro-layout'
+import type { MenuDataItem } from '@ant-design/pro-components'
+import { PageLoading } from '@ant-design/pro-components'
 import deepEqual from 'fast-deep-equal'
 import _isArray from 'lodash-es/isArray'
 import memoizedOne from 'memoize-one'

@@ -703,6 +703,7 @@ declare global {
   const RightCircleFilled: typeof import('@ant-design/icons')['RightCircleFilled']
   const RightCircleOutlined: typeof import('@ant-design/icons')['RightCircleOutlined']
   const RightCircleTwoTone: typeof import('@ant-design/icons')['RightCircleTwoTone']
+  const RightContent: typeof import('./src/utils/index')['RightContent']
   const RightOutlined: typeof import('@ant-design/icons')['RightOutlined']
   const RightSquareFilled: typeof import('@ant-design/icons')['RightSquareFilled']
   const RightSquareOutlined: typeof import('@ant-design/icons')['RightSquareOutlined']
